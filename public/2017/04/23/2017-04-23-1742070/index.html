@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="程式設計，是個2017年開始非常熱門的關鍵字，各種程式設計相關的工作如雨後春筍冒出，就連政府單位也將其納入107年課綱，計畫從國小開始培育國家幼苗程式設計的思維。新課綱「程式設計」，學邏輯解問題因此各種對於程式設計的教材、軟體，甚至是玩具處處皆是。 不過，我們真的需要學習程式嗎？ 這句話從一個以教授程式語言為業的人口中講出，也是挺弔詭的。但這也是我目前觀察到，令人值得反思的問題，因此如果想要學寫程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="學習程式前，需要檢測自己是否擁有的5大特質">
+<meta property="og:url" content="http://example.com/2017/04/23/2017-04-23-1742070/index.html">
+<meta property="og:site_name" content="John Liu 技術中心">
+<meta property="og:description" content="程式設計，是個2017年開始非常熱門的關鍵字，各種程式設計相關的工作如雨後春筍冒出，就連政府單位也將其納入107年課綱，計畫從國小開始培育國家幼苗程式設計的思維。新課綱「程式設計」，學邏輯解問題因此各種對於程式設計的教材、軟體，甚至是玩具處處皆是。 不過，我們真的需要學習程式嗎？ 這句話從一個以教授程式語言為業的人口中講出，也是挺弔詭的。但這也是我目前觀察到，令人值得反思的問題，因此如果想要學寫程">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2017-04-23T08:48:00.000Z">
+<meta property="article:modified_time" content="2021-02-06T09:00:50.841Z">
+<meta property="article:author" content="John Liu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2017/04/23/2017-04-23-1742070/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>學習程式前，需要檢測自己是否擁有的5大特質 | John Liu 技術中心</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <h1 class="site-title">John Liu 技術中心</h1>
+    </a>
+      <p itemprop="description" style="font-size:0.75rem">管理者角度，開發者思維，初學者心態</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於 john</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>全部文章</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/04/23/2017-04-23-1742070/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          學習程式前，需要檢測自己是否擁有的5大特質
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2017-04-23 16:48:00" itemprop="dateCreated datePublished" datetime="2017-04-23T16:48:00+08:00">2017-04-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Viewpoint/" itemprop="url" rel="index"><span itemprop="name">Viewpoint</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>程式設計，是個2017年開始非常熱門的關鍵字，<br>各種程式設計相關的工作如雨後春筍冒出，<br>就連政府單位也將其納入107年課綱，<br>計畫從國小開始培育國家幼苗程式設計的思維。<br><a target="_blank" rel="noopener" href="http://epaper.naer.edu.tw/index.php?edm_no=134&content_no=2672">新課綱「程式設計」，學邏輯解問題</a><br>因此各種對於程式設計的教材、軟體，甚至是玩具處處皆是。</p>
+<p><strong>不過，我們真的需要學習程式嗎？</strong></p>
+<p>這句話從一個以教授程式語言為業的人口中講出，也是挺弔詭的。<br>但這也是我目前觀察到，令人值得反思的問題，<br>因此如果想要學寫程式的人，我建議確認自己是否有以下特質：</p>
+<h2 id="1-願意獨立工作"><a href="#1-願意獨立工作" class="headerlink" title="1.願意獨立工作"></a>1.願意獨立工作</h2><p>雖然現在軟體的協同開發日漸興盛，<br>但獨立工作的時間仍是佔開發人員大部分的工時，<br>新功能開發上，很多功能都是只由一個人來負責，<br>並且開發期就橫跨10-20小時的工時，<br>開發完成後，如果有維護更新，通常也是<br>基本上都是處於“自行工作”的狀態<br>因此要有能忍耐長時間自行工作的覺悟</p>
+<h2 id="2-對於非專業人員，有解釋的耐心"><a href="#2-對於非專業人員，有解釋的耐心" class="headerlink" title="2.對於非專業人員，有解釋的耐心"></a>2.對於非專業人員，有解釋的耐心</h2><p>可能在剛從實習生、junior工程師開始做起時沒有感覺，<br>但當層級越來越高，會接觸到越來越多層面的同事時，這就是很需要的能力，<br>因為可能在你面前的那位PM或是設計師，他可能懂可能不懂程式，<br>如果懂是最好的狀況，但如果不懂要想辦法在溝通時，<br>把電腦和工程師能讀懂的部分，轉成一般人腦能理解的部分，<br>而這需要時間練習，也需要在溝通中不停修正</p>
+<h2 id="3-對於問題，願意開口詢問勝過自幹到底"><a href="#3-對於問題，願意開口詢問勝過自幹到底" class="headerlink" title="3.對於問題，願意開口詢問勝過自幹到底"></a>3.對於問題，願意開口詢問勝過自幹到底</h2><p>這一點，乍看下似乎跟第一點的特質有些衝突，但其實不然，<br>剛加入某家公司時，該公司產品的程式碼絕對有你沒看過的（大神等級不在此範圍內），<br>許多工程師本來就不善於人際溝通，因此遇到這類狀況都會想辦法用自己的方法來解決問題<br>但你怎知道你遇到的這個問題，沒有其他已存在的解決模式，<br>雖然可能違反所謂的maker精神，<br>但相較於程式碼的品質和可維護性相比，除非能證明自己的解決方案較佳，<br>否則孰輕孰重是很明顯的</p>
+<h2 id="4-願意接納新技術"><a href="#4-願意接納新技術" class="headerlink" title="4.願意接納新技術"></a>4.願意接納新技術</h2><p>這是個看似簡單，但卻很難以實踐的特質，<br>很多工程師在學好幾項語言後，就永遠抱著那幾項語言去解決所有的問題，<br>例如可能java登峰造極後，利用java寫App、爬蟲、大型系統，jsp架網站等等..<br>不能說是錯，但很明顯的在不同的問題有更好於Java的解決方案，<br>因此在未來面對不同的問題時，如果不能時常虛心向學新語言，<br>很快就會被這些更高效、更好用的“工具”給取代</p>
+<h2 id="5-基本的邏輯思考能力"><a href="#5-基本的邏輯思考能力" class="headerlink" title="5.基本的邏輯思考能力"></a>5.基本的邏輯思考能力</h2><p>雖然不能說人人都能做到像唐鳳之流的大工程師，<br>但基本的邏輯思考能力還是在這行混的本錢，<br>要有辦法腦袋中模擬出程式碼跑下去後，你眼前的東西應該要有什麼反應，<br>開發的時候，可以大概分析效能的好壞，<br>以及能清楚講解自己寫法的原因</p>
+<p>以上是我認為要成為”合格”且”能溝通”的工程師應具備的特質，<br>如果認為有問題的或是要補充的，<br>再歡迎留言～</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/04/19/2017-04-19-1726445/" rel="prev" title="Python - 如何打開檔案與讀取檔案 ">
+      <i class="fa fa-chevron-left"></i> Python - 如何打開檔案與讀取檔案 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/05/08/2017-05-08-1753184/" rel="next" title="註解撰寫建議">
+      註解撰寫建議 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E9%A1%98%E6%84%8F%E7%8D%A8%E7%AB%8B%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">1.願意獨立工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%B0%8D%E6%96%BC%E9%9D%9E%E5%B0%88%E6%A5%AD%E4%BA%BA%E5%93%A1%EF%BC%8C%E6%9C%89%E8%A7%A3%E9%87%8B%E7%9A%84%E8%80%90%E5%BF%83"><span class="nav-number">2.</span> <span class="nav-text">2.對於非專業人員，有解釋的耐心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%B0%8D%E6%96%BC%E5%95%8F%E9%A1%8C%EF%BC%8C%E9%A1%98%E6%84%8F%E9%96%8B%E5%8F%A3%E8%A9%A2%E5%95%8F%E5%8B%9D%E9%81%8E%E8%87%AA%E5%B9%B9%E5%88%B0%E5%BA%95"><span class="nav-number">3.</span> <span class="nav-text">3.對於問題，願意開口詢問勝過自幹到底</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E9%A1%98%E6%84%8F%E6%8E%A5%E7%B4%8D%E6%96%B0%E6%8A%80%E8%A1%93"><span class="nav-number">4.</span> <span class="nav-text">4.願意接納新技術</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%9F%BA%E6%9C%AC%E7%9A%84%E9%82%8F%E8%BC%AF%E6%80%9D%E8%80%83%E8%83%BD%E5%8A%9B"><span class="nav-number">5.</span> <span class="nav-text">5.基本的邏輯思考能力</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Liu</p>
+  <div class="site-description" itemprop="description">分享各種技術筆記心得，趨勢觀察與心得</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Liu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

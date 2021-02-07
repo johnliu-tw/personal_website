@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Ansilbe 是基於 Python 的部署工具，開源，且實現 infra as code 概念的工具，透過 ssh 溝通。 兩大概念: Control Machine, Managed NodeControl Machine 通常代表專門部署的機器，可能是本地的電腦，也可能是 cloud 上高權限機器Manage Node 通常代表被部署的機器，常是客戶直接面對的機器 InstallMac os">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Devops - Ansible 設定">
+<meta property="og:url" content="http://example.com/2019/06/30/2019-06-30-devops-ansible-notes/index.html">
+<meta property="og:site_name" content="John Liu 技術中心">
+<meta property="og:description" content="Ansilbe 是基於 Python 的部署工具，開源，且實現 infra as code 概念的工具，透過 ssh 溝通。 兩大概念: Control Machine, Managed NodeControl Machine 通常代表專門部署的機器，可能是本地的電腦，也可能是 cloud 上高權限機器Manage Node 通常代表被部署的機器，常是客戶直接面對的機器 InstallMac os">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2019-06-29T23:36:00.000Z">
+<meta property="article:modified_time" content="2021-02-06T09:00:50.841Z">
+<meta property="article:author" content="John Liu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2019/06/30/2019-06-30-devops-ansible-notes/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>Devops - Ansible 設定 | John Liu 技術中心</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <h1 class="site-title">John Liu 技術中心</h1>
+    </a>
+      <p itemprop="description" style="font-size:0.75rem">管理者角度，開發者思維，初學者心態</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於 john</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>全部文章</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/30/2019-06-30-devops-ansible-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Devops - Ansible 設定
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-06-30 07:36:00" itemprop="dateCreated datePublished" datetime="2019-06-30T07:36:00+08:00">2019-06-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index"><span itemprop="name">Devops</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Ansilbe 是基於 Python 的部署工具，<br>開源，且實現 infra as code 概念的工具，透過 ssh 溝通。</p>
+<p>兩大概念: Control Machine, Managed Node<br>Control Machine 通常代表專門部署的機器，可能是本地的電腦，也可能是 cloud 上高權限機器<br>Manage Node 通常代表被部署的機器，常是客戶直接面對的機器</p>
+<h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><h5 id="Mac-os"><a href="#Mac-os" class="headerlink" title="Mac os"></a>Mac os</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install ansible</span><br></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo brew install ansible</span><br></pre></td></tr></table></figure>
+<h5 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h5><p>CentOS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum -y install epel-release</span><br><span class="line">$ sudo yum -y update</span><br><span class="line">$ sudo yum -y install ansible</span><br></pre></td></tr></table></figure>
+<p>Ubuntu</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install software-properties-common</span><br><span class="line">$ sudo apt-add-repository ppa:ansible&#x2F;ansible</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install ansible</span><br></pre></td></tr></table></figure>
+<h3 id="Setting"><a href="#Setting" class="headerlink" title="Setting"></a>Setting</h3><h4 id="第一層"><a href="#第一層" class="headerlink" title="第一層"></a>第一層</h4><p>設置 playbook.yaml，格式為 yaml。<br>hosts 會讀取 server 位置，可利用 inventory<br>roles 為設定會跑的子 task 檔，path 通常是在根目錄建立 roles<br>tasks 為執行的指令</p>
+<h4 id="Task-層"><a href="#Task-層" class="headerlink" title="Task 層"></a>Task 層</h4><p>name 為該 task 的名字<br>shell 內為該 task 執行的指令<br>register 則將該指令的結果給儲存下來在變數 <code>jenkins_url_result</code><br>再來可以在下個 task 中根據此變數做調整。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">- hosts: server</span><br><span class="line">  roles:</span><br><span class="line">    - &#123; role: docker, become: yes &#125;</span><br><span class="line">  tasks:</span><br><span class="line">    - name: test connection</span><br><span class="line">      ping:</span><br><span class="line">      register: message</span><br><span class="line"></span><br><span class="line">    - name: print debug message</span><br><span class="line">      debug:</span><br><span class="line">        msg: &quot;&#123;&#123; message &#125;&#125;&quot;</span><br><span class="line">    - name: print folder tree</span><br><span class="line">      shell: &quot;ls -lh&quot;</span><br><span class="line">    - name: Wait for jenkins to come up</span><br><span class="line">      register: jenkins_url_result</span><br></pre></td></tr></table></figure>
+<p>設置 inventory 檔案，為 playbook.yaml 內 server 的 config 值<br>格式為:<br>[伺服器名稱]<br>{managed node 位址} ansible_user={登入身份}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[server]</span><br><span class="line">172.0.0.1 ansible_user&#x3D;root</span><br><span class="line">~</span><br></pre></td></tr></table></figure>
+<h3 id="部署指令"><a href="#部署指令" class="headerlink" title="部署指令"></a>部署指令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible-playbook -i inventory playbook.yml</span><br></pre></td></tr></table></figure>
+<h3 id="Config-設定"><a href="#Config-設定" class="headerlink" title="Config 設定"></a>Config 設定</h3><p>在根目錄下建立 ansible.cfg 檔案</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[default]</span><br><span class="line">inventory &#x3D; inventory</span><br><span class="line">roles_path &#x3D; roles</span><br></pre></td></tr></table></figure>
+<p>path 的寫法為相對路徑</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/05/22/2019-05-22-python-environment-variable-settings-env-auto-settings/" rel="prev" title="Python - 環境變數設定( env 自動設定 )">
+      <i class="fa fa-chevron-left"></i> Python - 環境變數設定( env 自動設定 )
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/09/25/2019-09-25-devops-ubuntu-1804-nginx-rails-on-google-cloud-gcp/" rel="next" title="Devops - Ubuntu 18.04 + Nginx + Rails on Google Cloud( GCP)">
+      Devops - Ubuntu 18.04 + Nginx + Rails on Google Cloud( GCP) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install"><span class="nav-number">1.</span> <span class="nav-text">Install</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Mac-os"><span class="nav-number">1.0.1.</span> <span class="nav-text">Mac os</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Linux"><span class="nav-number">1.0.2.</span> <span class="nav-text">Linux</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setting"><span class="nav-number">2.</span> <span class="nav-text">Setting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E5%B1%A4"><span class="nav-number">2.1.</span> <span class="nav-text">第一層</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Task-%E5%B1%A4"><span class="nav-number">2.2.</span> <span class="nav-text">Task 層</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E6%8C%87%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">部署指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Config-%E8%A8%AD%E5%AE%9A"><span class="nav-number">4.</span> <span class="nav-text">Config 設定</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Liu</p>
+  <div class="site-description" itemprop="description">分享各種技術筆記心得，趨勢觀察與心得</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Liu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

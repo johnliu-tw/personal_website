@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Day1 的筆記 - AWS Architectural 初級架構師課程筆記 - Day1Day2 的筆記 - AWS Architectural 初級架構師課程筆記 - Day2 Automation建議 automation 的 service:設立 storage, route 網路, EC2 和 database CloudFormation AWS 課程的 Lab 進行方式，就是使用 C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AWS Architectural 初級架構師課程筆記 - Day3">
+<meta property="og:url" content="http://example.com/2019/04/30/2019-04-30-aws-architectural-junior-architect-course-notes-day3/index.html">
+<meta property="og:site_name" content="John Liu 技術中心">
+<meta property="og:description" content="Day1 的筆記 - AWS Architectural 初級架構師課程筆記 - Day1Day2 的筆記 - AWS Architectural 初級架構師課程筆記 - Day2 Automation建議 automation 的 service:設立 storage, route 網路, EC2 和 database CloudFormation AWS 課程的 Lab 進行方式，就是使用 C">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2019-04-29T23:20:00.000Z">
+<meta property="article:modified_time" content="2021-02-06T09:00:50.846Z">
+<meta property="article:author" content="John Liu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2019/04/30/2019-04-30-aws-architectural-junior-architect-course-notes-day3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>AWS Architectural 初級架構師課程筆記 - Day3 | John Liu 技術中心</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <h1 class="site-title">John Liu 技術中心</h1>
+    </a>
+      <p itemprop="description" style="font-size:0.75rem">管理者角度，開發者思維，初學者心態</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於 john</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>全部文章</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/04/30/2019-04-30-aws-architectural-junior-architect-course-notes-day3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AWS Architectural 初級架構師課程筆記 - Day3
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-04-30 07:20:00" itemprop="dateCreated datePublished" datetime="2019-04-30T07:20:00+08:00">2019-04-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index"><span itemprop="name">Devops</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Day1 的筆記 - <a target="_blank" rel="noopener" href="http://johnliutw.logdown.com/posts/7830415/aws-architectural-junior-architect-course-notes-day1">AWS Architectural 初級架構師課程筆記 - Day1</a><br>Day2 的筆記 - <a target="_blank" rel="noopener" href="http://johnliutw.logdown.com/posts/7830416/aws-architectural-junior-architect-course-notes-day2">AWS Architectural 初級架構師課程筆記 - Day2</a></p>
+<h2 id="Automation"><a href="#Automation" class="headerlink" title="Automation"></a>Automation</h2><p>建議 automation 的 service:<br>設立 storage, route 網路, EC2 和 database</p>
+<h3 id="CloudFormation"><a href="#CloudFormation" class="headerlink" title="CloudFormation"></a>CloudFormation</h3><ol>
+<li>AWS 課程的 Lab 進行方式，就是使用 CloudFormation 機制建立</li>
+<li>可以建立常用的 Resource(EC2..)，但可能無法支援最新的 Resource</li>
+<li>可參考編輯檔案中的”condition”欄位，就能針對不同環境，設立不同的 cloudformation (同設定檔)</li>
+<li>建立可自動化，但移除資源需手動移除</li>
+<li>應用層的 network stack name ，會取用在 CloudFormation 上建立的網路樣板名稱，設定上也會帶入參數的概念</li>
+<li>移除 template 後，會替根據此 CloudFormation 建立的 EC2 創建 snapshot</li>
+</ol>
+<h3 id="AWS-OpsWorks"><a href="#AWS-OpsWorks" class="headerlink" title="AWS OpsWorks"></a>AWS OpsWorks</h3><p>應用層級的自動化功能</p>
+<h3 id="AWS-Beanstalk"><a href="#AWS-Beanstalk" class="headerlink" title="AWS Beanstalk"></a>AWS Beanstalk</h3><p>推薦給初級架構師使用的常用簡單自動架構產生器，方便但不夠彈性</p>
+<h2 id="Cache"><a href="#Cache" class="headerlink" title="Cache"></a>Cache</h2><h3 id="Amazon-CloudFront"><a href="#Amazon-CloudFront" class="headerlink" title="Amazon CloudFront"></a>Amazon CloudFront</h3><ol>
+<li>支援 CDN 和 Websocket</li>
+<li>建議使用在 cache 靜態檔案，動態檔案不建議 cache，但有個例子可使用:高峰值買票活動，可把座位資料先 cache 起來，可能精準度不夠，但可用性提高許多</li>
+<li>預設存活 1 天，但熱門資源可存在 1 年(AWS 系統判定)</li>
+<li>CName 的設定和 Domain Name 雷同</li>
+<li>有設定 WAF，可以抵禦應用層的攻擊</li>
+<li>可以設定什麼類型的檔案會優先被 cache</li>
+</ol>
+<h3 id="Sticky-Session"><a href="#Sticky-Session" class="headerlink" title="Sticky Session"></a>Sticky Session</h3><p>問題描述: 需要儲存 session 在特定的機器上(常發生在 auto-scaling 或 load-balance 後)。<br>解法:將 session hash 值存入 No-Sql 服務，透過該服務存取對應資料</p>
+<h3 id="Elastic-Cache"><a href="#Elastic-Cache" class="headerlink" title="Elastic Cache"></a>Elastic Cache</h3><p>Cluster 的架構方式，具有很多 cache node（但運算能力還是取決於對應之 EC2 instance）</p>
+<h2 id="Decoupled-Architect"><a href="#Decoupled-Architect" class="headerlink" title="Decoupled Architect"></a>Decoupled Architect</h2><p>首要概念: 系統規劃盡量『高內聚、低耦合』- 功能皆獨立、透過 API 溝通</p>
+<table>
+<thead>
+<tr>
+<th>Standard queues</th>
+<th>FIFO queues</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>一接到就按照 queues 規則送出</td>
+<td>因需針對每個 queue 加 timestamp，速度較慢(300/s, 大小256kb 以下)</td>
+</tr>
+</tbody></table>
+<h3 id="Amazon-SQS-Simple-Queue-Service"><a href="#Amazon-SQS-Simple-Queue-Service" class="headerlink" title="Amazon SQS( Simple Queue Service )"></a>Amazon SQS( Simple Queue Service )</h3><ol>
+<li>具有恆定性</li>
+<li>不推薦推播巨大的 message</li>
+<li>獨立使用，且一對一的 model</li>
+</ol>
+<h3 id="Amazon-SNS-Simple-Notification-Service"><a href="#Amazon-SNS-Simple-Notification-Service" class="headerlink" title="Amazon SNS ( Simple Notification Service )"></a>Amazon SNS ( Simple Notification Service )</h3><ol>
+<li>支援 Email, App 推播, SMS 簡訊和 Lamdba 函式</li>
+<li>分散式，many to one model</li>
+</ol>
+<h2 id="Microservice-and-Serverless"><a href="#Microservice-and-Serverless" class="headerlink" title="Microservice and Serverless"></a>Microservice and Serverless</h2><h3 id="Amazon-elastic-container-service-ECS"><a href="#Amazon-elastic-container-service-ECS" class="headerlink" title="Amazon elastic container service (ECS)"></a>Amazon elastic container service (ECS)</h3><ol>
+<li>具有 Amason ECR 服務，類似 Docker hub</li>
+<li>管理一個 cluster 而不是一個 container</li>
+<li>必須設定 Application load balancer，而不只是 load balancer</li>
+<li>可以使用 fargate 完全管理 cluster，但必須在建立 container 時使用</li>
+</ol>
+<h3 id="Lambda"><a href="#Lambda" class="headerlink" title="Lambda"></a>Lambda</h3><ol>
+<li>serverless 服務關鍵</li>
+<li>執行時間最多為 15 分鐘</li>
+<li>預設是沒有設定在任何 VPC 下，如果欲擺在 VPC 下，必須設定 NAT Gateway</li>
+<li>Workflow 有四種: parallel, if else, retry, series</li>
+</ol>
+<h3 id="API-Gateway"><a href="#API-Gateway" class="headerlink" title="API Gateway"></a>API Gateway</h3><ol>
+<li>可用來保護 Lambda 端點，避免類似 DDos 攻擊的資安風險</li>
+<li>非常出色可以用來管理 API 的功能</li>
+<li>如果 API 是時常被呼叫的資源，也會建立 Cache 機制，替 Server 紓解壓力</li>
+</ol>
+<h3 id="Aurora-serverless"><a href="#Aurora-serverless" class="headerlink" title="Aurora serverless"></a>Aurora serverless</h3><p>建議設定在 test 環境，做靜態資料庫的測試</p>
+<h2 id="Backup-recovery"><a href="#Backup-recovery" class="headerlink" title="Backup recovery"></a>Backup recovery</h2><p>思考方向: 高可用性 –&gt; 備份機制 –&gt; 補救機制<br>可使用 RDS 和 DynamoDB 做 snapshot，會透過 bin log 去自動備份(約 5 分鐘前狀態)</p>
+<h3 id="AWS-Storage-Gateway"><a href="#AWS-Storage-Gateway" class="headerlink" title="AWS Storage Gateway"></a>AWS Storage Gateway</h3><ol>
+<li>分三種類型：</li>
+</ol>
+<ul>
+<li>tap gateway(glacier)</li>
+<li>file gateway(s3)</li>
+<li>volumn gateway(EBS)</li>
+</ul>
+<ol start="2">
+<li>可做備份管理</li>
+</ol>
+<h3 id="備援性檢查流程"><a href="#備援性檢查流程" class="headerlink" title="備援性檢查流程"></a>備援性檢查流程</h3><ol>
+<li>先檢查每個 Service 的狀態</li>
+<li>總是開啟備份</li>
+<li>可以使用 Chaos monkey 外部服務，測試資源的可用性</li>
+</ol>
+<h2 id="Optimization-and-cloud"><a href="#Optimization-and-cloud" class="headerlink" title="Optimization and cloud"></a>Optimization and cloud</h2><p>如果需要轉移資源從本地到雲端，最好先設立同等級的機器，並使用一週觀察。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/28/2019-04-28-aws-architectural-junior-architect-course-notes-day2/" rel="prev" title="AWS Architectural 初級架構師課程筆記 - Day2">
+      <i class="fa fa-chevron-left"></i> AWS Architectural 初級架構師課程筆記 - Day2
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/05/14/2019-05-14-coursera-notes-operation-system/" rel="next" title="Coursera 筆記 - Operation System">
+      Coursera 筆記 - Operation System <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Automation"><span class="nav-number">1.</span> <span class="nav-text">Automation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CloudFormation"><span class="nav-number">1.1.</span> <span class="nav-text">CloudFormation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AWS-OpsWorks"><span class="nav-number">1.2.</span> <span class="nav-text">AWS OpsWorks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AWS-Beanstalk"><span class="nav-number">1.3.</span> <span class="nav-text">AWS Beanstalk</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cache"><span class="nav-number">2.</span> <span class="nav-text">Cache</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Amazon-CloudFront"><span class="nav-number">2.1.</span> <span class="nav-text">Amazon CloudFront</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sticky-Session"><span class="nav-number">2.2.</span> <span class="nav-text">Sticky Session</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elastic-Cache"><span class="nav-number">2.3.</span> <span class="nav-text">Elastic Cache</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Decoupled-Architect"><span class="nav-number">3.</span> <span class="nav-text">Decoupled Architect</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Amazon-SQS-Simple-Queue-Service"><span class="nav-number">3.1.</span> <span class="nav-text">Amazon SQS( Simple Queue Service )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Amazon-SNS-Simple-Notification-Service"><span class="nav-number">3.2.</span> <span class="nav-text">Amazon SNS ( Simple Notification Service )</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Microservice-and-Serverless"><span class="nav-number">4.</span> <span class="nav-text">Microservice and Serverless</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Amazon-elastic-container-service-ECS"><span class="nav-number">4.1.</span> <span class="nav-text">Amazon elastic container service (ECS)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lambda"><span class="nav-number">4.2.</span> <span class="nav-text">Lambda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API-Gateway"><span class="nav-number">4.3.</span> <span class="nav-text">API Gateway</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aurora-serverless"><span class="nav-number">4.4.</span> <span class="nav-text">Aurora serverless</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Backup-recovery"><span class="nav-number">5.</span> <span class="nav-text">Backup recovery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AWS-Storage-Gateway"><span class="nav-number">5.1.</span> <span class="nav-text">AWS Storage Gateway</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%82%99%E6%8F%B4%E6%80%A7%E6%AA%A2%E6%9F%A5%E6%B5%81%E7%A8%8B"><span class="nav-number">5.2.</span> <span class="nav-text">備援性檢查流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Optimization-and-cloud"><span class="nav-number">6.</span> <span class="nav-text">Optimization and cloud</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Liu</p>
+  <div class="site-description" itemprop="description">分享各種技術筆記心得，趨勢觀察與心得</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Liu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

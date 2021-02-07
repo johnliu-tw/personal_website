@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+<meta property="og:type" content="website">
+<meta property="og:title" content="John Liu 技術中心">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="John Liu 技術中心">
+<meta property="og:description" content="分享各種技術筆記心得，趨勢觀察與心得">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:author" content="John Liu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>John Liu 技術中心 - 管理者角度，開發者思維，初學者心態</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <h1 class="site-title">John Liu 技術中心</h1>
+    </a>
+      <p itemprop="description" style="font-size:0.75rem">管理者角度，開發者思維，初學者心態</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於 john</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>全部文章</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/07/2020-03-07-python-common-error-error-messages-for-novices/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/07/2020-03-07-python-common-error-error-messages-for-novices/" class="post-title-link" itemprop="url">Python - 新手六大常見 error 錯誤訊息</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-03-07 07:31:00" itemprop="dateCreated datePublished" datetime="2020-03-07T07:31:00+08:00">2020-03-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:02:28" itemprop="dateModified" datetime="2021-02-06T17:02:28+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>這裡要跟各位分享一些 python 開發過程常見的 error 錯誤訊息，<br>相信可以減少初階開發者寶貴的 Debug 時間。</p>
+<h4 id="1-SyntaxError-：invalid-syntax"><a href="#1-SyntaxError-：invalid-syntax" class="headerlink" title="1. SyntaxError ：invalid syntax"></a>1. SyntaxError ：invalid syntax</h4><p>1.在 if , elif , else , for , while , class ,def 後面少了『：』符號</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> a == <span class="number">10</span>  <span class="comment">#error</span></span><br><span class="line">	print(<span class="string">&#x27;cool&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>2.使用 = 而不是 ==<br>一個『 = 』是設定變數裡的值，兩個『 == 』才是指比對兩邊的值是否一樣</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> a = <span class="number">10</span>:  <span class="comment">#error</span></span><br><span class="line">	print(<span class="string">&#x27;cool&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>3.少加了單引號或雙引號</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">&#x27;Hello world!) #error</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(Heelo banana<span class="string">&quot;) #error</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="2-IndentationError：【expected-an-indented-block】-【unexpected-indent】-【unindent-does-not-match-any-outer-indetation-level】"><a href="#2-IndentationError：【expected-an-indented-block】-【unexpected-indent】-【unindent-does-not-match-any-outer-indetation-level】" class="headerlink" title="2. IndentationError：【expected an indented block】, 【unexpected indent】, 【unindent does not match any outer indetation level】"></a>2. IndentationError：【expected an indented block】, 【unexpected indent】, 【unindent does not match any outer indetation level】</h4><p>1.通常就是指縮排的問題，python 的縮排很嚴格滴！</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="number">123</span>)</span><br><span class="line">  print(<span class="number">456</span>) <span class="comment">#error</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> a == <span class="number">10</span>:</span><br><span class="line">    print(<span class="number">10</span>)</span><br><span class="line">   print(<span class="number">456</span>) <span class="comment">#error</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> a == <span class="number">10</span>:</span><br><span class="line">print(<span class="number">10</span>) <span class="comment"># error</span></span><br></pre></td></tr></table></figure>
+<p>2.除了程式撰寫時的縮排，如果各位是用如sublime, vscode 的編輯器，<br>可能偶爾用 tab，偶爾用 space 打程式前的空格，<br>對於 python 來說，可能是不一樣的喔！<br>可以對程式做反白，就能看出差異<br><img src="http://imgs.cc/image/aaaabDKAo" alt="http://imgs.cc/image/aaaabDKAo"></p>
+<h4 id="3-TypeError-Can’t-convert-‘int’-object-to-str-implicitly"><a href="#3-TypeError-Can’t-convert-‘int’-object-to-str-implicitly" class="headerlink" title="3. TypeError: Can’t convert ‘int’ object to str implicitly"></a>3. TypeError: Can’t convert ‘int’ object to str implicitly</h4><p>在程式的世界裡，『資料類別』也是很敏感要注意的地方，字串加整數或浮點數加字串都是不被允許的。<br>甚至比較進階，有些印出來很像字串，但其實不是字串的變數，也有可能造成這個問題唷！</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">10</span></span><br><span class="line">print(<span class="string">&#x27;I am &#x27;</span> + a) <span class="comment">#error</span></span><br><span class="line">print(<span class="string">&#x27;I am &#x27;</span> + <span class="built_in">str</span>(a)) <span class="comment">#good!</span></span><br></pre></td></tr></table></figure>
+<p>可以在 print 變數前，用下面的語法去檢視資料類別喔！ </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span>(weird_variable)</span><br></pre></td></tr></table></figure>
+<h4 id="4-NameError-name-‘myAga’-is-not-defined"><a href="#4-NameError-name-‘myAga’-is-not-defined" class="headerlink" title="4. NameError: name ‘myAga’ is not defined"></a>4. NameError: name ‘myAga’ is not defined</h4><p>最簡單判斷的錯誤之一，就是變數名稱打錯或是複製網路上的程式碼時，忘記建立用到的相關變數</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">myAge = <span class="number">100</span></span><br><span class="line">print(myAga) <span class="comment"># error</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(greatLord) <span class="comment"># error</span></span><br></pre></td></tr></table></figure>
+<h4 id="5-AttributeError-‘int’-object-has-no-attribute-‘split’"><a href="#5-AttributeError-‘int’-object-has-no-attribute-‘split’" class="headerlink" title="5. AttributeError: ‘int’ object has no attribute ‘split’"></a>5. AttributeError: ‘int’ object has no attribute ‘split’</h4><p>通常會發生在，錯判一個變數的資料類別，所以呼叫了錯誤的函式。當程式開始多起來，沒有好好理解每個變數背後會存什麼值時，很常發生。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c = <span class="number">10</span></span><br><span class="line">c.split(<span class="string">&#x27; &#x27;</span>) <span class="comment">#error</span></span><br></pre></td></tr></table></figure>
+<h4 id="6-IndexError-list-index-out-of-range"><a href="#6-IndexError-list-index-out-of-range" class="headerlink" title="6. IndexError: list index out of range"></a>6. IndexError: list index out of range</h4><p>這錯誤通常發生在對著空的陣列取值時，因為有些函式我們都會預設(心理)一定取得到我們要的值，而忽略到了可能空的可能性(爬蟲經常發生)。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">...</span><br><span class="line"><span class="meta">... </span> <span class="comment"># mulitple code</span></span><br><span class="line">data = getWebPageData()</span><br><span class="line">title = data[<span class="number">0</span>].text  <span class="comment"># may error</span></span><br></pre></td></tr></table></figure>
+<p>先跟各位分享這些，如果有經驗，<br>歡迎跟我說還有什麼你常常發生的 error 訊息，<br>我再幫你補充上去:)。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/09/25/2019-09-25-devops-ubuntu-1804-nginx-rails-on-google-cloud-gcp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/25/2019-09-25-devops-ubuntu-1804-nginx-rails-on-google-cloud-gcp/" class="post-title-link" itemprop="url">Devops - Ubuntu 18.04 + Nginx + Rails on Google Cloud( GCP)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-09-25 06:51:00" itemprop="dateCreated datePublished" datetime="2019-09-25T06:51:00+08:00">2019-09-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index"><span itemprop="name">Devops</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="user"><a href="#user" class="headerlink" title="user"></a>user</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser deploy</span><br><span class="line">sudo adduser deploy sudo</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+<h3 id="required-libraries"><a href="#required-libraries" class="headerlink" title="required libraries"></a>required libraries</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -sL https:&#x2F;&#x2F;deb.nodesource.com&#x2F;setup_10.x | sudo -E bash -</span><br><span class="line">curl -sS https:&#x2F;&#x2F;dl.yarnpkg.com&#x2F;debian&#x2F;pubkey.gpg | sudo apt-key add -</span><br><span class="line">echo &quot;deb https:&#x2F;&#x2F;dl.yarnpkg.com&#x2F;debian&#x2F; stable main&quot; | sudo tee &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;yarn.list</span><br><span class="line">sudo add-apt-repository ppa:chris-lea&#x2F;redis-server</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev redis-server redis-tools nodejs yarn</span><br></pre></td></tr></table></figure>
+<h3 id="ruby-建議memory-要夠"><a href="#ruby-建議memory-要夠" class="headerlink" title="ruby ( 建議memory 要夠 )"></a>ruby ( 建議memory 要夠 )</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;rbenv&#x2F;rbenv.git ~&#x2F;.rbenv</span><br><span class="line">echo &#39;export PATH&#x3D;&quot;$HOME&#x2F;.rbenv&#x2F;bin:$PATH&quot;&#39; &gt;&gt; ~&#x2F;.bashrc</span><br><span class="line">echo &#39;eval &quot;$(rbenv init -)&quot;&#39; &gt;&gt; ~&#x2F;.bashrc</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;rbenv&#x2F;ruby-build.git ~&#x2F;.rbenv&#x2F;plugins&#x2F;ruby-build</span><br><span class="line">echo &#39;export PATH&#x3D;&quot;$HOME&#x2F;.rbenv&#x2F;plugins&#x2F;ruby-build&#x2F;bin:$PATH&quot;&#39; &gt;&gt; ~&#x2F;.bashrc</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;rbenv&#x2F;rbenv-vars.git ~&#x2F;.rbenv&#x2F;plugins&#x2F;rbenv-vars</span><br><span class="line">exec $SHELL</span><br><span class="line">rbenv install 2.5.5</span><br><span class="line">rbenv global 2.5.5</span><br></pre></td></tr></table></figure>
+<h3 id="bundler"><a href="#bundler" class="headerlink" title="bundler"></a>bundler</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gem install bundler</span><br><span class="line">gem install bundler -v 1.17.3</span><br></pre></td></tr></table></figure>
+<h3 id="Passenger-amp-Nginx"><a href="#Passenger-amp-Nginx" class="headerlink" title="Passenger &amp; Nginx"></a>Passenger &amp; Nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y dirmngr gnupg</span><br><span class="line">sudo apt-key adv --keyserver hkp:&#x2F;&#x2F;keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7</span><br><span class="line">sudo apt-get install -y apt-transport-https ca-certificates</span><br><span class="line"></span><br><span class="line">sudo sh -c &#39;echo deb https:&#x2F;&#x2F;oss-binaries.phusionpassenger.com&#x2F;apt&#x2F;passenger bionic main &gt; &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;passenger.list&#39;</span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line">sudo apt-get install -y nginx</span><br><span class="line">sudo apt-get install -y libnginx-mod-http-passenger</span><br></pre></td></tr></table></figure>
+<h3 id="Config-Ruby-for-Passenger-use-rbenv"><a href="#Config-Ruby-for-Passenger-use-rbenv" class="headerlink" title="Config Ruby for Passenger ( use rbenv )"></a>Config Ruby for Passenger ( use rbenv )</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;mod-http-passenger.conf</span><br><span class="line">passenger_root &#x2F;usr&#x2F;lib&#x2F;ruby&#x2F;vendor_ruby&#x2F;phusion_passenger&#x2F;locations.ini;</span><br><span class="line">passenger_ruby &#x2F;home&#x2F;johnliu&#x2F;.rbenv&#x2F;shims&#x2F;ruby;;</span><br></pre></td></tr></table></figure>
+<h3 id="Run-Nginx"><a href="#Run-Nginx" class="headerlink" title="Run Nginx"></a>Run Nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service nginx restart</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/30/2019-06-30-devops-ansible-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/06/30/2019-06-30-devops-ansible-notes/" class="post-title-link" itemprop="url">Devops - Ansible 設定</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-06-30 07:36:00" itemprop="dateCreated datePublished" datetime="2019-06-30T07:36:00+08:00">2019-06-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index"><span itemprop="name">Devops</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Ansilbe 是基於 Python 的部署工具，<br>開源，且實現 infra as code 概念的工具，透過 ssh 溝通。</p>
+<p>兩大概念: Control Machine, Managed Node<br>Control Machine 通常代表專門部署的機器，可能是本地的電腦，也可能是 cloud 上高權限機器<br>Manage Node 通常代表被部署的機器，常是客戶直接面對的機器</p>
+<h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><h5 id="Mac-os"><a href="#Mac-os" class="headerlink" title="Mac os"></a>Mac os</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install ansible</span><br></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo brew install ansible</span><br></pre></td></tr></table></figure>
+<h5 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h5><p>CentOS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum -y install epel-release</span><br><span class="line">$ sudo yum -y update</span><br><span class="line">$ sudo yum -y install ansible</span><br></pre></td></tr></table></figure>
+<p>Ubuntu</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install software-properties-common</span><br><span class="line">$ sudo apt-add-repository ppa:ansible&#x2F;ansible</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install ansible</span><br></pre></td></tr></table></figure>
+<h3 id="Setting"><a href="#Setting" class="headerlink" title="Setting"></a>Setting</h3><h4 id="第一層"><a href="#第一層" class="headerlink" title="第一層"></a>第一層</h4><p>設置 playbook.yaml，格式為 yaml。<br>hosts 會讀取 server 位置，可利用 inventory<br>roles 為設定會跑的子 task 檔，path 通常是在根目錄建立 roles<br>tasks 為執行的指令</p>
+<h4 id="Task-層"><a href="#Task-層" class="headerlink" title="Task 層"></a>Task 層</h4><p>name 為該 task 的名字<br>shell 內為該 task 執行的指令<br>register 則將該指令的結果給儲存下來在變數 <code>jenkins_url_result</code><br>再來可以在下個 task 中根據此變數做調整。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">- hosts: server</span><br><span class="line">  roles:</span><br><span class="line">    - &#123; role: docker, become: yes &#125;</span><br><span class="line">  tasks:</span><br><span class="line">    - name: test connection</span><br><span class="line">      ping:</span><br><span class="line">      register: message</span><br><span class="line"></span><br><span class="line">    - name: print debug message</span><br><span class="line">      debug:</span><br><span class="line">        msg: &quot;&#123;&#123; message &#125;&#125;&quot;</span><br><span class="line">    - name: print folder tree</span><br><span class="line">      shell: &quot;ls -lh&quot;</span><br><span class="line">    - name: Wait for jenkins to come up</span><br><span class="line">      register: jenkins_url_result</span><br></pre></td></tr></table></figure>
+<p>設置 inventory 檔案，為 playbook.yaml 內 server 的 config 值<br>格式為:<br>[伺服器名稱]<br>{managed node 位址} ansible_user={登入身份}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[server]</span><br><span class="line">172.0.0.1 ansible_user&#x3D;root</span><br><span class="line">~</span><br></pre></td></tr></table></figure>
+<h3 id="部署指令"><a href="#部署指令" class="headerlink" title="部署指令"></a>部署指令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible-playbook -i inventory playbook.yml</span><br></pre></td></tr></table></figure>
+<h3 id="Config-設定"><a href="#Config-設定" class="headerlink" title="Config 設定"></a>Config 設定</h3><p>在根目錄下建立 ansible.cfg 檔案</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[default]</span><br><span class="line">inventory &#x3D; inventory</span><br><span class="line">roles_path &#x3D; roles</span><br></pre></td></tr></table></figure>
+<p>path 的寫法為相對路徑</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/05/22/2019-05-22-python-environment-variable-settings-env-auto-settings/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/22/2019-05-22-python-environment-variable-settings-env-auto-settings/" class="post-title-link" itemprop="url">Python - 環境變數設定( env 自動設定 )</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-05-22 06:45:00" itemprop="dateCreated datePublished" datetime="2019-05-22T06:45:00+08:00">2019-05-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><code>.env</code> 檔的概念是替專案設定環境變數，<br>一般的專案時常都會上雲，在如 <code>github</code> 的平台與他人共享程式碼，<br>而一些重要且敏感的系統變數，如 AWS Key or DB Password 等資料，上傳上去就糟了。</p>
+<p>在 Python 可以透過下 open source 的專案:<a target="_blank" rel="noopener" href="https://github.com/theskumar/python-dotenv">python-dotenv</a><br>透過此專案提供的簡單程式，讓專案自動讀取<code>.env</code>檔案內的系統環境變數，並可利用 Python 程式取用。</p>
+<h4 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip3 install -U python-dotenv</span><br></pre></td></tr></table></figure>
+<h4 id="File-Setting"><a href="#File-Setting" class="headerlink" title="File Setting"></a>File Setting</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">project</span><br><span class="line">│   .env</span><br><span class="line">|   .env.example</span><br><span class="line">│   setting.py</span><br><span class="line">|   main.py</span><br></pre></td></tr></table></figure>
+<p><code>.env</code> 是系統變數設定檔，<code>.env.sample</code> 可以設定系統變數格式，避免其他使用此專案者遺漏要新增的系統變數。<br><code>setting.py</code> 可以設定 python-dotenv 的程式，並使用在 <code>main.py</code> 中。</p>
+<h4 id="Get-Started"><a href="#Get-Started" class="headerlink" title="Get Started"></a>Get Started</h4><p>1.設定系統變數檔</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//.env</span><br><span class="line">db_host=localhost</span><br><span class="line">db_user=root</span><br><span class="line">db_password=password</span><br><span class="line">db_schema=<span class="built_in">test</span></span><br><span class="line"></span><br><span class="line">//.env.example</span><br><span class="line">db_host=</span><br><span class="line">db_user=</span><br><span class="line">db_password=</span><br><span class="line">db_schema=</span><br></pre></td></tr></table></figure>
+<p>2.設定 setting 檔案</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// settings.py</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> dotenv <span class="keyword">import</span> load_dotenv</span><br><span class="line">load_dotenv()</span><br><span class="line"></span><br><span class="line"><span class="comment"># OR, the same with increased verbosity:</span></span><br><span class="line">load_dotenv(verbose=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># OR, explicitly providing path to &#x27;.env&#x27;</span></span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path  <span class="comment"># python3 only</span></span><br><span class="line">env_path = Path(<span class="string">&#x27;.&#x27;</span>) / <span class="string">&#x27;.env&#x27;</span></span><br><span class="line">load_dotenv(dotenv_path=env_path)</span><br></pre></td></tr></table></figure>
+<p>3.引入 setting 檔</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// main.py</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> setting</span><br><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line">DB_HOST = os.getenv(<span class="string">&quot;db_host&quot;</span>)</span><br><span class="line">DB_USER = os.getenv(<span class="string">&quot;db_user&quot;</span>)</span><br><span class="line">DB_PASSWORD = os.getenv(<span class="string">&quot;db_password&quot;</span>)</span><br><span class="line">DB_SCHEMA = os.getenv(<span class="string">&quot;db_schema&quot;</span>)</span><br><span class="line"></span><br><span class="line">db = pymysql.connect(DB_HOST,DB_USER,DB_PASSWORD,DB_SCHEMA)</span><br></pre></td></tr></table></figure>
+<p>最後記得把 .env 加入 .gitignore 內，就完成囉！！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/05/20/2019-05-20-linux-advanced-instructions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/20/2019-05-20-linux-advanced-instructions/" class="post-title-link" itemprop="url">Linux 進階指令與工具</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-05-20 09:19:00" itemprop="dateCreated datePublished" datetime="2019-05-20T09:19:00+08:00">2019-05-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Linux-Advance-Command-and-Tools"><a href="#Linux-Advance-Command-and-Tools" class="headerlink" title="Linux Advance Command and Tools"></a>Linux Advance Command and Tools</h2><h3 id="Text-Manipulation"><a href="#Text-Manipulation" class="headerlink" title="Text Manipulation"></a>Text Manipulation</h3><h4 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h4><p>awk 為文字指令，可以將文字按 “ ” 分欄位，分別儲存到 $0, $1 …等等變數中。<br>例如以下指令會輸出某檔結構:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls -lh</span><br><span class="line">drwxr-xr-x   5 johnliu  staff     160  5 13 11:46 bootstrap</span><br></pre></td></tr></table></figure>
+<p>使用 pipeline | 轉入 awk 指令中，可分割自己喜歡的資料顯示格式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls -lh | awk <span class="string">&#x27;&#123;print &quot;Permission: &quot; $1 &quot; User: &quot; $3&#125;&#x27;</span></span><br><span class="line">Permission: drwxr-xr-x User: johnliu</span><br></pre></td></tr></table></figure>
+<p>要注意，$0 會儲存整個 row 的資料，因此第一格是儲存在 $1 中。</p>
+<h4 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h4><p>sed 為文字取代指令，可以使用正規表達式。<br>例，將” This is a book “中獨立的 is ，改成 IS</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;This is a book&#x27;</span> | sed <span class="string">&#x27;s/ is/ IS/g&#x27;</span></span><br><span class="line">This IS a book </span><br></pre></td></tr></table></figure>
+<h4 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h4><p>可將文字，按造行去做排序。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// try.txt</span><br><span class="line">apple</span><br><span class="line">cat</span><br><span class="line">banana</span><br><span class="line">zebra</span><br><span class="line">dog</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ sort try.txt</span><br><span class="line">apple</span><br><span class="line">banana</span><br><span class="line">cat</span><br><span class="line">dog</span><br><span class="line">zebra</span><br></pre></td></tr></table></figure>
+<p>除了基本的文字排序，還可以按照不同的 flag 做到單位排序、排序結果輸出等等…</p>
+<h4 id="fmt"><a href="#fmt" class="headerlink" title="fmt"></a>fmt</h4><p>可以針對文本做限制行數的呈現<br>例如:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// text.txt</span><br><span class="line">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry<span class="string">&#x27;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</span></span><br></pre></td></tr></table></figure>
+<p>設定每行寬度最長 40 個字元</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ fmt -w 40 text.txt</span><br><span class="line">Lorem Ipsum is simply dummy text of the</span><br><span class="line">printing and typesetting industry. Lorem</span><br><span class="line">Ipsum has been the industry<span class="string">&#x27;s standard</span></span><br><span class="line"><span class="string">dummy text ever since the 1500s, when an</span></span><br><span class="line"><span class="string">unknown printer took a galley of type</span></span><br><span class="line"><span class="string">and scrambled it to make a type specimen</span></span><br><span class="line"><span class="string">book. It has survived not only five</span></span><br><span class="line"><span class="string">centuries, but also the leap into</span></span><br><span class="line"><span class="string">electronic typesetting, remaining</span></span><br><span class="line"><span class="string">essentially unchanged. It was</span></span><br><span class="line"><span class="string">popularised in the 1960s with the</span></span><br><span class="line"><span class="string">release of Letraset sheets containing</span></span><br><span class="line"><span class="string">Lorem Ipsum passages, and more recently</span></span><br><span class="line"><span class="string">with desktop publishing software like</span></span><br><span class="line"><span class="string">Aldus PageMaker including versions of</span></span><br><span class="line"><span class="string">Lorem Ipsum.</span></span><br></pre></td></tr></table></figure>
+<h4 id="tr"><a href="#tr" class="headerlink" title="tr"></a>tr</h4><p>這個指令可以當作 sed 的直觀簡易版，不需要寫正規式，就能做出文字取代的工作。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tr <span class="string">&quot;\n\r&quot;</span> <span class="string">&quot;，&quot;</span> &lt; some.txt  &gt; some.txt</span><br></pre></td></tr></table></figure>
+<p>第一個詞組 “\n\r” 是要被取代的文字，<br>第二個詞組 “，” 是替換的文字，<br>第三個詞組 &lt; some.txt 是被此替換邏輯替換文字的文檔，<br>第四個詞組 &gt; some.txt 是替換完後輸出的文檔。</p>
+<h4 id="nl"><a href="#nl" class="headerlink" title="nl"></a>nl</h4><p>輸出包含行數的檔案文字內容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ cat package.json</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;private&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;gulp&quot;</span>: <span class="string">&quot;^3.8.8&quot;</span></span><br><span class="line">&#125;,</span><br><span class="line">$ nl package.json</span><br><span class="line">   1	 &#123;</span><br><span class="line">   2	  <span class="string">&quot;private&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">   3	  <span class="string">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">   4	    <span class="string">&quot;gulp&quot;</span>: <span class="string">&quot;^3.8.8&quot;</span></span><br><span class="line">   5	  &#125;,</span><br></pre></td></tr></table></figure>
+<h4 id="egrep-fgrep"><a href="#egrep-fgrep" class="headerlink" title="egrep, fgrep"></a>egrep, fgrep</h4><p>egrep 為可使用『延伸性正規表達式』，例如: +, | 等運用正規式符號的grep。<br>fgrep 常用來搜尋字元為正規表達式符號的文字，例如: $ 等。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ egrep -n <span class="string">&#x27;gd|good&#x27;</span> some.txt</span><br><span class="line">gd</span><br><span class="line">good</span><br><span class="line">$ grep some.txt</span><br><span class="line">This is $</span><br><span class="line"></span><br><span class="line">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown prin</span><br><span class="line"></span><br><span class="line">$ fgrep $ some.txt</span><br><span class="line">This is $</span><br></pre></td></tr></table></figure>
+<h3 id="Process-Monitoring"><a href="#Process-Monitoring" class="headerlink" title="Process Monitoring"></a>Process Monitoring</h3><h4 id="htop、atop"><a href="#htop、atop" class="headerlink" title="htop、atop"></a>htop、atop</h4><p>htop 是一個取代傳統 top 指令的套件，而不是指令，<br>可以用偏 GUI 的顯示做到 top 即時監控的功能，<br>atop 更加強調了負載的資料詳盡性。</p>
+<h4 id="lsof"><a href="#lsof" class="headerlink" title="lsof"></a>lsof</h4><p>lsof 全名為 List Open Files<br>可以列出所有程式正在使用的檔案</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ lsof</span><br><span class="line">COMMAND    PID    USER   FD      TYPE             DEVICE   SIZE/OFF     NODE NAME</span><br><span class="line">loginwind   91 johnliu  cwd       DIR                1,4        928        2 /</span><br><span class="line">loginwind   91 johnliu  txt       REG                1,4    1278368   319782 /System/Library/CoreServices/loginwindow.app/Contents/MacOS/loginwindow</span><br></pre></td></tr></table></figure>
+<h3 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h3><h4 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h4><p>nmap 為 Linux 套件，可以掃描指定網路主機的網路狀況。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ nmap www.hinet.com</span><br><span class="line">Starting Nmap 6.40 ( http://nmap.org ) at 2014-10-02 08:09 CST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> www.hinet.net (202.39.253.11)</span><br><span class="line">Host is up (0.0034s latency).</span><br><span class="line">rDNS record <span class="keyword">for</span> 202.39.253.11: 202-39-253-11.HINET-IP.hinet.net</span><br><span class="line">Not shown: 998 filtered ports</span><br><span class="line">PORT    STATE  SERVICE</span><br><span class="line">80/tcp  open   http</span><br><span class="line">113/tcp closed ident</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 6.05 seconds</span><br></pre></td></tr></table></figure>
+<h4 id="tcpdump"><a href="#tcpdump" class="headerlink" title="tcpdump"></a>tcpdump</h4><p>tcpdump 是可以擷取網路封包的指令，語法像是:<br>tcpdump -i eth0 ‘tcp port 22 and host 192.168.0.X’<br>-i eth0 為指定網路介面為 eth<br>‘tcp port 22 and host 192.168.0.X’ 為擷取 tcp port 號 22，且來自或目的為 192.168.0.x 位址的封包資料<br>因此就有機會看到明碼傳輸的資料。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ sudo tcpdump -nn -X <span class="string">&#x27;host www.rentincredit.com&#x27;</span></span><br><span class="line"></span><br><span class="line">00:20:11.667638 IP 172.20.10.4.51463 &gt; 172.104.94.210.443: Flags [P.], seq 1398:1501, ack 1, win 2048, options [nop,nop,TS val 373105961 ecr 796896181], length 103</span><br><span class="line">	0x0000:  6abf 6b00 f864 4abf 6b00 c784 0800 4502  j.k..dJ.k.....E.</span><br><span class="line">	0x0010:  009b 0000 4000 4006 7908 ac14 0a04 ac68  ....@.@.y......h</span><br><span class="line">	0x0020:  5ed2 c907 01bb 7a00 b193 7107 b104 8018  ^.....z...q.....</span><br><span class="line">	0x0030:  0800 49f9 0000 0101 080a 163d 2529 2f7f  ..I........=%)/.</span><br><span class="line">	0x0040:  abb5 8331 e324 c994 d003 6ffd 5d87 9f96  ...1.$....o.]...</span><br><span class="line">	0x0050:  f26f 9bcd faec d559 1bf1 3a53 32a2 4540  .o.....Y..:S2.E@</span><br><span class="line">	0x0060:  6406 8385 e0fa 67ba 5ab5 16a1 de1f b154  d.....g.Z......T</span><br><span class="line">	0x0070:  47ff 12a3 ef2f d6f7 34d0 eb91 263c 4e7d  G..../..4...&amp;&lt;N&#125;</span><br><span class="line">	0x0080:  a3e1 c503 8f31 cbdc 3b01 1cff bda7 72a0  .....1..;.....r</span><br></pre></td></tr></table></figure>
+<p>此指令需有 root 權限，可配合 -nn 做 IP 轉碼和 -X 做封包查看</p>
+<h4 id="mtr"><a href="#mtr" class="headerlink" title="mtr"></a>mtr</h4><p>這也是 Linux 的網路套件，結合 ping 和 traceroute ，針對網路節點去做管理與顯示。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mtr www.rentincredit.com</span><br><span class="line"> Host                  Loss%   Snt   Last   Avg  Best  Wrst StDev</span><br><span class="line"> 1. 172.20.10.1        0.0%   120    0.8   0.6   0.3   1.6   0.1</span><br><span class="line"> 2. ???</span><br><span class="line"> 3. 10.54.28.101       0.0%   120   31.9  35.1  22.8 104.0  11.3</span><br><span class="line"> 4. ???</span><br><span class="line"> 5. ???</span><br><span class="line"> 6. ???</span><br><span class="line"> 7. rentincredit.com   0.0%   119   67.6  62.2  47.2 105.6   8.7</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="airmon、airodump"><a href="#airmon、airodump" class="headerlink" title="airmon、airodump"></a>airmon、airodump</h4><p>兩者常用作為利用 kali 破解網路密碼的工具，<br>airmon將無線網卡打開為監聽模式，airodump 則會擷取並搜集 AP 的封包</p>
+<h4 id="dig"><a href="#dig" class="headerlink" title="dig"></a>dig</h4><p>dig 會用來做 DNS 的解析，可以解析每個查詢的 DNS Server，<br>常新增 +trace 去做到細部追查</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$ dig +trace www.rentincredit.com</span><br><span class="line">; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; +trace www.rentincredit.com</span><br><span class="line">;; global options: +cmd</span><br><span class="line">.			29308	IN	NS	m.root-servers.net.</span><br><span class="line">.			29308	IN	NS	d.root-servers.net.</span><br><span class="line">.			29308	IN	NS	i.root-servers.net.</span><br><span class="line">.			29308	IN	NS	b.root-servers.net.</span><br><span class="line">.			29308	IN	NS	h.root-servers.net.</span><br><span class="line">.			29308	IN	NS	l.root-servers.net.</span><br><span class="line">.			29308	IN	NS	c.root-servers.net.</span><br><span class="line">.			29308	IN	NS	g.root-servers.net.</span><br><span class="line">.			29308	IN	NS	j.root-servers.net.</span><br><span class="line">.			29308	IN	NS	e.root-servers.net.</span><br><span class="line">.			29308	IN	NS	a.root-servers.net.</span><br><span class="line">.			29308	IN	NS	f.root-servers.net.</span><br><span class="line">.			29308	IN	NS	k.root-servers.net.</span><br><span class="line">;; Received 239 bytes from 172.20.10.1<span class="comment">#53(172.20.10.1) in 30 ms</span></span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">www.rentincredit.com.	86400	IN	CNAME	rentincredit.com.</span><br><span class="line">rentincredit.com.	86400	IN	A	172.104.94.210</span><br><span class="line">;; Received 79 bytes from 216.66.80.18<span class="comment">#53(ns5.he.net) in 62 ms</span></span><br></pre></td></tr></table></figure>
+<h4 id="iptables"><a href="#iptables" class="headerlink" title="iptables"></a>iptables</h4><p>iptables 是用 linux 核心直接執行的防火牆軟體，<br>因此防火牆的設定皆會透過 command 方式設定，<br>防火的方法，是會解析封包內容是否符合設定的要求，去解析。</p>
+<h3 id="System-Performance"><a href="#System-Performance" class="headerlink" title="System Performance"></a>System Performance</h3><h4 id="nmon"><a href="#nmon" class="headerlink" title="nmon"></a>nmon</h4><p>nmon 為系統監控軟體，可以區別不同的資訊塊，例如 I/O, Memory Status 等等…<br>在 mac os 上沒有此軟體，需要另外下載類似的其他軟體。</p>
+<h4 id="iostat-vmstat"><a href="#iostat-vmstat" class="headerlink" title="iostat, vmstat"></a>iostat, vmstat</h4><p>iostat 專注在 disk 上的 IO， Linux 顯示的資訊會比 Mac Os 詳盡</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">root@localhost:~<span class="comment"># iostat</span></span><br><span class="line">Linux 4.4.0-130-generic (localhost) 	05/21/2019 	_x86_64_	(2 CPU)</span><br><span class="line"></span><br><span class="line">avg-cpu:  %user   %nice %system %iowait  %steal   %idle</span><br><span class="line">           4.57    0.03    1.99    0.31    0.32   92.77</span><br><span class="line"></span><br><span class="line">Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn</span><br><span class="line">sda               0.84         0.09        10.14    1794177  206840904</span><br><span class="line">sdb               0.01         0.11         0.14    2326764    2946620</span><br><span class="line">sdc              21.71         1.69        91.47   34555012 1866536056</span><br><span class="line"></span><br><span class="line">johnliu@mac:~<span class="comment"># iostat</span></span><br><span class="line">              disk0       cpu    load average</span><br><span class="line">    KB/t  tps  MB/s  us sy id   1m   5m   15m</span><br><span class="line">   15.78   29  0.45  15  8 77  5.80 4.03 3.18</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>vmstat 主要是查看虛擬記憶體的狀態。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ vmstat</span><br><span class="line">procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----</span><br><span class="line"> r  b   swpd   free   buff  cache   si   so    bi    bo   <span class="keyword">in</span>   cs us sy id wa st</span><br><span class="line"> 1  0 462824 2401392  34120 532116    0    0     1    49    1    1  5  2 93  0  0</span><br></pre></td></tr></table></figure>
+<h4 id="sar"><a href="#sar" class="headerlink" title="sar"></a>sar</h4><p>sar 主要用來分析 CPU 的狀況，且能控制輸出頻率和次數，<br>使用不同的 flag ，也能知道不同面向的負載程度為何。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ sar 1 3</span><br><span class="line">Linux 4.4.0-130-generic (localhost) 	05/21/2019 	_x86_64_	(2 CPU)</span><br><span class="line"></span><br><span class="line">11:06:09 AM     CPU     %user     %nice   %system   %iowait    %steal     %idle</span><br><span class="line">11:06:10 AM     all      4.95      0.00      2.97      0.00      0.99     91.09</span><br><span class="line">11:06:11 AM     all      4.50      0.00      2.00      0.00      0.50     93.00</span><br><span class="line">11:06:12 AM     all      3.55      0.00      1.52      0.00      0.00     94.92</span><br><span class="line">Average:        all      4.34      0.00      2.17      0.00      0.50     92.99</span><br></pre></td></tr></table></figure>
+<p>1 3 這兩個數字組合，為每 1 秒鐘產生一次狀態報告，總共產生三次。</p>
+<h4 id="strace"><a href="#strace" class="headerlink" title="strace"></a>strace</h4><p>strace 可以監控一個『指令』使用的參數、輸入輸出的資料等等，<br>由於 Linux 無法直接監控硬碟，例: /dev，因此需要用 cat 、 tail 先讀取該硬碟，<br>再做 strace</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ strace cat /dev/</span><br><span class="line">execve(<span class="string">&quot;/bin/cat&quot;</span>, [<span class="string">&quot;cat&quot;</span>, <span class="string">&quot;/dev/&quot;</span>], [/* 22 vars */]) = 0</span><br><span class="line">brk(NULL)                               = 0x1dbd000</span><br><span class="line">access(<span class="string">&quot;/etc/ld.so.nohwcap&quot;</span>, F_OK)      = -1 ENOENT (No such file or directory)</span><br><span class="line">access(<span class="string">&quot;/etc/ld.so.preload&quot;</span>, R_OK)      = -1 ENOENT (No such file or directory)</span><br><span class="line">open(<span class="string">&quot;/etc/ld.so.cache&quot;</span>, O_RDONLY|O_CLOEXEC) = 3</span><br><span class="line">fstat(3, &#123;st_mode=S_IFREG|0644, st_size=43921, ...&#125;) = 0</span><br><span class="line">mmap(NULL, 43921, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fd6a228f000</span><br><span class="line">close(3)                                = 0</span><br><span class="line">access(<span class="string">&quot;/etc/ld.so.nohwcap&quot;</span>, F_OK)      = -1 ENOENT (No such file or directory)</span><br><span class="line">open(<span class="string">&quot;/lib/x86_64-linux-gnu/libc.so.6&quot;</span>, O_RDONLY|O_CLOEXEC) = 3</span><br><span class="line"><span class="built_in">read</span>(3, <span class="string">&quot;\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0&gt;\0\1\0\0\0P\t\2\0\0\0\0\0&quot;</span>..., 832) = 832</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/05/14/2019-05-14-coursera-notes-operation-system/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/14/2019-05-14-coursera-notes-operation-system/" class="post-title-link" itemprop="url">Coursera 筆記 - Operation System</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-05-14 10:01:00" itemprop="dateCreated datePublished" datetime="2019-05-14T10:01:00+08:00">2019-05-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="IO"><a href="#IO" class="headerlink" title="IO"></a><strong>IO</strong></h3><h4 id="ps-aux-grep-“Python”"><a href="#ps-aux-grep-“Python”" class="headerlink" title="ps aux | grep “Python”"></a>ps aux | grep “Python”</h4><p>| 符號，會將左邊指令所得到的結果文字，『輸出』到右邊的指令，當作基本文字資料。<br>例如這段指令，會將所有程序抓出，並輸出給右邊去搜尋含有 “Python” 這個字的指令細節。</p>
+<h4 id="指令-echo-cool-gt-gt-test-txt"><a href="#指令-echo-cool-gt-gt-test-txt" class="headerlink" title="指令: echo cool &gt;&gt; test.txt"></a>指令: echo cool &gt;&gt; test.txt</h4><p>將 cool 這個詞，寫入在 test.txt 檔的最後方</p>
+<h3 id="User-privilege"><a href="#User-privilege" class="headerlink" title="User privilege"></a><strong>User privilege</strong></h3><h4 id="rwxrw-r–"><a href="#rwxrw-r–" class="headerlink" title="-rwxrw-r–"></a>-rwxrw-r–</h4><p>這是一個 Linux 中，呼叫一個檔案時會顯示的使用者權限表，<br>第一個詞 “-” ，代表了這是一般的檔案，<br>第二個詞組 “rwx”，代表一般 user 的權限，第三個詞組 “rw-“ 代表了 user group 的權限，<br>最後一個詞組 “r–” 代表了其他 user 的權限。</p>
+<h4 id="chmod-777-Desktop"><a href="#chmod-777-Desktop" class="headerlink" title="chmod 777 Desktop"></a>chmod 777 Desktop</h4><p>X的數字是 1, W的數字是 2 , R的數字是 4, 加起來去決定權限值，第一個數字是 User 的, 再來 User Group, 最後 Other User</p>
+<h4 id="chmod-2775-test"><a href="#chmod-2775-test" class="headerlink" title="chmod 2775 test"></a>chmod 2775 test</h4><p>第一個詞 2， 是 setgid，讓 test 被執行時，group 是用此檔案創建的 group 身份運行。<br>如果設定為 4 是 setuid，在 ls -lh 看權限目錄時，該檔案的 x 會由 s 替代<br>如果設定為 1 ，則為 sticky bit，會讓該檔案的權限有個 “t” ，指的是讓所有使用者都可使用，但只有擁有者可以刪除或更名。</p>
+<h4 id="chmod-g-w-file-name"><a href="#chmod-g-w-file-name" class="headerlink" title="chmod g+w file_name"></a>chmod g+w file_name</h4><p>g 是 group, u 是 user, o 是 other, a 是 everyone，+w 則為新增權限類別</p>
+<h3 id="Package"><a href="#Package" class="headerlink" title="Package"></a><strong>Package</strong></h3><h4 id="PPA"><a href="#PPA" class="headerlink" title="PPA"></a>PPA</h4><p>讓 Linux 使用者可以在套件有更新時，自動更新</p>
+<h3 id="File-System"><a href="#File-System" class="headerlink" title="File System"></a><strong>File System</strong></h3><h4 id="Format"><a href="#Format" class="headerlink" title="Format"></a>Format</h4><p>NTF : Windows file system<br>Ext4 : Ubuntu file system<br>FAT32 : USB File system，適用於每個 OS( 單檔最大為 4 GB, system 最大容量為 32 GB )</p>
+<h4 id="Disk"><a href="#Disk" class="headerlink" title="Disk"></a>Disk</h4><p>Disk —&gt; Partition(可以使用不同的 file system) —&gt; volume </p>
+<h4 id="Partition-Table"><a href="#Partition-Table" class="headerlink" title="Partition Table"></a>Partition Table</h4><p>MBR: volume 要少與 2 TB<br>GPT: volume 沒有任何大小限制</p>
+<p>新增硬碟流程:<br>插入硬碟 —&gt; 格式化 file system —&gt; partition 硬碟 —&gt;安裝 file system</p>
+<h4 id="Pages"><a href="#Pages" class="headerlink" title="Pages"></a>Pages</h4><p>硬碟中的 Block data 叫做 Pages( swap in Linux ), 這可以把資料暫時的狀態儲存在記憶體中, 在電腦 Crash 時，可以在 reboot 後復原。</p>
+<h4 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h4><p>soft link: 直接連接到原始檔<br>hard link: 連接到Inode中，紀錄連結到原始檔的位置<br>Linux 中，原始檔會紀錄有多少的 hard link，可以確保有多少相似的檔案在系統中</p>
+<h3 id="Process-and-Log"><a href="#Process-and-Log" class="headerlink" title="Process and Log"></a><strong>Process and Log</strong></h3><h4 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h4><p>Windows 的 child 和 parent process 都可以獨立存在，但 Linux 的 child process 如果沒了 parent process ，就會消失。<br>/proc/{pid} 可以查看 Linux 中的 process 位資訊。</p>
+<h4 id="Kill"><a href="#Kill" class="headerlink" title="Kill"></a>Kill</h4><p>Kill 不是專門砍掉 process 的指令，而是具備傳送暫停、中止、重啟指令的功能。</p>
+<h4 id="Loh"><a href="#Loh" class="headerlink" title="Loh"></a>Loh</h4><p>/var/log/syslog 通常包含全面性的 system log</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/04/30/2019-04-30-aws-architectural-junior-architect-course-notes-day3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/30/2019-04-30-aws-architectural-junior-architect-course-notes-day3/" class="post-title-link" itemprop="url">AWS Architectural 初級架構師課程筆記 - Day3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-04-30 07:20:00" itemprop="dateCreated datePublished" datetime="2019-04-30T07:20:00+08:00">2019-04-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index"><span itemprop="name">Devops</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Day1 的筆記 - <a target="_blank" rel="noopener" href="http://johnliutw.logdown.com/posts/7830415/aws-architectural-junior-architect-course-notes-day1">AWS Architectural 初級架構師課程筆記 - Day1</a><br>Day2 的筆記 - <a target="_blank" rel="noopener" href="http://johnliutw.logdown.com/posts/7830416/aws-architectural-junior-architect-course-notes-day2">AWS Architectural 初級架構師課程筆記 - Day2</a></p>
+<h2 id="Automation"><a href="#Automation" class="headerlink" title="Automation"></a>Automation</h2><p>建議 automation 的 service:<br>設立 storage, route 網路, EC2 和 database</p>
+<h3 id="CloudFormation"><a href="#CloudFormation" class="headerlink" title="CloudFormation"></a>CloudFormation</h3><ol>
+<li>AWS 課程的 Lab 進行方式，就是使用 CloudFormation 機制建立</li>
+<li>可以建立常用的 Resource(EC2..)，但可能無法支援最新的 Resource</li>
+<li>可參考編輯檔案中的”condition”欄位，就能針對不同環境，設立不同的 cloudformation (同設定檔)</li>
+<li>建立可自動化，但移除資源需手動移除</li>
+<li>應用層的 network stack name ，會取用在 CloudFormation 上建立的網路樣板名稱，設定上也會帶入參數的概念</li>
+<li>移除 template 後，會替根據此 CloudFormation 建立的 EC2 創建 snapshot</li>
+</ol>
+<h3 id="AWS-OpsWorks"><a href="#AWS-OpsWorks" class="headerlink" title="AWS OpsWorks"></a>AWS OpsWorks</h3><p>應用層級的自動化功能</p>
+<h3 id="AWS-Beanstalk"><a href="#AWS-Beanstalk" class="headerlink" title="AWS Beanstalk"></a>AWS Beanstalk</h3><p>推薦給初級架構師使用的常用簡單自動架構產生器，方便但不夠彈性</p>
+<h2 id="Cache"><a href="#Cache" class="headerlink" title="Cache"></a>Cache</h2><h3 id="Amazon-CloudFront"><a href="#Amazon-CloudFront" class="headerlink" title="Amazon CloudFront"></a>Amazon CloudFront</h3><ol>
+<li>支援 CDN 和 Websocket</li>
+<li>建議使用在 cache 靜態檔案，動態檔案不建議 cache，但有個例子可使用:高峰值買票活動，可把座位資料先 cache 起來，可能精準度不夠，但可用性提高許多</li>
+<li>預設存活 1 天，但熱門資源可存在 1 年(AWS 系統判定)</li>
+<li>CName 的設定和 Domain Name 雷同</li>
+<li>有設定 WAF，可以抵禦應用層的攻擊</li>
+<li>可以設定什麼類型的檔案會優先被 cache</li>
+</ol>
+<h3 id="Sticky-Session"><a href="#Sticky-Session" class="headerlink" title="Sticky Session"></a>Sticky Session</h3><p>問題描述: 需要儲存 session 在特定的機器上(常發生在 auto-scaling 或 load-balance 後)。<br>解法:將 session hash 值存入 No-Sql 服務，透過該服務存取對應資料</p>
+<h3 id="Elastic-Cache"><a href="#Elastic-Cache" class="headerlink" title="Elastic Cache"></a>Elastic Cache</h3><p>Cluster 的架構方式，具有很多 cache node（但運算能力還是取決於對應之 EC2 instance）</p>
+<h2 id="Decoupled-Architect"><a href="#Decoupled-Architect" class="headerlink" title="Decoupled Architect"></a>Decoupled Architect</h2><p>首要概念: 系統規劃盡量『高內聚、低耦合』- 功能皆獨立、透過 API 溝通</p>
+<table>
+<thead>
+<tr>
+<th>Standard queues</th>
+<th>FIFO queues</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>一接到就按照 queues 規則送出</td>
+<td>因需針對每個 queue 加 timestamp，速度較慢(300/s, 大小256kb 以下)</td>
+</tr>
+</tbody></table>
+<h3 id="Amazon-SQS-Simple-Queue-Service"><a href="#Amazon-SQS-Simple-Queue-Service" class="headerlink" title="Amazon SQS( Simple Queue Service )"></a>Amazon SQS( Simple Queue Service )</h3><ol>
+<li>具有恆定性</li>
+<li>不推薦推播巨大的 message</li>
+<li>獨立使用，且一對一的 model</li>
+</ol>
+<h3 id="Amazon-SNS-Simple-Notification-Service"><a href="#Amazon-SNS-Simple-Notification-Service" class="headerlink" title="Amazon SNS ( Simple Notification Service )"></a>Amazon SNS ( Simple Notification Service )</h3><ol>
+<li>支援 Email, App 推播, SMS 簡訊和 Lamdba 函式</li>
+<li>分散式，many to one model</li>
+</ol>
+<h2 id="Microservice-and-Serverless"><a href="#Microservice-and-Serverless" class="headerlink" title="Microservice and Serverless"></a>Microservice and Serverless</h2><h3 id="Amazon-elastic-container-service-ECS"><a href="#Amazon-elastic-container-service-ECS" class="headerlink" title="Amazon elastic container service (ECS)"></a>Amazon elastic container service (ECS)</h3><ol>
+<li>具有 Amason ECR 服務，類似 Docker hub</li>
+<li>管理一個 cluster 而不是一個 container</li>
+<li>必須設定 Application load balancer，而不只是 load balancer</li>
+<li>可以使用 fargate 完全管理 cluster，但必須在建立 container 時使用</li>
+</ol>
+<h3 id="Lambda"><a href="#Lambda" class="headerlink" title="Lambda"></a>Lambda</h3><ol>
+<li>serverless 服務關鍵</li>
+<li>執行時間最多為 15 分鐘</li>
+<li>預設是沒有設定在任何 VPC 下，如果欲擺在 VPC 下，必須設定 NAT Gateway</li>
+<li>Workflow 有四種: parallel, if else, retry, series</li>
+</ol>
+<h3 id="API-Gateway"><a href="#API-Gateway" class="headerlink" title="API Gateway"></a>API Gateway</h3><ol>
+<li>可用來保護 Lambda 端點，避免類似 DDos 攻擊的資安風險</li>
+<li>非常出色可以用來管理 API 的功能</li>
+<li>如果 API 是時常被呼叫的資源，也會建立 Cache 機制，替 Server 紓解壓力</li>
+</ol>
+<h3 id="Aurora-serverless"><a href="#Aurora-serverless" class="headerlink" title="Aurora serverless"></a>Aurora serverless</h3><p>建議設定在 test 環境，做靜態資料庫的測試</p>
+<h2 id="Backup-recovery"><a href="#Backup-recovery" class="headerlink" title="Backup recovery"></a>Backup recovery</h2><p>思考方向: 高可用性 –&gt; 備份機制 –&gt; 補救機制<br>可使用 RDS 和 DynamoDB 做 snapshot，會透過 bin log 去自動備份(約 5 分鐘前狀態)</p>
+<h3 id="AWS-Storage-Gateway"><a href="#AWS-Storage-Gateway" class="headerlink" title="AWS Storage Gateway"></a>AWS Storage Gateway</h3><ol>
+<li>分三種類型：</li>
+</ol>
+<ul>
+<li>tap gateway(glacier)</li>
+<li>file gateway(s3)</li>
+<li>volumn gateway(EBS)</li>
+</ul>
+<ol start="2">
+<li>可做備份管理</li>
+</ol>
+<h3 id="備援性檢查流程"><a href="#備援性檢查流程" class="headerlink" title="備援性檢查流程"></a>備援性檢查流程</h3><ol>
+<li>先檢查每個 Service 的狀態</li>
+<li>總是開啟備份</li>
+<li>可以使用 Chaos monkey 外部服務，測試資源的可用性</li>
+</ol>
+<h2 id="Optimization-and-cloud"><a href="#Optimization-and-cloud" class="headerlink" title="Optimization and cloud"></a>Optimization and cloud</h2><p>如果需要轉移資源從本地到雲端，最好先設立同等級的機器，並使用一週觀察。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/04/28/2019-04-28-aws-architectural-junior-architect-course-notes-day2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/28/2019-04-28-aws-architectural-junior-architect-course-notes-day2/" class="post-title-link" itemprop="url">AWS Architectural 初級架構師課程筆記 - Day2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-04-28 08:47:00" itemprop="dateCreated datePublished" datetime="2019-04-28T08:47:00+08:00">2019-04-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index"><span itemprop="name">Devops</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Day1 的筆記 - <a target="_blank" rel="noopener" href="http://johnliutw.logdown.com/posts/7830415/aws-architectural-junior-architect-course-notes-day1">AWS Architectural 初級架構師課程筆記 - Day1</a></p>
+<h2 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h2><p>VPC 層級的設計是非常重要，但時常被忘記考量的區塊。</p>
+<h3 id="Route53"><a href="#Route53" class="headerlink" title="Route53"></a>Route53</h3><p>跨 region 層級的路由，至少有 2 個 name server，因此不會有 naming 失效的問題</p>
+<p>標準網路架構圖:<br><img src="http://user-image.logdown.io/user/26132/blog/25104/post/7830416/2YvEuERuTYS3LRXRKQ4T_%E5%BD%B1%E5%83%8F.png" alt="影像.png"></p>
+<h3 id="VPC"><a href="#VPC" class="headerlink" title="VPC"></a>VPC</h3><ol>
+<li>預設 private IP 位址為 172.16.xx.xx…</li>
+<li>預設為 Ipv4, 且設定完後是不可被修改的。可調整為 Ipv6，且設定完後可修改。</li>
+<li>至少需橫跨 2 個 AZ。</li>
+<li>Multi Patteren 選擇</li>
+</ol>
+<ul>
+<li>多 account 單 VPC</li>
+<li>多 VPC 單 account</li>
+</ul>
+<ol start="5">
+<li>使用 peering 連接不同的 VPC，但一個 account VPC 上限值為 5</li>
+<li>可使用 VPC endpoint，跨過中間所有 gatway ，能直接取用 private subnet 的資源</li>
+</ol>
+<h3 id="Subnet"><a href="#Subnet" class="headerlink" title="Subnet"></a>Subnet</h3><ol>
+<li>支援 16 - 28，共 28 - 62xxx ips。</li>
+<li>每次切割網段，會損失四個 ip，且不能跨 AZ</li>
+</ol>
+<ul>
+<li>頭和尾(0,255)系統使用，常用在 broadcast</li>
+<li>1,2 保留做 gateway 用</li>
+<li>3 保留為緊急處理時使用</li>
+</ul>
+<ol start="3">
+<li>S3 的 ACL(訪問控制列表)在這個層級</li>
+</ol>
+<h3 id="Route-Table"><a href="#Route-Table" class="headerlink" title="Route Table"></a>Route Table</h3><ol>
+<li>預設 destination 為 10.0.0.0/16，且 target 為 local(朝向主要的 VPC)</li>
+<li>建議針對每個 subnet 設定對應的 RouteTable</li>
+<li>預設Public Subnet 10.0.0.0/24、Private Subnet 10.0.2.0/23 </li>
+<li>設定完 VPC, Subnet和 Internet Gatway 後，需記得設 routetable<br>Peering 的 RouteTable 設計:</li>
+</ol>
+<ul>
+<li>AAA VPC route table  10.5.0.0/16( 參考 BBB VPC CIDR )</li>
+<li>BBB VPC route table 10.0.0.0/16( 參考 BBB VPC CIDR )</li>
+</ul>
+<h3 id="Gateway"><a href="#Gateway" class="headerlink" title="Gateway"></a>Gateway</h3><h5 id="Internet-Gatway"><a href="#Internet-Gatway" class="headerlink" title="Internet Gatway"></a>Internet Gatway</h5><p>純粹的邏輯組件，需要連接在 VPC 上才能使用，用作 VPC 對外溝通的 Gateway。<br>在 RouteTable 上預設為 0.0.0.0</p>
+<h5 id="NAT-Gateway"><a href="#NAT-Gateway" class="headerlink" title="NAT Gateway"></a>NAT Gateway</h5><ol>
+<li>必須部署在 public subnet，是外部 user 要使用 private subnet service 的 gatway(常用在更新 patch 檔)</li>
+<li>無法支援轉 port 號的服務</li>
+<li>無提供 log，log 必須做在 VPC 層</li>
+</ol>
+<h5 id="Transit-Gateway"><a href="#Transit-Gateway" class="headerlink" title="Transit Gateway"></a>Transit Gateway</h5><p>可支援 50000 組以上的 VPCs 連接</p>
+<h3 id="IP-address"><a href="#IP-address" class="headerlink" title="IP address"></a>IP address</h3><p>Elastic 的 IP address 是浮動的，如果需要固定 IP ，則必須支付額外成本</p>
+<h3 id="Security-Group"><a href="#Security-Group" class="headerlink" title="Security Group"></a>Security Group</h3><p>預設開啟所有 Outbound，並阻擋所有 Inbound</p>
+<h3 id="ACL"><a href="#ACL" class="headerlink" title="ACL"></a>ACL</h3><p>Subnet 層級的防火牆</p>
+<p>轉換費用圖:<br><img src="https://s1.imgs.cc/img/aaaaaAalc.png" alt="影像png"></p>
+<h3 id="VPN"><a href="#VPN" class="headerlink" title="VPN"></a>VPN</h3><ol>
+<li>VPN 無法連線時，優先排除硬體問題，並檢查 VPN Log</li>
+<li>AWS 有提供穩定版的 VPN 連線(DX)，可設定一條普通、一條穩定版的架構</li>
+<li>如果 VPN 有一陣子不用，可能會被 shutdown (可設定 cronjob 固定傳送小封包)</li>
+<li>需要類似 VPC 的架構，可使用 VGW</li>
+<li>建立 VPN 簡易流程: 建立 VPN Gateway -&gt; 連接 VPC -&gt; 建立 local end 的 customer gateway -&gt; 建立 site to site 的連接</li>
+</ol>
+<h2 id="Identity"><a href="#Identity" class="headerlink" title="Identity"></a>Identity</h2><p>tips:</p>
+<ul>
+<li>建議在建立好對應的權限群組後，封存 root user 的 account</li>
+<li>最小單位為 IAM User</li>
+<li>利用 AkSk(Access &amp; secret key) 就可以透過 CLI 使用 AWS</li>
+</ul>
+<h3 id="IAM-User"><a href="#IAM-User" class="headerlink" title="IAM User"></a>IAM User</h3><ol>
+<li>沒有預設的權限</li>
+<li>透過 policy 設定( 可使用 Json 格式更新 )</li>
+<li>可設定僅能透過 console 操作或是 CLI 介面</li>
+<li>具有 switch role 功能，可測試不同使用者使用權限</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Resourced base</th>
+<th align="center">Identity base</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>根據 AWS Resource 設定權限</td>
+<td align="center">根據 IAM 規則設定權限</td>
+</tr>
+</tbody></table>
+<p>Policy Type 區分為 3 個層級: AWS Policy, Customer Policy 和 inline Policy(只有在 my account 內設定)</p>
+<h3 id="IAM-Role"><a href="#IAM-Role" class="headerlink" title="IAM Role"></a>IAM Role</h3><ol>
+<li>可給予使用者或 Service (例如 EC2)</li>
+<li>使用後，就不需替使用者設定 permission</li>
+</ol>
+<h3 id="AWS-Organization"><a href="#AWS-Organization" class="headerlink" title="AWS Organization"></a>AWS Organization</h3><p>可解決不同帳戶權限，但相同計價方式的『部門級』使用問題。</p>
+<h2 id="Elasticity-High-Availability"><a href="#Elasticity-High-Availability" class="headerlink" title="Elasticity, High Availability"></a>Elasticity, High Availability</h2><p>兩個取捨: Time 或 Volumn</p>
+<h3 id="CloudWatch"><a href="#CloudWatch" class="headerlink" title="CloudWatch"></a>CloudWatch</h3><p>類似 Azure 的 Application Insight，提供 metrics, log, alarms, events, rules, targets..etc</p>
+<h3 id="About-Data"><a href="#About-Data" class="headerlink" title="About Data"></a>About Data</h3><ol>
+<li>EBS 只能增不能減</li>
+<li>Data 的 monitor 預設是關閉的( 因資料外洩資安問題 )</li>
+<li>可使用 CloudTrail 追蹤 API Log(90天內)</li>
+</ol>
+<h3 id="Auto-Scale"><a href="#Auto-Scale" class="headerlink" title="Auto Scale"></a>Auto Scale</h3><ol>
+<li>三種方式: 預定型、動態偵測型、預測型</li>
+<li>三種 Instance type 皆支援(on-demand, reserved, spot)</li>
+<li>建議寬鬆的 CPU 偵測設定(閥值 50 比 30 好)<br>建議設定方式:<br>如果期待 5/10 12:00 需要 auto-scaling，建議在 4/20 時提交申請並設定區間為 11:30 - 12:30</li>
+</ol>
+<p>Auto-scaling 結束後的 instance 移除判斷<br>狀況:Az1 — 3 Ec2, Az2 — 2 Ec2</p>
+<ol>
+<li>優先平衡 Az 狀況(移除 Az1)</li>
+<li>確認 AMI 版本，留下最新者(因此需定期更新 cloudformation)</li>
+<li>優先刪除離下個 payment 週期較近者</li>
+</ol>
+<h5 id="RDS-的-Auto-Scale"><a href="#RDS-的-Auto-Scale" class="headerlink" title="RDS 的 Auto Scale"></a>RDS 的 Auto Scale</h5><ol>
+<li>提供 replication 方式的水平展延</li>
+<li>只有 EBS 沒有 downtime </li>
+</ol>
+<h3 id="DynamoDB"><a href="#DynamoDB" class="headerlink" title="DynamoDB"></a>DynamoDB</h3><ol>
+<li>因為計價方式緣故，建議設定限制</li>
+<li>分散式存儲，因此會儲存類似 style 的資料在同一個 partition，因此建議 date log 類型資料，做 Hash 化儲存，之後取出較有效率</li>
+</ol>
+<h3 id="Elastic-Load-Balance"><a href="#Elastic-Load-Balance" class="headerlink" title="Elastic Load Balance"></a>Elastic Load Balance</h3><ol>
+<li>需給與 DNS Name</li>
+<li>可以使用 ACM (AWS 的 SSL 憑證機制)</li>
+<li>可設定 Application 或 Network 的 load balancer </li>
+<li>可以在 public 和 private subnet 中設定</li>
+<li>Web Application 可設定在 private 中，並透過 ELB 公開，這樣攻擊者只能攻擊到 ELB。</li>
+<li>對應的 Application 要設定 ELB 的 Inbound</li>
+</ol>
+<h3 id="High-Availability"><a href="#High-Availability" class="headerlink" title="High Availability"></a>High Availability</h3><p>情境說明:<br>多個 RDS 內的 Az 可以複製 database 去 secondary server，當 original DB Crash 時，需要 60 - 120 秒時間自動切換(但 console 內可能顯示約 2 小時)</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/04/28/2019-04-28-aws-architectural-junior-architect-course-notes-day1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/28/2019-04-28-aws-architectural-junior-architect-course-notes-day1/" class="post-title-link" itemprop="url">AWS Architectural 初級架構師課程筆記 - Day1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-04-28 07:30:00" itemprop="dateCreated datePublished" datetime="2019-04-28T07:30:00+08:00">2019-04-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index"><span itemprop="name">Devops</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Instruction"><a href="#Instruction" class="headerlink" title="Instruction"></a>Instruction</h2><p>News shared: 南非為近日要開啟的服務器點<br>五大 AWS 服務的考量點:安全性、可靠性，成本、效能和可維護性。</p>
+<h3 id="基礎服務架構"><a href="#基礎服務架構" class="headerlink" title="基礎服務架構"></a>基礎服務架構</h3><p><img src="http://user-image.logdown.io/user/26132/blog/25104/post/7830415/E6niEwNT3qJnASi2nWAl_%E5%BD%B1%E5%83%8F.png" alt="影像.png"></p>
+<ol>
+<li>每個 AZ 間間隔約 40 - 60 英里，彼此間的 latency 盡可能控制在 2ms 以下。</li>
+<li>北京 region 主要維運商：『光環星網』，中國 region 和其他 region 的環境都是隔開來的。</li>
+<li>CDN 預設或需要 North Virginia(USA) 的機器當作 base</li>
+<li>Edge location, 設立在無 region 的區塊，通常與當地 ISP 合作 (ex: 中華電信)，提供與 AWS 相關的部分服務</li>
+</ol>
+<h2 id="Simplest-Architected"><a href="#Simplest-Architected" class="headerlink" title="Simplest Architected"></a>Simplest Architected</h2><h3 id="S3-vs-EBS"><a href="#S3-vs-EBS" class="headerlink" title="S3 vs EBS"></a>S3 vs EBS</h3><table>
+<thead>
+<tr>
+<th>S3</th>
+<th align="center">EBS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Object 層(更新資料慢 )</td>
+<td align="center">Block 層(更新資料快 )</td>
+</tr>
+<tr>
+<td>檔案儲存使用</td>
+<td align="center">檔案分享使用</td>
+</tr>
+<tr>
+<td>公開，可透過 url 訪問</td>
+<td align="center">與 Ec2 Instance 綁定</td>
+</tr>
+</tbody></table>
+<h3 id="S3-特性"><a href="#S3-特性" class="headerlink" title="S3 特性"></a>S3 特性</h3><ol>
+<li>因備份特性，會備份同筆資料於不同的 AZ，因此當不同 user 針對同一檔案做修改時，可能會有 conflict 的情況</li>
+<li>可綁定 event trigger ，做到在 S3 層可直接裁切圖片的功能</li>
+<li>可透過 AWS policy genenrater 協助設定 bucket config</li>
+<li>可啟用 version control，替靜態檔案保存過去版本 –&gt;儲存 cost 會相對應的增加</li>
+</ol>
+<h3 id="S3-使用須知"><a href="#S3-使用須知" class="headerlink" title="S3 使用須知"></a>S3 使用須知</h3><ol>
+<li>預設是阻擋 CROS 傳輸，因此需手動關閉 CROS Block 功能</li>
+<li>EC2 相關的 Snapshot 會儲存在 S3</li>
+<li>可透過 S3 專用 API，直接上傳檔案</li>
+<li>單檔 5TB 傳輸限制，但總量無</li>
+<li>傳輸過程，會將同個檔案切割上傳，並再上傳後才在 S3 端 merge 回同一檔案。</li>
+<li>同檔名之檔案的上傳，將會自動蓋過舊檔案</li>
+<li>手動上傳之檔案，需手動點選【 Make Public 】啟用，讓其能被 public 讀取</li>
+</ol>
+<p>eg: File1.jpg 會切割成 File1-1.jpg, File1-2.jpg….然後才上傳。</p>
+<h3 id="S3-價格須知"><a href="#S3-價格須知" class="headerlink" title="S3 價格須知"></a>S3 價格須知</h3><ol>
+<li>計費為 per GBs/月和流量傳輸費</li>
+<li>每筆 Request 皆會計費，因此建議使用 CDN Server 套在常被 Request 的資源上</li>
+</ol>
+<h3 id="Glacier"><a href="#Glacier" class="headerlink" title="Glacier"></a>Glacier</h3><ol>
+<li>儲存時間長，但價格成本低(S3 1/10)</li>
+<li>推薦使用在 log file, 備份, 和長期存儲類型檔案</li>
+<li>使用 Vault Lock，因此只存讀不修改</li>
+<li>讀取方式分為三種，越長越便宜:<ul>
+<li>expedited retrieval (3 - 5 mins)</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>Standard retrieval (3 - 5 hours)</p>
+</li>
+<li><p>build retrieval(8 - 10 hours)</p>
+<h2 id="Computing"><a href="#Computing" class="headerlink" title="Computing"></a>Computing</h2></li>
+</ul>
+<p>Ec2 的使用範疇: Web Server, Database Server, Authentication….etc，但不建議使用在 broadcast 型服務</p>
+<h3 id="AMI"><a href="#AMI" class="headerlink" title="AMI"></a>AMI</h3><ol>
+<li>AWS Ec2 專用之 Image</li>
+<li>類似的服務: snapshot，但snapshot 只能儲存 disk level 的資料，無法儲存環境參數</li>
+<li>可直接製作不需 reboot EC2</li>
+<li>AWS 提供的部分 AMI 包含軟體授權費，例如 SQL Sever + Microsoft server(但不代表較貴，RDS 計價更高)</li>
+<li>預先載入之 bash script( User Data )，僅限建立時載入，之後 reboot 等等動作皆不執行</li>
+</ol>
+<h3 id="EBS-EC2-專用-storage"><a href="#EBS-EC2-專用-storage" class="headerlink" title="EBS(EC2 專用 storage)"></a>EBS(EC2 專用 storage)</h3><p>1.應用程式所須之 block 層的儲存方式<br>2.資料在 shutdown 後，仍須存在<br>3.備份應用程式層之資料<br>4.Instance Data 是暫存的，因此 stop 機器後，內部資料將遺失<br>5.一個 EBS 只連接一台 EC2 ，可使用 EFS 連接多台 EC2。應用範例: File system</p>
+<p>如需固態硬碟，仍可選用 SSD:</p>
+<table>
+<thead>
+<tr>
+<th>General SSD</th>
+<th align="center">Provisioned IOPS SSD</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>通用，合理的收費和傳輸速度</td>
+<td align="center">可修改 IOPS 數量，因此計價較貴</td>
+</tr>
+</tbody></table>
+<h3 id="EC2"><a href="#EC2" class="headerlink" title="EC2"></a>EC2</h3><p>命名規則: m5.large (m 是機器類型名, 5 是世代數, large 是 instance 大小)<br>Note: 調整 EC2 大小，將會停機一陣子</p>
+<table>
+<thead>
+<tr>
+<th>On-Demand</th>
+<th>Reserved Instance</th>
+<th>Spot Instance</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>標準定價</td>
+<td>標準的 6.5 - 8 折不等</td>
+<td>最便宜，可能會便宜到 1 - 2 折</td>
+</tr>
+<tr>
+<td>可隨時暫停，不付費</td>
+<td>根據折數簽訂不同的年限，不用仍須走完(建議一年)</td>
+<td>可隨時暫停，或遇其他更高出價者，資源被轉移</td>
+</tr>
+</tbody></table>
+<p>可使用 Dedicate Instance(獨佔)，成本最高</p>
+<p>部署分佈方式:</p>
+<table>
+<thead>
+<tr>
+<th>Cluster Group</th>
+<th align="center">Spread Group</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>針對 performance 最佳化部署方式</td>
+<td align="center">分散式部署，較安全，不會被區域問題影響</td>
+</tr>
+</tbody></table>
+<h4 id="EC2-使用須知"><a href="#EC2-使用須知" class="headerlink" title="EC2 使用須知"></a>EC2 使用須知</h4><ol>
+<li>Public IP 需在部署成功後幾分鐘，才能在 www 上讀取到</li>
+<li>可使用 Security Group 設定權限</li>
+<li>推薦使用 User-Data 設計預先建立的環境( eg: PHP+Nginx )</li>
+</ol>
+<h2 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h2><p>選用 Relation DB 的時機: 嚴格的資料結構和品質、峰值不高的讀寫需求<br>選用 No-SQL 時機: 須能快速水平增加 DB 資源</p>
+<table>
+<thead>
+<tr>
+<th>RDS</th>
+<th>DynamoDB</th>
+<th>Amazon Elasticache</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>標準 Relation DB</td>
+<td>No-SQL</td>
+<td>Memory Cache, 像是 Redis</td>
+</tr>
+<tr>
+<td>Note: DynamoDB 可以拆分資料在不同 region，並在同一個 global 環境做讀取(可能有 1-2 秒非同步狀況)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="Aurora-DB"><a href="#Aurora-DB" class="headerlink" title="Aurora DB"></a>Aurora DB</h3><ol>
+<li>因為備份機制的因素，需至少有三台 AZ 的 Region 環境</li>
+<li>一般機器的等級，比一般 MySQL server 快約 1.3 倍，如為 r3.8xlarge 以上，則為接近 5 倍</li>
+</ol>
+<h3 id="RDS-使用技巧"><a href="#RDS-使用技巧" class="headerlink" title="RDS 使用技巧"></a>RDS 使用技巧</h3><ol>
+<li>提供 private key 加密，也能自行設定加密方式</li>
+<li>Amazon Migration Service 轉移 DB 不收費，費用取決於 Ec2</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/04/21/2019-04-21-green-book-of-happiness-and-our-distance-from-evil-on-the-rehabilitation-of-racial-discrimination-and-non-differential-homicide-in-taiwan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/21/2019-04-21-green-book-of-happiness-and-our-distance-from-evil-on-the-rehabilitation-of-racial-discrimination-and-non-differential-homicide-in-taiwan/" class="post-title-link" itemprop="url">【幸福綠皮書】和【我們與惡的距離】，談台灣的種族歧視和無差別殺人案的康復和預防</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-04-21 16:44:00" itemprop="dateCreated datePublished" datetime="2019-04-21T16:44:00+08:00">2019-04-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Viewpoint/" itemprop="url" rel="index"><span itemprop="name">Viewpoint</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>筆者一直是很喜歡看電影和影劇的人，<br>我喜歡的影視作品範圍很廣，但一定要有一定的劇情深度，和想探討的議題，<br>例如【漫威系列】和【冰與火之歌】龐大的世界觀，<br>以及此篇談論到的【幸福綠皮書】和【我們與惡的距離】。</p>
+<h2 id="幸福綠皮書"><a href="#幸福綠皮書" class="headerlink" title="幸福綠皮書"></a>幸福綠皮書</h2><p>幸福綠皮書的故事很簡單，背景在充滿種族歧視氛圍的 60 年代美國，<br>主角為一社經地位極高的黑人，以及一處於基層階級的白人，<br>電影描述了本來種族衝突，但經過漫長巡迴之旅旅行的相處，<br>終究因為深入了了解彼此，而結為好友的故事。<br>相信很多觀影的人，看到這裡就結束了，<br>心裡可能想著『美國的種族歧視真可怕，台灣都沒有，真好』。</p>
+<p>但事實是，這個種族歧視是真實存在於現今的台灣社會。</p>
+<p>台灣有非常多的『外籍』勞工，而這些勞工在台灣其實或多或少就有受到種族歧視的影響，<br>『路邊那些外勞，感覺好可怕，好危險，是不是會傷害我？』<br>『家裡的重要財物要好好收好，小心菲佣看到錢就偷走』<br>『跟外勞談戀愛好丟臉，娶外配是不是最差最差的選擇』<br>上面這些，是我時常在和朋友聊天時，偶然會聽到的想法。<br>老實說，我曾經也是具有這些想法的人，<br>替『外勞』預先貼上了骯髒、危險、懶惰、粗魯等等的負面標籤。</p>
+<p>但是，在馬尼拉駐台辦事處工作一年的經驗改變了我，<br>在深度的相處中，這些『外籍勞工』，他們其實都跟你我一樣，<br>可能擁有一個家庭、可能擁有一個夢想、整潔而且待人和善，<br>甚至他們樂天的個性，職場上相處起來，還比台灣人融洽，<br>我在工作時，至少一、兩週，就可以吃到他們開伙請我吃的菲律賓料理，<br>他們也時常手舞足蹈，帶著巨大的熱情在工作。<br>因此我開始改觀，開始真正的打從心裡『平等』的去看待他們，<br>到現在，我仍以曾在其中工作為榮，且真心的喜歡在那邊認識的人事物。</p>
+<p>但沒有這些經驗的人們，可能很難從根本去改變這些觀點，<br>因為人都害怕未知的人事物，而這些『外籍勞工』就是我們所未知的人事物，<br>問題出在哪兒？到底是什麼原因讓我們這麼不了解，這些支撐我們台灣基層經濟的重要勞動力？<br>我的淺見認為，是基層的教育，和社區互動系統的建構。<br>我們國中小的基礎教育，應告訴孩子正視這個族群的存在，<br>並講授這個族群在台灣的狀況，以及在生活中的互動模式，<br>不應該只是社會課本某一章最後幾頁的內容而已，應該提升到接近『鄉土教育』的設計規模。</p>
+<p>這是從根本去讓孩子理解這個族群，那社區互動系統呢？<br>大家應該都知道，學校的教育是一回事，但家庭的教育又是另外一回事，<br>社區互動系統就是在解決『家庭的教育』這個問題，<br>讓已有成見的成人，透過設計過的社區互動系統型式，<br>與家中的外籍佣人、鄰居的外籍配偶或是外籍勞工對話溝通，<br>增進了解彼此的機會，並透過這個了解機會，也傳達給孩子正面的回饋，<br>讓彼此能同心協力，至少不會帶有『歧視』的眼光。</p>
+<h2 id="我們與惡的距離"><a href="#我們與惡的距離" class="headerlink" title="我們與惡的距離"></a>我們與惡的距離</h2><p>我在這部影劇的感觸，沒有幸福綠皮書這麼深邃，<br>因為我並不是身處其中，變經歷過概念的轉變，<br>但我也是波折方的一份子，我的親戚曾有輕度憂鬱症和輕度思覺失調症的疾病記錄，<br>他們並沒有傷害別人，他們正常的時候都是非常和善的人，<br>只是在疾病發作時，他們會有其他人覺得怪異的行為。</p>
+<p>我們與惡的距離讓我思考最多的，就是加害人家屬的角度，和事件的復原處理，<br>加害人家屬何嘗不也是受害人之一，只是他們剛好和加害人處於同一立場，<br>只是一昧的辱罵的加害人，並持續追蹤干擾他們的生活，<br>並沒有讓受害人們真正的『康復』，反而讓加害人家屬變成更嚴重的受害人。</p>
+<p>我很喜歡【與惡】這部戲劇敘述的康復方法，<br>透過彼此溝通協調，檢視傷痛，讓彼此都能真正的陳述精神上的苦痛，<br>最重要的，我認為不是讓受害者陳述，而是讓受害者也能看到『加害者家屬』的傷痛，<br>再來就是『康復』的辦法，在彼此可接受且合理的範圍內，<br>協助受害者盡可能的回復原本的生活節奏，而且是由加害者家屬進行，<br>像劇中，曉明的父母協助受害者，雖然無法正常的打籃球，但至少能打輪椅籃球，<br>而且就像劇中受害者最後一句話，『謝謝』，不就是真正想補償受害者的加害者家屬們，最冀望聽到的嗎？<br>相信，這才能真正的去解決受害者如何康復的問題，<br>而不是把人快速處死，然後每天洗版追殺加害者，過完嘴上之癮卻無人得益。</p>
+<p>最後是提到預防這件事，應該大家都有過經驗，<br>在生活中，就是有些人沒有人會跟他當朋友或理睬他，<br>你問你其他朋友，他們也只會回答一些模凌兩可，或是邏輯不通的回覆，<br>但通常我們仍然會接受，然後繼續保持距離，<br>那我們很有可能，就是在繼續增加無差別傷人犯案的可能性。<br>無差別殺人犯，他們可能相處上會跟一般人有些不同，<br>但其實他們在走火如魔前，最真實的想法也不是想要傷人，<br>而只要在他們無法回頭前，偶爾『真心的』關心幾句，讓他有感受到真正的溫暖，<br>或許能讓他願意正視這個社會，並逐漸消彌反社會人格，<br>因為反社會人格的養成，通常真的是因為在現實社會充滿了挫敗，沒有認同融入感，<br>只要我們彼此多做一點，就能減少憾事發生的機率，<br>因為沒有人能保證，下一個受到傷害的，是不是就是我們所關心的人。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Liu</p>
+  <div class="site-description" itemprop="description">分享各種技術筆記心得，趨勢觀察與心得</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Liu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

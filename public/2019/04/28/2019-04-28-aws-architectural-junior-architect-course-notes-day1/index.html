@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="InstructionNews shared: 南非為近日要開啟的服務器點五大 AWS 服務的考量點:安全性、可靠性，成本、效能和可維護性。 基礎服務架構  每個 AZ 間間隔約 40 - 60 英里，彼此間的 latency 盡可能控制在 2ms 以下。 北京 region 主要維運商：『光環星網』，中國 region 和其他 region 的環境都是隔開來的。 CDN 預設或需要 North">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AWS Architectural 初級架構師課程筆記 - Day1">
+<meta property="og:url" content="http://example.com/2019/04/28/2019-04-28-aws-architectural-junior-architect-course-notes-day1/index.html">
+<meta property="og:site_name" content="John Liu 技術中心">
+<meta property="og:description" content="InstructionNews shared: 南非為近日要開啟的服務器點五大 AWS 服務的考量點:安全性、可靠性，成本、效能和可維護性。 基礎服務架構  每個 AZ 間間隔約 40 - 60 英里，彼此間的 latency 盡可能控制在 2ms 以下。 北京 region 主要維運商：『光環星網』，中國 region 和其他 region 的環境都是隔開來的。 CDN 預設或需要 North">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://user-image.logdown.io/user/26132/blog/25104/post/7830415/E6niEwNT3qJnASi2nWAl_%E5%BD%B1%E5%83%8F.png">
+<meta property="article:published_time" content="2019-04-27T23:30:00.000Z">
+<meta property="article:modified_time" content="2021-02-06T09:00:50.841Z">
+<meta property="article:author" content="John Liu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://user-image.logdown.io/user/26132/blog/25104/post/7830415/E6niEwNT3qJnASi2nWAl_%E5%BD%B1%E5%83%8F.png">
+
+<link rel="canonical" href="http://example.com/2019/04/28/2019-04-28-aws-architectural-junior-architect-course-notes-day1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>AWS Architectural 初級架構師課程筆記 - Day1 | John Liu 技術中心</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <h1 class="site-title">John Liu 技術中心</h1>
+    </a>
+      <p itemprop="description" style="font-size:0.75rem">管理者角度，開發者思維，初學者心態</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於 john</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>全部文章</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/04/28/2019-04-28-aws-architectural-junior-architect-course-notes-day1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AWS Architectural 初級架構師課程筆記 - Day1
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-04-28 07:30:00" itemprop="dateCreated datePublished" datetime="2019-04-28T07:30:00+08:00">2019-04-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index"><span itemprop="name">Devops</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Instruction"><a href="#Instruction" class="headerlink" title="Instruction"></a>Instruction</h2><p>News shared: 南非為近日要開啟的服務器點<br>五大 AWS 服務的考量點:安全性、可靠性，成本、效能和可維護性。</p>
+<h3 id="基礎服務架構"><a href="#基礎服務架構" class="headerlink" title="基礎服務架構"></a>基礎服務架構</h3><p><img src="http://user-image.logdown.io/user/26132/blog/25104/post/7830415/E6niEwNT3qJnASi2nWAl_%E5%BD%B1%E5%83%8F.png" alt="影像.png"></p>
+<ol>
+<li>每個 AZ 間間隔約 40 - 60 英里，彼此間的 latency 盡可能控制在 2ms 以下。</li>
+<li>北京 region 主要維運商：『光環星網』，中國 region 和其他 region 的環境都是隔開來的。</li>
+<li>CDN 預設或需要 North Virginia(USA) 的機器當作 base</li>
+<li>Edge location, 設立在無 region 的區塊，通常與當地 ISP 合作 (ex: 中華電信)，提供與 AWS 相關的部分服務</li>
+</ol>
+<h2 id="Simplest-Architected"><a href="#Simplest-Architected" class="headerlink" title="Simplest Architected"></a>Simplest Architected</h2><h3 id="S3-vs-EBS"><a href="#S3-vs-EBS" class="headerlink" title="S3 vs EBS"></a>S3 vs EBS</h3><table>
+<thead>
+<tr>
+<th>S3</th>
+<th align="center">EBS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Object 層(更新資料慢 )</td>
+<td align="center">Block 層(更新資料快 )</td>
+</tr>
+<tr>
+<td>檔案儲存使用</td>
+<td align="center">檔案分享使用</td>
+</tr>
+<tr>
+<td>公開，可透過 url 訪問</td>
+<td align="center">與 Ec2 Instance 綁定</td>
+</tr>
+</tbody></table>
+<h3 id="S3-特性"><a href="#S3-特性" class="headerlink" title="S3 特性"></a>S3 特性</h3><ol>
+<li>因備份特性，會備份同筆資料於不同的 AZ，因此當不同 user 針對同一檔案做修改時，可能會有 conflict 的情況</li>
+<li>可綁定 event trigger ，做到在 S3 層可直接裁切圖片的功能</li>
+<li>可透過 AWS policy genenrater 協助設定 bucket config</li>
+<li>可啟用 version control，替靜態檔案保存過去版本 –&gt;儲存 cost 會相對應的增加</li>
+</ol>
+<h3 id="S3-使用須知"><a href="#S3-使用須知" class="headerlink" title="S3 使用須知"></a>S3 使用須知</h3><ol>
+<li>預設是阻擋 CROS 傳輸，因此需手動關閉 CROS Block 功能</li>
+<li>EC2 相關的 Snapshot 會儲存在 S3</li>
+<li>可透過 S3 專用 API，直接上傳檔案</li>
+<li>單檔 5TB 傳輸限制，但總量無</li>
+<li>傳輸過程，會將同個檔案切割上傳，並再上傳後才在 S3 端 merge 回同一檔案。</li>
+<li>同檔名之檔案的上傳，將會自動蓋過舊檔案</li>
+<li>手動上傳之檔案，需手動點選【 Make Public 】啟用，讓其能被 public 讀取</li>
+</ol>
+<p>eg: File1.jpg 會切割成 File1-1.jpg, File1-2.jpg….然後才上傳。</p>
+<h3 id="S3-價格須知"><a href="#S3-價格須知" class="headerlink" title="S3 價格須知"></a>S3 價格須知</h3><ol>
+<li>計費為 per GBs/月和流量傳輸費</li>
+<li>每筆 Request 皆會計費，因此建議使用 CDN Server 套在常被 Request 的資源上</li>
+</ol>
+<h3 id="Glacier"><a href="#Glacier" class="headerlink" title="Glacier"></a>Glacier</h3><ol>
+<li>儲存時間長，但價格成本低(S3 1/10)</li>
+<li>推薦使用在 log file, 備份, 和長期存儲類型檔案</li>
+<li>使用 Vault Lock，因此只存讀不修改</li>
+<li>讀取方式分為三種，越長越便宜:<ul>
+<li>expedited retrieval (3 - 5 mins)</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>Standard retrieval (3 - 5 hours)</p>
+</li>
+<li><p>build retrieval(8 - 10 hours)</p>
+<h2 id="Computing"><a href="#Computing" class="headerlink" title="Computing"></a>Computing</h2></li>
+</ul>
+<p>Ec2 的使用範疇: Web Server, Database Server, Authentication….etc，但不建議使用在 broadcast 型服務</p>
+<h3 id="AMI"><a href="#AMI" class="headerlink" title="AMI"></a>AMI</h3><ol>
+<li>AWS Ec2 專用之 Image</li>
+<li>類似的服務: snapshot，但snapshot 只能儲存 disk level 的資料，無法儲存環境參數</li>
+<li>可直接製作不需 reboot EC2</li>
+<li>AWS 提供的部分 AMI 包含軟體授權費，例如 SQL Sever + Microsoft server(但不代表較貴，RDS 計價更高)</li>
+<li>預先載入之 bash script( User Data )，僅限建立時載入，之後 reboot 等等動作皆不執行</li>
+</ol>
+<h3 id="EBS-EC2-專用-storage"><a href="#EBS-EC2-專用-storage" class="headerlink" title="EBS(EC2 專用 storage)"></a>EBS(EC2 專用 storage)</h3><p>1.應用程式所須之 block 層的儲存方式<br>2.資料在 shutdown 後，仍須存在<br>3.備份應用程式層之資料<br>4.Instance Data 是暫存的，因此 stop 機器後，內部資料將遺失<br>5.一個 EBS 只連接一台 EC2 ，可使用 EFS 連接多台 EC2。應用範例: File system</p>
+<p>如需固態硬碟，仍可選用 SSD:</p>
+<table>
+<thead>
+<tr>
+<th>General SSD</th>
+<th align="center">Provisioned IOPS SSD</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>通用，合理的收費和傳輸速度</td>
+<td align="center">可修改 IOPS 數量，因此計價較貴</td>
+</tr>
+</tbody></table>
+<h3 id="EC2"><a href="#EC2" class="headerlink" title="EC2"></a>EC2</h3><p>命名規則: m5.large (m 是機器類型名, 5 是世代數, large 是 instance 大小)<br>Note: 調整 EC2 大小，將會停機一陣子</p>
+<table>
+<thead>
+<tr>
+<th>On-Demand</th>
+<th>Reserved Instance</th>
+<th>Spot Instance</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>標準定價</td>
+<td>標準的 6.5 - 8 折不等</td>
+<td>最便宜，可能會便宜到 1 - 2 折</td>
+</tr>
+<tr>
+<td>可隨時暫停，不付費</td>
+<td>根據折數簽訂不同的年限，不用仍須走完(建議一年)</td>
+<td>可隨時暫停，或遇其他更高出價者，資源被轉移</td>
+</tr>
+</tbody></table>
+<p>可使用 Dedicate Instance(獨佔)，成本最高</p>
+<p>部署分佈方式:</p>
+<table>
+<thead>
+<tr>
+<th>Cluster Group</th>
+<th align="center">Spread Group</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>針對 performance 最佳化部署方式</td>
+<td align="center">分散式部署，較安全，不會被區域問題影響</td>
+</tr>
+</tbody></table>
+<h4 id="EC2-使用須知"><a href="#EC2-使用須知" class="headerlink" title="EC2 使用須知"></a>EC2 使用須知</h4><ol>
+<li>Public IP 需在部署成功後幾分鐘，才能在 www 上讀取到</li>
+<li>可使用 Security Group 設定權限</li>
+<li>推薦使用 User-Data 設計預先建立的環境( eg: PHP+Nginx )</li>
+</ol>
+<h2 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h2><p>選用 Relation DB 的時機: 嚴格的資料結構和品質、峰值不高的讀寫需求<br>選用 No-SQL 時機: 須能快速水平增加 DB 資源</p>
+<table>
+<thead>
+<tr>
+<th>RDS</th>
+<th>DynamoDB</th>
+<th>Amazon Elasticache</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>標準 Relation DB</td>
+<td>No-SQL</td>
+<td>Memory Cache, 像是 Redis</td>
+</tr>
+<tr>
+<td>Note: DynamoDB 可以拆分資料在不同 region，並在同一個 global 環境做讀取(可能有 1-2 秒非同步狀況)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="Aurora-DB"><a href="#Aurora-DB" class="headerlink" title="Aurora DB"></a>Aurora DB</h3><ol>
+<li>因為備份機制的因素，需至少有三台 AZ 的 Region 環境</li>
+<li>一般機器的等級，比一般 MySQL server 快約 1.3 倍，如為 r3.8xlarge 以上，則為接近 5 倍</li>
+</ol>
+<h3 id="RDS-使用技巧"><a href="#RDS-使用技巧" class="headerlink" title="RDS 使用技巧"></a>RDS 使用技巧</h3><ol>
+<li>提供 private key 加密，也能自行設定加密方式</li>
+<li>Amazon Migration Service 轉移 DB 不收費，費用取決於 Ec2</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/21/2019-04-21-green-book-of-happiness-and-our-distance-from-evil-on-the-rehabilitation-of-racial-discrimination-and-non-differential-homicide-in-taiwan/" rel="prev" title="【幸福綠皮書】和【我們與惡的距離】，談台灣的種族歧視和無差別殺人案的康復和預防">
+      <i class="fa fa-chevron-left"></i> 【幸福綠皮書】和【我們與惡的距離】，談台灣的種族歧視和無差別殺人案的康復和預防
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/28/2019-04-28-aws-architectural-junior-architect-course-notes-day2/" rel="next" title="AWS Architectural 初級架構師課程筆記 - Day2">
+      AWS Architectural 初級架構師課程筆記 - Day2 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Instruction"><span class="nav-number">1.</span> <span class="nav-text">Instruction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A4%8E%E6%9C%8D%E5%8B%99%E6%9E%B6%E6%A7%8B"><span class="nav-number">1.1.</span> <span class="nav-text">基礎服務架構</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Simplest-Architected"><span class="nav-number">2.</span> <span class="nav-text">Simplest Architected</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-vs-EBS"><span class="nav-number">2.1.</span> <span class="nav-text">S3 vs EBS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-%E7%89%B9%E6%80%A7"><span class="nav-number">2.2.</span> <span class="nav-text">S3 特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-%E4%BD%BF%E7%94%A8%E9%A0%88%E7%9F%A5"><span class="nav-number">2.3.</span> <span class="nav-text">S3 使用須知</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-%E5%83%B9%E6%A0%BC%E9%A0%88%E7%9F%A5"><span class="nav-number">2.4.</span> <span class="nav-text">S3 價格須知</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Glacier"><span class="nav-number">2.5.</span> <span class="nav-text">Glacier</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Computing"><span class="nav-number">3.</span> <span class="nav-text">Computing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AMI"><span class="nav-number">3.1.</span> <span class="nav-text">AMI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EBS-EC2-%E5%B0%88%E7%94%A8-storage"><span class="nav-number">3.2.</span> <span class="nav-text">EBS(EC2 專用 storage)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EC2"><span class="nav-number">3.3.</span> <span class="nav-text">EC2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#EC2-%E4%BD%BF%E7%94%A8%E9%A0%88%E7%9F%A5"><span class="nav-number">3.3.1.</span> <span class="nav-text">EC2 使用須知</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Database"><span class="nav-number">4.</span> <span class="nav-text">Database</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Aurora-DB"><span class="nav-number">4.1.</span> <span class="nav-text">Aurora DB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDS-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="nav-number">4.2.</span> <span class="nav-text">RDS 使用技巧</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Liu</p>
+  <div class="site-description" itemprop="description">分享各種技術筆記心得，趨勢觀察與心得</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Liu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

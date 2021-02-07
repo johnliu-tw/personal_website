@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Day1 的筆記 - AWS Architectural 初級架構師課程筆記 - Day1 NetworkVPC 層級的設計是非常重要，但時常被忘記考量的區塊。 Route53跨 region 層級的路由，至少有 2 個 name server，因此不會有 naming 失效的問題 標準網路架構圖: VPC 預設 private IP 位址為 172.16.xx.xx… 預設為 Ipv4, 且設定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AWS Architectural 初級架構師課程筆記 - Day2">
+<meta property="og:url" content="http://example.com/2019/04/28/2019-04-28-aws-architectural-junior-architect-course-notes-day2/index.html">
+<meta property="og:site_name" content="John Liu 技術中心">
+<meta property="og:description" content="Day1 的筆記 - AWS Architectural 初級架構師課程筆記 - Day1 NetworkVPC 層級的設計是非常重要，但時常被忘記考量的區塊。 Route53跨 region 層級的路由，至少有 2 個 name server，因此不會有 naming 失效的問題 標準網路架構圖: VPC 預設 private IP 位址為 172.16.xx.xx… 預設為 Ipv4, 且設定">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://user-image.logdown.io/user/26132/blog/25104/post/7830416/2YvEuERuTYS3LRXRKQ4T_%E5%BD%B1%E5%83%8F.png">
+<meta property="og:image" content="https://s1.imgs.cc/img/aaaaaAalc.png">
+<meta property="article:published_time" content="2019-04-28T00:47:00.000Z">
+<meta property="article:modified_time" content="2021-02-06T09:00:50.846Z">
+<meta property="article:author" content="John Liu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://user-image.logdown.io/user/26132/blog/25104/post/7830416/2YvEuERuTYS3LRXRKQ4T_%E5%BD%B1%E5%83%8F.png">
+
+<link rel="canonical" href="http://example.com/2019/04/28/2019-04-28-aws-architectural-junior-architect-course-notes-day2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>AWS Architectural 初級架構師課程筆記 - Day2 | John Liu 技術中心</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <h1 class="site-title">John Liu 技術中心</h1>
+    </a>
+      <p itemprop="description" style="font-size:0.75rem">管理者角度，開發者思維，初學者心態</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於 john</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>全部文章</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/04/28/2019-04-28-aws-architectural-junior-architect-course-notes-day2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AWS Architectural 初級架構師課程筆記 - Day2
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-04-28 08:47:00" itemprop="dateCreated datePublished" datetime="2019-04-28T08:47:00+08:00">2019-04-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Devops/" itemprop="url" rel="index"><span itemprop="name">Devops</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Day1 的筆記 - <a target="_blank" rel="noopener" href="http://johnliutw.logdown.com/posts/7830415/aws-architectural-junior-architect-course-notes-day1">AWS Architectural 初級架構師課程筆記 - Day1</a></p>
+<h2 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h2><p>VPC 層級的設計是非常重要，但時常被忘記考量的區塊。</p>
+<h3 id="Route53"><a href="#Route53" class="headerlink" title="Route53"></a>Route53</h3><p>跨 region 層級的路由，至少有 2 個 name server，因此不會有 naming 失效的問題</p>
+<p>標準網路架構圖:<br><img src="http://user-image.logdown.io/user/26132/blog/25104/post/7830416/2YvEuERuTYS3LRXRKQ4T_%E5%BD%B1%E5%83%8F.png" alt="影像.png"></p>
+<h3 id="VPC"><a href="#VPC" class="headerlink" title="VPC"></a>VPC</h3><ol>
+<li>預設 private IP 位址為 172.16.xx.xx…</li>
+<li>預設為 Ipv4, 且設定完後是不可被修改的。可調整為 Ipv6，且設定完後可修改。</li>
+<li>至少需橫跨 2 個 AZ。</li>
+<li>Multi Patteren 選擇</li>
+</ol>
+<ul>
+<li>多 account 單 VPC</li>
+<li>多 VPC 單 account</li>
+</ul>
+<ol start="5">
+<li>使用 peering 連接不同的 VPC，但一個 account VPC 上限值為 5</li>
+<li>可使用 VPC endpoint，跨過中間所有 gatway ，能直接取用 private subnet 的資源</li>
+</ol>
+<h3 id="Subnet"><a href="#Subnet" class="headerlink" title="Subnet"></a>Subnet</h3><ol>
+<li>支援 16 - 28，共 28 - 62xxx ips。</li>
+<li>每次切割網段，會損失四個 ip，且不能跨 AZ</li>
+</ol>
+<ul>
+<li>頭和尾(0,255)系統使用，常用在 broadcast</li>
+<li>1,2 保留做 gateway 用</li>
+<li>3 保留為緊急處理時使用</li>
+</ul>
+<ol start="3">
+<li>S3 的 ACL(訪問控制列表)在這個層級</li>
+</ol>
+<h3 id="Route-Table"><a href="#Route-Table" class="headerlink" title="Route Table"></a>Route Table</h3><ol>
+<li>預設 destination 為 10.0.0.0/16，且 target 為 local(朝向主要的 VPC)</li>
+<li>建議針對每個 subnet 設定對應的 RouteTable</li>
+<li>預設Public Subnet 10.0.0.0/24、Private Subnet 10.0.2.0/23 </li>
+<li>設定完 VPC, Subnet和 Internet Gatway 後，需記得設 routetable<br>Peering 的 RouteTable 設計:</li>
+</ol>
+<ul>
+<li>AAA VPC route table  10.5.0.0/16( 參考 BBB VPC CIDR )</li>
+<li>BBB VPC route table 10.0.0.0/16( 參考 BBB VPC CIDR )</li>
+</ul>
+<h3 id="Gateway"><a href="#Gateway" class="headerlink" title="Gateway"></a>Gateway</h3><h5 id="Internet-Gatway"><a href="#Internet-Gatway" class="headerlink" title="Internet Gatway"></a>Internet Gatway</h5><p>純粹的邏輯組件，需要連接在 VPC 上才能使用，用作 VPC 對外溝通的 Gateway。<br>在 RouteTable 上預設為 0.0.0.0</p>
+<h5 id="NAT-Gateway"><a href="#NAT-Gateway" class="headerlink" title="NAT Gateway"></a>NAT Gateway</h5><ol>
+<li>必須部署在 public subnet，是外部 user 要使用 private subnet service 的 gatway(常用在更新 patch 檔)</li>
+<li>無法支援轉 port 號的服務</li>
+<li>無提供 log，log 必須做在 VPC 層</li>
+</ol>
+<h5 id="Transit-Gateway"><a href="#Transit-Gateway" class="headerlink" title="Transit Gateway"></a>Transit Gateway</h5><p>可支援 50000 組以上的 VPCs 連接</p>
+<h3 id="IP-address"><a href="#IP-address" class="headerlink" title="IP address"></a>IP address</h3><p>Elastic 的 IP address 是浮動的，如果需要固定 IP ，則必須支付額外成本</p>
+<h3 id="Security-Group"><a href="#Security-Group" class="headerlink" title="Security Group"></a>Security Group</h3><p>預設開啟所有 Outbound，並阻擋所有 Inbound</p>
+<h3 id="ACL"><a href="#ACL" class="headerlink" title="ACL"></a>ACL</h3><p>Subnet 層級的防火牆</p>
+<p>轉換費用圖:<br><img src="https://s1.imgs.cc/img/aaaaaAalc.png" alt="影像png"></p>
+<h3 id="VPN"><a href="#VPN" class="headerlink" title="VPN"></a>VPN</h3><ol>
+<li>VPN 無法連線時，優先排除硬體問題，並檢查 VPN Log</li>
+<li>AWS 有提供穩定版的 VPN 連線(DX)，可設定一條普通、一條穩定版的架構</li>
+<li>如果 VPN 有一陣子不用，可能會被 shutdown (可設定 cronjob 固定傳送小封包)</li>
+<li>需要類似 VPC 的架構，可使用 VGW</li>
+<li>建立 VPN 簡易流程: 建立 VPN Gateway -&gt; 連接 VPC -&gt; 建立 local end 的 customer gateway -&gt; 建立 site to site 的連接</li>
+</ol>
+<h2 id="Identity"><a href="#Identity" class="headerlink" title="Identity"></a>Identity</h2><p>tips:</p>
+<ul>
+<li>建議在建立好對應的權限群組後，封存 root user 的 account</li>
+<li>最小單位為 IAM User</li>
+<li>利用 AkSk(Access &amp; secret key) 就可以透過 CLI 使用 AWS</li>
+</ul>
+<h3 id="IAM-User"><a href="#IAM-User" class="headerlink" title="IAM User"></a>IAM User</h3><ol>
+<li>沒有預設的權限</li>
+<li>透過 policy 設定( 可使用 Json 格式更新 )</li>
+<li>可設定僅能透過 console 操作或是 CLI 介面</li>
+<li>具有 switch role 功能，可測試不同使用者使用權限</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Resourced base</th>
+<th align="center">Identity base</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>根據 AWS Resource 設定權限</td>
+<td align="center">根據 IAM 規則設定權限</td>
+</tr>
+</tbody></table>
+<p>Policy Type 區分為 3 個層級: AWS Policy, Customer Policy 和 inline Policy(只有在 my account 內設定)</p>
+<h3 id="IAM-Role"><a href="#IAM-Role" class="headerlink" title="IAM Role"></a>IAM Role</h3><ol>
+<li>可給予使用者或 Service (例如 EC2)</li>
+<li>使用後，就不需替使用者設定 permission</li>
+</ol>
+<h3 id="AWS-Organization"><a href="#AWS-Organization" class="headerlink" title="AWS Organization"></a>AWS Organization</h3><p>可解決不同帳戶權限，但相同計價方式的『部門級』使用問題。</p>
+<h2 id="Elasticity-High-Availability"><a href="#Elasticity-High-Availability" class="headerlink" title="Elasticity, High Availability"></a>Elasticity, High Availability</h2><p>兩個取捨: Time 或 Volumn</p>
+<h3 id="CloudWatch"><a href="#CloudWatch" class="headerlink" title="CloudWatch"></a>CloudWatch</h3><p>類似 Azure 的 Application Insight，提供 metrics, log, alarms, events, rules, targets..etc</p>
+<h3 id="About-Data"><a href="#About-Data" class="headerlink" title="About Data"></a>About Data</h3><ol>
+<li>EBS 只能增不能減</li>
+<li>Data 的 monitor 預設是關閉的( 因資料外洩資安問題 )</li>
+<li>可使用 CloudTrail 追蹤 API Log(90天內)</li>
+</ol>
+<h3 id="Auto-Scale"><a href="#Auto-Scale" class="headerlink" title="Auto Scale"></a>Auto Scale</h3><ol>
+<li>三種方式: 預定型、動態偵測型、預測型</li>
+<li>三種 Instance type 皆支援(on-demand, reserved, spot)</li>
+<li>建議寬鬆的 CPU 偵測設定(閥值 50 比 30 好)<br>建議設定方式:<br>如果期待 5/10 12:00 需要 auto-scaling，建議在 4/20 時提交申請並設定區間為 11:30 - 12:30</li>
+</ol>
+<p>Auto-scaling 結束後的 instance 移除判斷<br>狀況:Az1 — 3 Ec2, Az2 — 2 Ec2</p>
+<ol>
+<li>優先平衡 Az 狀況(移除 Az1)</li>
+<li>確認 AMI 版本，留下最新者(因此需定期更新 cloudformation)</li>
+<li>優先刪除離下個 payment 週期較近者</li>
+</ol>
+<h5 id="RDS-的-Auto-Scale"><a href="#RDS-的-Auto-Scale" class="headerlink" title="RDS 的 Auto Scale"></a>RDS 的 Auto Scale</h5><ol>
+<li>提供 replication 方式的水平展延</li>
+<li>只有 EBS 沒有 downtime </li>
+</ol>
+<h3 id="DynamoDB"><a href="#DynamoDB" class="headerlink" title="DynamoDB"></a>DynamoDB</h3><ol>
+<li>因為計價方式緣故，建議設定限制</li>
+<li>分散式存儲，因此會儲存類似 style 的資料在同一個 partition，因此建議 date log 類型資料，做 Hash 化儲存，之後取出較有效率</li>
+</ol>
+<h3 id="Elastic-Load-Balance"><a href="#Elastic-Load-Balance" class="headerlink" title="Elastic Load Balance"></a>Elastic Load Balance</h3><ol>
+<li>需給與 DNS Name</li>
+<li>可以使用 ACM (AWS 的 SSL 憑證機制)</li>
+<li>可設定 Application 或 Network 的 load balancer </li>
+<li>可以在 public 和 private subnet 中設定</li>
+<li>Web Application 可設定在 private 中，並透過 ELB 公開，這樣攻擊者只能攻擊到 ELB。</li>
+<li>對應的 Application 要設定 ELB 的 Inbound</li>
+</ol>
+<h3 id="High-Availability"><a href="#High-Availability" class="headerlink" title="High Availability"></a>High Availability</h3><p>情境說明:<br>多個 RDS 內的 Az 可以複製 database 去 secondary server，當 original DB Crash 時，需要 60 - 120 秒時間自動切換(但 console 內可能顯示約 2 小時)</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/28/2019-04-28-aws-architectural-junior-architect-course-notes-day1/" rel="prev" title="AWS Architectural 初級架構師課程筆記 - Day1">
+      <i class="fa fa-chevron-left"></i> AWS Architectural 初級架構師課程筆記 - Day1
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/30/2019-04-30-aws-architectural-junior-architect-course-notes-day3/" rel="next" title="AWS Architectural 初級架構師課程筆記 - Day3">
+      AWS Architectural 初級架構師課程筆記 - Day3 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Network"><span class="nav-number">1.</span> <span class="nav-text">Network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Route53"><span class="nav-number">1.1.</span> <span class="nav-text">Route53</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPC"><span class="nav-number">1.2.</span> <span class="nav-text">VPC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subnet"><span class="nav-number">1.3.</span> <span class="nav-text">Subnet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Route-Table"><span class="nav-number">1.4.</span> <span class="nav-text">Route Table</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gateway"><span class="nav-number">1.5.</span> <span class="nav-text">Gateway</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Internet-Gatway"><span class="nav-number">1.5.0.1.</span> <span class="nav-text">Internet Gatway</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#NAT-Gateway"><span class="nav-number">1.5.0.2.</span> <span class="nav-text">NAT Gateway</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Transit-Gateway"><span class="nav-number">1.5.0.3.</span> <span class="nav-text">Transit Gateway</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP-address"><span class="nav-number">1.6.</span> <span class="nav-text">IP address</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Security-Group"><span class="nav-number">1.7.</span> <span class="nav-text">Security Group</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACL"><span class="nav-number">1.8.</span> <span class="nav-text">ACL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPN"><span class="nav-number">1.9.</span> <span class="nav-text">VPN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Identity"><span class="nav-number">2.</span> <span class="nav-text">Identity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IAM-User"><span class="nav-number">2.1.</span> <span class="nav-text">IAM User</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IAM-Role"><span class="nav-number">2.2.</span> <span class="nav-text">IAM Role</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AWS-Organization"><span class="nav-number">2.3.</span> <span class="nav-text">AWS Organization</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Elasticity-High-Availability"><span class="nav-number">3.</span> <span class="nav-text">Elasticity, High Availability</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CloudWatch"><span class="nav-number">3.1.</span> <span class="nav-text">CloudWatch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#About-Data"><span class="nav-number">3.2.</span> <span class="nav-text">About Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Auto-Scale"><span class="nav-number">3.3.</span> <span class="nav-text">Auto Scale</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#RDS-%E7%9A%84-Auto-Scale"><span class="nav-number">3.3.0.1.</span> <span class="nav-text">RDS 的 Auto Scale</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DynamoDB"><span class="nav-number">3.4.</span> <span class="nav-text">DynamoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elastic-Load-Balance"><span class="nav-number">3.5.</span> <span class="nav-text">Elastic Load Balance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#High-Availability"><span class="nav-number">3.6.</span> <span class="nav-text">High Availability</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Liu</p>
+  <div class="site-description" itemprop="description">分享各種技術筆記心得，趨勢觀察與心得</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Liu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

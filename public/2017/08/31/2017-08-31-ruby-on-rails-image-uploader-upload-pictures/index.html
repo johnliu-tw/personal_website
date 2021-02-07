@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="圖片上傳是非常常用到的功能，這裡推薦使用carrierwave和minimagick兩個套件，就能很簡單的處理。 step1 安裝gem123*Gemfile*gem &#39;carrierwave&#39;, &#39;~&gt; 0.10.0&#39;gem &#39;mini_magick&#39;, &#39;~&gt; 4.3&#39; 在終端機跑指令: bundle install">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ruby on Rails - Image uploader 圖片上傳">
+<meta property="og:url" content="http://example.com/2017/08/31/2017-08-31-ruby-on-rails-image-uploader-upload-pictures/index.html">
+<meta property="og:site_name" content="John Liu 技術中心">
+<meta property="og:description" content="圖片上傳是非常常用到的功能，這裡推薦使用carrierwave和minimagick兩個套件，就能很簡單的處理。 step1 安裝gem123*Gemfile*gem &#39;carrierwave&#39;, &#39;~&gt; 0.10.0&#39;gem &#39;mini_magick&#39;, &#39;~&gt; 4.3&#39; 在終端機跑指令: bundle install">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2017-08-31T07:55:00.000Z">
+<meta property="article:modified_time" content="2021-02-06T09:00:50.846Z">
+<meta property="article:author" content="John Liu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2017/08/31/2017-08-31-ruby-on-rails-image-uploader-upload-pictures/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>Ruby on Rails - Image uploader 圖片上傳 | John Liu 技術中心</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <h1 class="site-title">John Liu 技術中心</h1>
+    </a>
+      <p itemprop="description" style="font-size:0.75rem">管理者角度，開發者思維，初學者心態</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於 john</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>全部文章</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/08/31/2017-08-31-ruby-on-rails-image-uploader-upload-pictures/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ruby on Rails - Image uploader 圖片上傳
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2017-08-31 15:55:00" itemprop="dateCreated datePublished" datetime="2017-08-31T15:55:00+08:00">2017-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ruby-on-Rails/" itemprop="url" rel="index"><span itemprop="name">Ruby on Rails</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>圖片上傳是非常常用到的功能，這裡推薦使用<a target="_blank" rel="noopener" href="https://github.com/carrierwaveuploader/carrierwave">carrierwave</a>和<a target="_blank" rel="noopener" href="https://github.com/minimagick/minimagick">minimagick</a>兩個套件，就能很簡單的處理。</p>
+<h4 id="step1-安裝gem"><a href="#step1-安裝gem" class="headerlink" title="step1 安裝gem"></a>step1 安裝gem</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*Gemfile*</span><br><span class="line">gem &#39;carrierwave&#39;, &#39;~&gt; 0.10.0&#39;</span><br><span class="line">gem &#39;mini_magick&#39;, &#39;~&gt; 4.3&#39;</span><br></pre></td></tr></table></figure>
+<p>在終端機跑指令: bundle install</p>
+<h4 id="step2-設定initializers"><a href="#step2-設定initializers" class="headerlink" title="step2 設定initializers"></a>step2 設定initializers</h4><p>設定在讀取ActiveRecord(sqlite3)後，產生initializers</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*config&#x2F;initializers&#x2F;carrier_wave.rb*</span><br><span class="line">require &#39;carrierwave&#x2F;orm&#x2F;activerecord&#39;</span><br></pre></td></tr></table></figure>
+<p>終端機跑指令：rails generate uploader Image<br>產生ImageUploader，處理圖片上傳的工作</p>
+<h4 id="step3-設定image-uploader"><a href="#step3-設定image-uploader" class="headerlink" title="step3 設定image_uploader"></a>step3 設定image_uploader</h4><p>反註解image_uploader.rb 第七行，引入MiniMagick套件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*app&#x2F;uploaders&#x2F;image_uploader.rb</span><br><span class="line">include CarrierWave::MiniMagick</span><br></pre></td></tr></table></figure>
+<p>再來針對上傳後的圖片做出壓縮版本的檔案，可以反註解在35-37行的程式碼</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">version :thumb do</span><br><span class="line">  process :resize_to_fit &#x3D;&gt; [50, 50]</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>50, 50為壓縮後的解析度(50x50)，可以自由調整，讓上傳的圖片不至於太過巨大</p>
+<p>然後反註解41-43行的程式碼，建立上傳檔案類型的白名單</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def extension_white_list</span><br><span class="line">  %w(jpg jpeg gif png)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h4 id="step4-Model設定callback"><a href="#step4-Model設定callback" class="headerlink" title="step4 Model設定callback"></a>step4 Model設定callback</h4><p>假設我們有個user的model，設定好image欄位(string)儲存，<br>可以使用mount_uploader針對某個image做callback:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*app&#x2F;model&#x2F;user.rb*</span><br><span class="line"> </span><br><span class="line">mount_uploader :image, ImageUploader</span><br></pre></td></tr></table></figure>
+<p>產生的所有callback:<br>after_save :store_image!<br>before_save :write_image_identifier<br>after_commit :remove_image!, on: :destroy<br>after_commit :mark_remove_image_false, on: :update<br>after_save :store_previous_changes_for_image<br>after_commit :remove_previously_stored_image, on: :update</p>
+<h4 id="step5-設定上傳檔案的表單"><a href="#step5-設定上傳檔案的表單" class="headerlink" title="step5 設定上傳檔案的表單"></a>step5 設定上傳檔案的表單</h4><p>如果是用鷹架產生，可以更改image的欄位為：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">*app&#x2F;views&#x2F;users&#x2F;_form.html.erb</span><br><span class="line"> </span><br><span class="line">&lt;div class&#x3D;&quot;field&quot;&gt;</span><br><span class="line">  &lt;%&#x3D; f.label :image %&gt;&lt;br&gt;</span><br><span class="line">  &lt;%&#x3D; f.file_field :image %&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<p>如果用simple_form，可以改為：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*app&#x2F;views&#x2F;users&#x2F;_form.html.erb</span><br><span class="line"> </span><br><span class="line">&lt;%&#x3D; f.input :image,as: :file, label: &#39;圖片&#39; , required: true %&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="step6-設定圖片顯示"><a href="#step6-設定圖片顯示" class="headerlink" title="step6 設定圖片顯示"></a>step6 設定圖片顯示</h4><p>可透過thumb讀取壓縮後的圖檔，或是直接image.url呼叫原始圖檔</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*app&#x2F;views&#x2F;users&#x2F;show.html.erb</span><br><span class="line">&lt;p&gt;</span><br><span class="line">  &lt;strong&gt;Image:&lt;&#x2F;strong&gt;</span><br><span class="line">  &lt;%&#x3D; image_tag @user.image.thumb.url %&gt;</span><br><span class="line">&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="step7-驗證圖片大小"><a href="#step7-驗證圖片大小" class="headerlink" title="step7 驗證圖片大小"></a>step7 驗證圖片大小</h4><p>在model新增def判斷圖片大小：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">*app&#x2F;model&#x2F;user.rb</span><br><span class="line">validates_processing_of :image</span><br><span class="line">validate :image_size_validation</span><br><span class="line"> </span><br><span class="line">private</span><br><span class="line">  def image_size_validation</span><br><span class="line">    errors[:image] &lt;&lt; &quot;should be less than 500KB&quot; if image.size &gt; 0.5.megabytes</span><br><span class="line">  end</span><br></pre></td></tr></table></figure>
+<h4 id="step8-利用Homebrew安裝imagemagick"><a href="#step8-利用Homebrew安裝imagemagick" class="headerlink" title="step8 利用Homebrew安裝imagemagick"></a>step8 利用Homebrew安裝imagemagick</h4><p>利用終端機回到根目錄，輸入指令：<br>brew install imagemagick</p>
+<p>因為carrierwave使用的imagemagick是用C編程的，所以需要另外安裝<br>這樣就大功告成了！開心的使用你的image uploader吧！</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/08/27/2017-08-27-the-mythical-man-month-software-project-management-road-read-article/" rel="prev" title="人月神話:軟體專案管理之道 - 讀後文">
+      <i class="fa fa-chevron-left"></i> 人月神話:軟體專案管理之道 - 讀後文
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/09/17/2017-09-17-2472797/" rel="next" title="Ruby on Rails - Rails Api 跨網域CROS傳送">
+      Ruby on Rails - Rails Api 跨網域CROS傳送 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#step1-%E5%AE%89%E8%A3%9Dgem"><span class="nav-number">1.</span> <span class="nav-text">step1 安裝gem</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step2-%E8%A8%AD%E5%AE%9Ainitializers"><span class="nav-number">2.</span> <span class="nav-text">step2 設定initializers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step3-%E8%A8%AD%E5%AE%9Aimage-uploader"><span class="nav-number">3.</span> <span class="nav-text">step3 設定image_uploader</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step4-Model%E8%A8%AD%E5%AE%9Acallback"><span class="nav-number">4.</span> <span class="nav-text">step4 Model設定callback</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step5-%E8%A8%AD%E5%AE%9A%E4%B8%8A%E5%82%B3%E6%AA%94%E6%A1%88%E7%9A%84%E8%A1%A8%E5%96%AE"><span class="nav-number">5.</span> <span class="nav-text">step5 設定上傳檔案的表單</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step6-%E8%A8%AD%E5%AE%9A%E5%9C%96%E7%89%87%E9%A1%AF%E7%A4%BA"><span class="nav-number">6.</span> <span class="nav-text">step6 設定圖片顯示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step7-%E9%A9%97%E8%AD%89%E5%9C%96%E7%89%87%E5%A4%A7%E5%B0%8F"><span class="nav-number">7.</span> <span class="nav-text">step7 驗證圖片大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step8-%E5%88%A9%E7%94%A8Homebrew%E5%AE%89%E8%A3%9Dimagemagick"><span class="nav-number">8.</span> <span class="nav-text">step8 利用Homebrew安裝imagemagick</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Liu</p>
+  <div class="site-description" itemprop="description">分享各種技術筆記心得，趨勢觀察與心得</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Liu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

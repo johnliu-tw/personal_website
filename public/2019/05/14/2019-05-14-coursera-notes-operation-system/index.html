@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="IOps aux | grep “Python”| 符號，會將左邊指令所得到的結果文字，『輸出』到右邊的指令，當作基本文字資料。例如這段指令，會將所有程序抓出，並輸出給右邊去搜尋含有 “Python” 這個字的指令細節。 指令: echo cool &gt;&gt; test.txt將 cool 這個詞，寫入在 test.txt 檔的最後方 User privilege-rwxrw-r–這是一個">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Coursera 筆記 - Operation System">
+<meta property="og:url" content="http://example.com/2019/05/14/2019-05-14-coursera-notes-operation-system/index.html">
+<meta property="og:site_name" content="John Liu 技術中心">
+<meta property="og:description" content="IOps aux | grep “Python”| 符號，會將左邊指令所得到的結果文字，『輸出』到右邊的指令，當作基本文字資料。例如這段指令，會將所有程序抓出，並輸出給右邊去搜尋含有 “Python” 這個字的指令細節。 指令: echo cool &gt;&gt; test.txt將 cool 這個詞，寫入在 test.txt 檔的最後方 User privilege-rwxrw-r–這是一個">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2019-05-14T02:01:00.000Z">
+<meta property="article:modified_time" content="2021-02-06T09:00:50.841Z">
+<meta property="article:author" content="John Liu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2019/05/14/2019-05-14-coursera-notes-operation-system/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>Coursera 筆記 - Operation System | John Liu 技術中心</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <h1 class="site-title">John Liu 技術中心</h1>
+    </a>
+      <p itemprop="description" style="font-size:0.75rem">管理者角度，開發者思維，初學者心態</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於 john</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>全部文章</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/05/14/2019-05-14-coursera-notes-operation-system/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Coursera 筆記 - Operation System
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-05-14 10:01:00" itemprop="dateCreated datePublished" datetime="2019-05-14T10:01:00+08:00">2019-05-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="IO"><a href="#IO" class="headerlink" title="IO"></a><strong>IO</strong></h3><h4 id="ps-aux-grep-“Python”"><a href="#ps-aux-grep-“Python”" class="headerlink" title="ps aux | grep “Python”"></a>ps aux | grep “Python”</h4><p>| 符號，會將左邊指令所得到的結果文字，『輸出』到右邊的指令，當作基本文字資料。<br>例如這段指令，會將所有程序抓出，並輸出給右邊去搜尋含有 “Python” 這個字的指令細節。</p>
+<h4 id="指令-echo-cool-gt-gt-test-txt"><a href="#指令-echo-cool-gt-gt-test-txt" class="headerlink" title="指令: echo cool &gt;&gt; test.txt"></a>指令: echo cool &gt;&gt; test.txt</h4><p>將 cool 這個詞，寫入在 test.txt 檔的最後方</p>
+<h3 id="User-privilege"><a href="#User-privilege" class="headerlink" title="User privilege"></a><strong>User privilege</strong></h3><h4 id="rwxrw-r–"><a href="#rwxrw-r–" class="headerlink" title="-rwxrw-r–"></a>-rwxrw-r–</h4><p>這是一個 Linux 中，呼叫一個檔案時會顯示的使用者權限表，<br>第一個詞 “-” ，代表了這是一般的檔案，<br>第二個詞組 “rwx”，代表一般 user 的權限，第三個詞組 “rw-“ 代表了 user group 的權限，<br>最後一個詞組 “r–” 代表了其他 user 的權限。</p>
+<h4 id="chmod-777-Desktop"><a href="#chmod-777-Desktop" class="headerlink" title="chmod 777 Desktop"></a>chmod 777 Desktop</h4><p>X的數字是 1, W的數字是 2 , R的數字是 4, 加起來去決定權限值，第一個數字是 User 的, 再來 User Group, 最後 Other User</p>
+<h4 id="chmod-2775-test"><a href="#chmod-2775-test" class="headerlink" title="chmod 2775 test"></a>chmod 2775 test</h4><p>第一個詞 2， 是 setgid，讓 test 被執行時，group 是用此檔案創建的 group 身份運行。<br>如果設定為 4 是 setuid，在 ls -lh 看權限目錄時，該檔案的 x 會由 s 替代<br>如果設定為 1 ，則為 sticky bit，會讓該檔案的權限有個 “t” ，指的是讓所有使用者都可使用，但只有擁有者可以刪除或更名。</p>
+<h4 id="chmod-g-w-file-name"><a href="#chmod-g-w-file-name" class="headerlink" title="chmod g+w file_name"></a>chmod g+w file_name</h4><p>g 是 group, u 是 user, o 是 other, a 是 everyone，+w 則為新增權限類別</p>
+<h3 id="Package"><a href="#Package" class="headerlink" title="Package"></a><strong>Package</strong></h3><h4 id="PPA"><a href="#PPA" class="headerlink" title="PPA"></a>PPA</h4><p>讓 Linux 使用者可以在套件有更新時，自動更新</p>
+<h3 id="File-System"><a href="#File-System" class="headerlink" title="File System"></a><strong>File System</strong></h3><h4 id="Format"><a href="#Format" class="headerlink" title="Format"></a>Format</h4><p>NTF : Windows file system<br>Ext4 : Ubuntu file system<br>FAT32 : USB File system，適用於每個 OS( 單檔最大為 4 GB, system 最大容量為 32 GB )</p>
+<h4 id="Disk"><a href="#Disk" class="headerlink" title="Disk"></a>Disk</h4><p>Disk —&gt; Partition(可以使用不同的 file system) —&gt; volume </p>
+<h4 id="Partition-Table"><a href="#Partition-Table" class="headerlink" title="Partition Table"></a>Partition Table</h4><p>MBR: volume 要少與 2 TB<br>GPT: volume 沒有任何大小限制</p>
+<p>新增硬碟流程:<br>插入硬碟 —&gt; 格式化 file system —&gt; partition 硬碟 —&gt;安裝 file system</p>
+<h4 id="Pages"><a href="#Pages" class="headerlink" title="Pages"></a>Pages</h4><p>硬碟中的 Block data 叫做 Pages( swap in Linux ), 這可以把資料暫時的狀態儲存在記憶體中, 在電腦 Crash 時，可以在 reboot 後復原。</p>
+<h4 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h4><p>soft link: 直接連接到原始檔<br>hard link: 連接到Inode中，紀錄連結到原始檔的位置<br>Linux 中，原始檔會紀錄有多少的 hard link，可以確保有多少相似的檔案在系統中</p>
+<h3 id="Process-and-Log"><a href="#Process-and-Log" class="headerlink" title="Process and Log"></a><strong>Process and Log</strong></h3><h4 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h4><p>Windows 的 child 和 parent process 都可以獨立存在，但 Linux 的 child process 如果沒了 parent process ，就會消失。<br>/proc/{pid} 可以查看 Linux 中的 process 位資訊。</p>
+<h4 id="Kill"><a href="#Kill" class="headerlink" title="Kill"></a>Kill</h4><p>Kill 不是專門砍掉 process 的指令，而是具備傳送暫停、中止、重啟指令的功能。</p>
+<h4 id="Loh"><a href="#Loh" class="headerlink" title="Loh"></a>Loh</h4><p>/var/log/syslog 通常包含全面性的 system log</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/30/2019-04-30-aws-architectural-junior-architect-course-notes-day3/" rel="prev" title="AWS Architectural 初級架構師課程筆記 - Day3">
+      <i class="fa fa-chevron-left"></i> AWS Architectural 初級架構師課程筆記 - Day3
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/05/20/2019-05-20-linux-advanced-instructions/" rel="next" title="Linux 進階指令與工具">
+      Linux 進階指令與工具 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#IO"><span class="nav-number">1.</span> <span class="nav-text">IO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ps-aux-grep-%E2%80%9CPython%E2%80%9D"><span class="nav-number">1.1.</span> <span class="nav-text">ps aux | grep “Python”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4-echo-cool-gt-gt-test-txt"><span class="nav-number">1.2.</span> <span class="nav-text">指令: echo cool &gt;&gt; test.txt</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#User-privilege"><span class="nav-number">2.</span> <span class="nav-text">User privilege</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#rwxrw-r%E2%80%93"><span class="nav-number">2.1.</span> <span class="nav-text">-rwxrw-r–</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#chmod-777-Desktop"><span class="nav-number">2.2.</span> <span class="nav-text">chmod 777 Desktop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#chmod-2775-test"><span class="nav-number">2.3.</span> <span class="nav-text">chmod 2775 test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#chmod-g-w-file-name"><span class="nav-number">2.4.</span> <span class="nav-text">chmod g+w file_name</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Package"><span class="nav-number">3.</span> <span class="nav-text">Package</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PPA"><span class="nav-number">3.1.</span> <span class="nav-text">PPA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#File-System"><span class="nav-number">4.</span> <span class="nav-text">File System</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Format"><span class="nav-number">4.1.</span> <span class="nav-text">Format</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Disk"><span class="nav-number">4.2.</span> <span class="nav-text">Disk</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Partition-Table"><span class="nav-number">4.3.</span> <span class="nav-text">Partition Table</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pages"><span class="nav-number">4.4.</span> <span class="nav-text">Pages</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Link"><span class="nav-number">4.5.</span> <span class="nav-text">Link</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Process-and-Log"><span class="nav-number">5.</span> <span class="nav-text">Process and Log</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Process"><span class="nav-number">5.1.</span> <span class="nav-text">Process</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kill"><span class="nav-number">5.2.</span> <span class="nav-text">Kill</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Loh"><span class="nav-number">5.3.</span> <span class="nav-text">Loh</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Liu</p>
+  <div class="site-description" itemprop="description">分享各種技術筆記心得，趨勢觀察與心得</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Liu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

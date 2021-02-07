@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+<meta property="og:type" content="website">
+<meta property="og:title" content="John Liu 技術中心">
+<meta property="og:url" content="http://example.com/page/4/index.html">
+<meta property="og:site_name" content="John Liu 技術中心">
+<meta property="og:description" content="分享各種技術筆記心得，趨勢觀察與心得">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:author" content="John Liu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/page/4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>John Liu 技術中心 - 管理者角度，開發者思維，初學者心態</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <h1 class="site-title">John Liu 技術中心</h1>
+    </a>
+      <p itemprop="description" style="font-size:0.75rem">管理者角度，開發者思維，初學者心態</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於 john</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>全部文章</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/09/28/2017-09-28--ruby-on-rails-batch-bulk-batch-update/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/09/28/2017-09-28--ruby-on-rails-batch-bulk-batch-update/" class="post-title-link" itemprop="url"> Ruby on Rails - Batch, Bulk, 批次更新(JavaScript輔助)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2017-09-28 17:50:00" itemprop="dateCreated datePublished" datetime="2017-09-28T17:50:00+08:00">2017-09-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ruby-on-Rails/" itemprop="url" rel="index"><span itemprop="name">Ruby on Rails</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近有個需求，是要針對多筆資料，透過打勾選取後，做批次active或inactive。<br>雖然是RoR的專案，但我也使用javascript輔助我實作此功能。<br>假定我有一組鷹架產生的Papermodel、controller和view：</p>
+<h2 id="1-新增button-tag"><a href="#1-新增button-tag" class="headerlink" title="1 新增button tag"></a>1 新增button tag</h2><p>我寫了原生的html code，因為我還是比較習慣這種方式產生簡單的tag</p>
+<figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">index.html.erb</span></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-success&quot;</span> <span class="attr">id</span>=<span class="string">&quot;batch-active&quot;</span>&gt;</span>批次有效<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-danger&quot;</span> <span class="attr">id</span>=<span class="string">&quot;batch-inactive&quot;</span>&gt;</span>批次無效<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="2-實作出checkbox儲存資料的id"><a href="#2-實作出checkbox儲存資料的id" class="headerlink" title="2 實作出checkbox儲存資料的id"></a>2 實作出checkbox儲存資料的id</h2><figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">index.html.erb</span></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">class</span>=<span class="string">&quot;paper_id&quot;</span> <span class="attr">value</span>=&lt;%=</span></span><span class="ruby"> paper.id </span><span class="xml"><span class="tag">%&gt;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-撰寫Ajax去做POST更新"><a href="#3-撰寫Ajax去做POST更新" class="headerlink" title="3 撰寫Ajax去做POST更新"></a>3 撰寫Ajax去做POST更新</h2><p>將js檔放入public資料夾，並僅在想引入該功能的頁面import js檔，<br>那Rails專案就僅會在該頁使用此js，而不會在每頁都載入此js。</p>
+<p>再來Ajax的方法是POST資料到 /papers/:id 的route<br>而POST的Data包含：1.要更新的資料 2.web verb: put</p>
+<p>用此兩段式更新的方法，是因為Rails更新資料時會設立一個token避免資料庫受到傷害。<br>而此方法會產生token pass過Rails的檢查。<br>並最後在ajax complete後再callback自己，<br>已避免迴圈導致的異步化問題，會對資料庫過快做存取。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public/js/batchUpdate.js</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">ajaxBatchUpdate</span>(<span class="params">paper_ids,active,count</span>)</span>&#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        type: <span class="string">&quot;POST&quot;</span>,</span><br><span class="line">        url: <span class="string">&quot;/papers/&quot;</span>+paper_ids[count],</span><br><span class="line">        dataType: <span class="string">&quot;script&quot;</span>,</span><br><span class="line">        contentType: <span class="string">&#x27;application/json&#x27;</span>,</span><br><span class="line">        data: <span class="built_in">JSON</span>.stringify(&#123; <span class="attr">active</span>:active, <span class="attr">_method</span>:<span class="string">&#x27;put&#x27;</span> &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">        .complete(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">          <span class="keyword">if</span>(count&lt; paper_ids.length-<span class="number">1</span>)&#123;</span><br><span class="line">            count += <span class="number">1</span>;</span><br><span class="line">            ajaxBatchUpdate(paper_ids,active,count);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-更新路由"><a href="#4-更新路由" class="headerlink" title="4 更新路由"></a>4 更新路由</h2><p>替路由papers/:id 新增post方法，並指向update方法</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">route.rb</span><br><span class="line"> </span><br><span class="line">post <span class="string">&#x27;papers/:id&#x27;</span>, <span class="symbol">:to</span> =&gt; <span class="string">&#x27;papers#update&#x27;</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-DOM綁定event"><a href="#5-DOM綁定event" class="headerlink" title="5 DOM綁定event"></a>5 DOM綁定event</h2><p>功能完成</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;#batch-active&quot;</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> paper_ids = [];</span><br><span class="line">    <span class="keyword">var</span> active = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">0</span>;</span><br><span class="line">    $(<span class="string">&quot;.paper_id:checked&quot;</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      paper_ids.push($(<span class="built_in">this</span>).val());</span><br><span class="line">    &#125;);</span><br><span class="line">    ajaxBatchUpdate(paper_ids,active,count)</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/09/17/2017-09-17-2472797/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/09/17/2017-09-17-2472797/" class="post-title-link" itemprop="url">Ruby on Rails - Rails Api 跨網域CROS傳送</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2017-09-17 17:03:00" itemprop="dateCreated datePublished" datetime="2017-09-17T17:03:00+08:00">2017-09-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ruby-on-Rails/" itemprop="url" rel="index"><span itemprop="name">Ruby on Rails</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在很多的專案裡，我們後端會需要開API，把資料直接傳給前端，<br>尤其在前端Framwork功能越來越強大，能擔綱越多後端任務的情況下。<br>在Rails的API專案中，想要把已開出的資料跨網域傳遞，<br>又不需要接收資料端的瀏覽器打開允許CROS的功能，非常簡單。<br>首先先在Gemfile中加上:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem &#39;rack-cors&#39;, :require &#x3D;&gt; &#39;rack&#x2F;cors&#39;</span><br></pre></td></tr></table></figure>
+<p>下指令bundle install。<br>再來打開檔案目錄config/initializers下的cors.rb<br>反註解以下此段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Rails.application.config.middleware.insert_before 0, Rack::Cors do</span><br><span class="line">   allow do</span><br><span class="line">     origins &#39;*&#39;</span><br><span class="line"></span><br><span class="line">     resource &#39;*&#39;,</span><br><span class="line">       headers: :any,</span><br><span class="line">       methods: [:get, :post, :put, :patch, :delete, :options, :head]</span><br><span class="line">   end</span><br><span class="line"> end</span><br></pre></td></tr></table></figure>
+<p>再來將origins裡的*，換成要接data的網域domain即可。<br>例如: localhost:3000,127.0.0.1:3000等等</p>
+<p>—-20171125更新—-</p>
+<p>也可以不取消 origins 裡的 * 字號，<br>這樣的話，如果呼叫方是手機端 App ，也能成功傳遞資料。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/08/31/2017-08-31-ruby-on-rails-image-uploader-upload-pictures/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/08/31/2017-08-31-ruby-on-rails-image-uploader-upload-pictures/" class="post-title-link" itemprop="url">Ruby on Rails - Image uploader 圖片上傳</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2017-08-31 15:55:00" itemprop="dateCreated datePublished" datetime="2017-08-31T15:55:00+08:00">2017-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ruby-on-Rails/" itemprop="url" rel="index"><span itemprop="name">Ruby on Rails</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>圖片上傳是非常常用到的功能，這裡推薦使用<a target="_blank" rel="noopener" href="https://github.com/carrierwaveuploader/carrierwave">carrierwave</a>和<a target="_blank" rel="noopener" href="https://github.com/minimagick/minimagick">minimagick</a>兩個套件，就能很簡單的處理。</p>
+<h4 id="step1-安裝gem"><a href="#step1-安裝gem" class="headerlink" title="step1 安裝gem"></a>step1 安裝gem</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*Gemfile*</span><br><span class="line">gem &#39;carrierwave&#39;, &#39;~&gt; 0.10.0&#39;</span><br><span class="line">gem &#39;mini_magick&#39;, &#39;~&gt; 4.3&#39;</span><br></pre></td></tr></table></figure>
+<p>在終端機跑指令: bundle install</p>
+<h4 id="step2-設定initializers"><a href="#step2-設定initializers" class="headerlink" title="step2 設定initializers"></a>step2 設定initializers</h4><p>設定在讀取ActiveRecord(sqlite3)後，產生initializers</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*config&#x2F;initializers&#x2F;carrier_wave.rb*</span><br><span class="line">require &#39;carrierwave&#x2F;orm&#x2F;activerecord&#39;</span><br></pre></td></tr></table></figure>
+<p>終端機跑指令：rails generate uploader Image<br>產生ImageUploader，處理圖片上傳的工作</p>
+<h4 id="step3-設定image-uploader"><a href="#step3-設定image-uploader" class="headerlink" title="step3 設定image_uploader"></a>step3 設定image_uploader</h4><p>反註解image_uploader.rb 第七行，引入MiniMagick套件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*app&#x2F;uploaders&#x2F;image_uploader.rb</span><br><span class="line">include CarrierWave::MiniMagick</span><br></pre></td></tr></table></figure>
+<p>再來針對上傳後的圖片做出壓縮版本的檔案，可以反註解在35-37行的程式碼</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">version :thumb do</span><br><span class="line">  process :resize_to_fit &#x3D;&gt; [50, 50]</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>50, 50為壓縮後的解析度(50x50)，可以自由調整，讓上傳的圖片不至於太過巨大</p>
+<p>然後反註解41-43行的程式碼，建立上傳檔案類型的白名單</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def extension_white_list</span><br><span class="line">  %w(jpg jpeg gif png)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h4 id="step4-Model設定callback"><a href="#step4-Model設定callback" class="headerlink" title="step4 Model設定callback"></a>step4 Model設定callback</h4><p>假設我們有個user的model，設定好image欄位(string)儲存，<br>可以使用mount_uploader針對某個image做callback:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*app&#x2F;model&#x2F;user.rb*</span><br><span class="line"> </span><br><span class="line">mount_uploader :image, ImageUploader</span><br></pre></td></tr></table></figure>
+<p>產生的所有callback:<br>after_save :store_image!<br>before_save :write_image_identifier<br>after_commit :remove_image!, on: :destroy<br>after_commit :mark_remove_image_false, on: :update<br>after_save :store_previous_changes_for_image<br>after_commit :remove_previously_stored_image, on: :update</p>
+<h4 id="step5-設定上傳檔案的表單"><a href="#step5-設定上傳檔案的表單" class="headerlink" title="step5 設定上傳檔案的表單"></a>step5 設定上傳檔案的表單</h4><p>如果是用鷹架產生，可以更改image的欄位為：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">*app&#x2F;views&#x2F;users&#x2F;_form.html.erb</span><br><span class="line"> </span><br><span class="line">&lt;div class&#x3D;&quot;field&quot;&gt;</span><br><span class="line">  &lt;%&#x3D; f.label :image %&gt;&lt;br&gt;</span><br><span class="line">  &lt;%&#x3D; f.file_field :image %&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<p>如果用simple_form，可以改為：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*app&#x2F;views&#x2F;users&#x2F;_form.html.erb</span><br><span class="line"> </span><br><span class="line">&lt;%&#x3D; f.input :image,as: :file, label: &#39;圖片&#39; , required: true %&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="step6-設定圖片顯示"><a href="#step6-設定圖片顯示" class="headerlink" title="step6 設定圖片顯示"></a>step6 設定圖片顯示</h4><p>可透過thumb讀取壓縮後的圖檔，或是直接image.url呼叫原始圖檔</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*app&#x2F;views&#x2F;users&#x2F;show.html.erb</span><br><span class="line">&lt;p&gt;</span><br><span class="line">  &lt;strong&gt;Image:&lt;&#x2F;strong&gt;</span><br><span class="line">  &lt;%&#x3D; image_tag @user.image.thumb.url %&gt;</span><br><span class="line">&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="step7-驗證圖片大小"><a href="#step7-驗證圖片大小" class="headerlink" title="step7 驗證圖片大小"></a>step7 驗證圖片大小</h4><p>在model新增def判斷圖片大小：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">*app&#x2F;model&#x2F;user.rb</span><br><span class="line">validates_processing_of :image</span><br><span class="line">validate :image_size_validation</span><br><span class="line"> </span><br><span class="line">private</span><br><span class="line">  def image_size_validation</span><br><span class="line">    errors[:image] &lt;&lt; &quot;should be less than 500KB&quot; if image.size &gt; 0.5.megabytes</span><br><span class="line">  end</span><br></pre></td></tr></table></figure>
+<h4 id="step8-利用Homebrew安裝imagemagick"><a href="#step8-利用Homebrew安裝imagemagick" class="headerlink" title="step8 利用Homebrew安裝imagemagick"></a>step8 利用Homebrew安裝imagemagick</h4><p>利用終端機回到根目錄，輸入指令：<br>brew install imagemagick</p>
+<p>因為carrierwave使用的imagemagick是用C編程的，所以需要另外安裝<br>這樣就大功告成了！開心的使用你的image uploader吧！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/08/27/2017-08-27-the-mythical-man-month-software-project-management-road-read-article/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/08/27/2017-08-27-the-mythical-man-month-software-project-management-road-read-article/" class="post-title-link" itemprop="url">人月神話:軟體專案管理之道 - 讀後文</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2017-08-27 12:00:00" itemprop="dateCreated datePublished" datetime="2017-08-27T12:00:00+08:00">2017-08-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Viewpoint/" itemprop="url" rel="index"><span itemprop="name">Viewpoint</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>人月神話：軟體專案管理之道，一本40年前就完工的著作，到了現代，其影響力仍是十分巨大，<br>作者Frederick P. Brooks，在參與IBM System/360開發工作，並擔任專案經理後，思考了許多關於軟體開發工程的本質，並寫下了這本書。<br>在閱讀的過程，可能因為經驗的差距，以及科技的革新，有些觀點和解方不為現在的我所接受，但我仍是把它們列入我遇到問題時，可參考的一些要點，不過就不是這個心得主要的核心目的。<br>第一次閱讀完後，我整理了一些我覺得非常受用的觀念，還有引入一些我對敏捷開發的見解，下去混著思考，來跟大家分享：</p>
+<h2 id="1-軟體工程的時間安排"><a href="#1-軟體工程的時間安排" class="headerlink" title="1.軟體工程的時間安排"></a>1.軟體工程的時間安排</h2><p>在傳統的軟體工程上，總是設定了許多工時會用在“開發”，但相信各位如果有參與過軟體開發，或就是負責開發的工程師，就會發現其實測試有機會會花接近，甚至超過開發的時間，在書中，作者分享了他認為軟體工程的時間安排比重：<br>1/3 規劃<br>1/6 寫程式<br>1/4 組建測試，早期系統測試<br>1/4 系統測試<br>我十分認同寫程式不會是最主要的軟體工時耗費所在，不過在現今的科技能力，以及“敏捷開發”框架的流行下，我認為第三階段的組建測試及早期系統測試，會變成單元測試，或是使用如selenium等自動化測試工具，來讓“程式測試程式”，因此耗費的工時將不如早期的工時，也能協助後期系統測試或客戶測試時間的壓縮。</p>
+<h2 id="2-人月估時法的不適用"><a href="#2-人月估時法的不適用" class="headerlink" title="2.人月估時法的不適用"></a>2.人月估時法的不適用</h2><p>這是扣緊本書書名的一個概念，一些較無軟體底子的老闆可能會有這種想法：當專案的時程告急時，增加人手就能加快專案進行。<br>曾經我也有這樣的想法，直到我漸漸接觸軟體工程，並在軟體工程管理上吃了一些虧，跌了幾次跤。這樣的概念有問題的地方，是因為軟體工程有個特性：連續性。<br>可以舉個簡單的例子來說明連續性，當有個專案需要開發一個龐大的功能，並安排了2個工程師負責，但當專案有點延遲，因此老闆新派了一位工程師來協助專案，但問題來了，這個功能是難以切割而且需要前後設計邏輯完美穩合，因此新工程師會需要花時間了解要怎麼參與目前的工作狀況，以及熟悉這個專案的coding style和各種用到的全域變數或函式，更糟的是，原本的2位工程師會需要花心神來讓新工程師進入狀況，並切割出各自能夠負責的部份以及如何串接，更別說在測試階段會遇到的除錯問題。<br>可以說是類似pair programming中的共同開發情境，但不是“共同開發同一頁”，而是“分別開發同一頁”，大家想必能知道那有多頭痛了。<br>因此作者後來也有強調，專案在增加人手時，也必須保證舊有工程師具有支援新人的意願，否則效果會更加不良。</p>
+<h2 id="3-一個完美的開發團隊"><a href="#3-一個完美的開發團隊" class="headerlink" title="3.一個完美的開發團隊"></a>3.一個完美的開發團隊</h2><p>作者以“外科手術團隊”來比喻一個完美的軟體開發團隊，他提到，大系統內的每個元件拆分為一個團隊負責，而且由該團隊一人主導開發，其他支援該人開發，而在現今流行的架構下，以web開發為例，我認為大致可以這樣區分：<br>後端工程師、前端工程師、IT、測試工程師、效能優化工程師、團隊領導<br>而在敏捷開發的框架下，團隊領導會由scrum master和product owner分擔，效能優化工程師可能不是必要的成員，且大致上可由前後端工程師各自負責各自端的優化，而IT和測試工程師可在專案時程和公司體質許可下，多個共用1個即可。</p>
+<h2 id="4-系統需具備概念整體性"><a href="#4-系統需具備概念整體性" class="headerlink" title="4.系統需具備概念整體性"></a>4.系統需具備概念整體性</h2><p>作者十分強調系統具備整體概念的重要性，所以建議由1位系統架構師，設計整個軟體的工程。<br>概念整體性如果不足，是很有可能發生每個環節都有偏差，最後的成品四不像，沒人滿意的狀況，在當時可能受於技術限制，因此對於設計者的數量有所限制，但在雲端文件共享、共編發達的現代，我認為有個清楚的共用文件檔案目錄是非常重要的，這樣團隊成員才能完整共享團隊共有的知識，大家接受同樣的資訊在工作。</p>
+<h2 id="5-開發費力程度的計算"><a href="#5-開發費力程度的計算" class="headerlink" title="5.開發費力程度的計算"></a>5.開發費力程度的計算</h2><p>開發費力程度 = 常數 x (指令數量)1.5次方。<br>指令的數量可以說是程式碼的行數，不是說10行10分鐘，100行只要100分鐘就能完成，這是非常可笑的評估。</p>
+<h2 id="6-軟體開發專案的所需文件"><a href="#6-軟體開發專案的所需文件" class="headerlink" title="6.軟體開發專案的所需文件"></a>6.軟體開發專案的所需文件</h2><p>軟體開發專案所需文件 : 目標、產品規格、時程、預算、配置、組織編制。<br>但在敏捷開發的框架下，軟體開發專案的文件不是被強調，甚至是不需要的部份，但我認為軟體開發專案文件仍有存在的價值，像是讓開發專案外的人，能在閱讀文件時，大致了解團隊的工作進度或狀況，或是在有部分爭議時，對於功能設計或是工作配置有所疑義時，會有個正式文件可以參考。</p>
+<h2 id="7-模組化建構的開發模式"><a href="#7-模組化建構的開發模式" class="headerlink" title="7.模組化建構的開發模式"></a>7.模組化建構的開發模式</h2><p>這個概念是在人月神話出版20年後的90年代版本提到的概念，主要是提到做出核心架構，再建立副迴圈方式，模組化建構專案，並可提前測試。<br>這非常吻合最近逐漸火紅的軟體架構：微服務(microservice)，以單一責任與功能的小型功能區塊為基礎，利用模組化的方式組合出複雜的大型應用程式，因此我非常訝異作者在90年代就窺見此類開發方法的可行性。</p>
+<h2 id="8-軟體開發工程問題的本質"><a href="#8-軟體開發工程問題的本質" class="headerlink" title="8.軟體開發工程問題的本質"></a>8.軟體開發工程問題的本質</h2><p>作者提到軟體開發的問題有4個最重要的特性：複雜性、配合性、易變性和隱蔽性，而資料的呈現方式就是程式設計的本質。<br>複雜性是要解決軟體概念有許多細節流程，難以簡單的用一張一張二維圖或三維模型簡單說明清楚。<br>配合性則是強調許多其中的概念都有彼此相依的問題，像是會員系統伴隨著資安或權限分群的問題。<br>易變性會歸因為商業應用方式的變化，由於這世界變化速度極快，商業上為了因應變化會做出許多調整，使用的軟體也會需要配合這樣的變化而改變原有的設計概念。<br>隱蔽性說明了軟體本身看不到、摸不著、難以呈現結構的特性<br>資料如何呈現的部分，我想不是資料視覺化的議題，那是更高層次的問題，軟體工程的資料如何呈現，我認為比較接近於如：會員留言資料要如何呈現、課程資料要怎麼排版設計或是商品要怎麼在所屬的目錄頁出現等問題，而這也是我們在開發中不停解決的問題。</p>
+<p>由於我僅閱讀完一次，且實務經驗仍有所不足，如你有任何經驗回饋或想法，再請你不吝指教。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/08/03/2017-08-03-version-control-new-web-site-version-control-svn-or-git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/08/03/2017-08-03-version-control-new-web-site-version-control-svn-or-git/" class="post-title-link" itemprop="url">版本控制 - 新手入門網站開發版本控制(Git or SVN) </a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2017-08-03 16:37:00" itemprop="dateCreated datePublished" datetime="2017-08-03T16:37:00+08:00">2017-08-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>相信對於版本控制有所涉獵的朋友，一定對於 <strong>Git</strong> 這個最大宗的版控工具非常嫻熟。<br>但在 Git 風靡世界前，網站開發的世界是由 <strong>SVN</strong> 為主流的版控工具，並搭配 <strong>tortoiseSVN</strong> 這個類似 Github Desktop App的應用程式，很方便的圖形化介面版控。<br>而在SVN 的版控世界，因為工作原因有接觸到很不錯的入門版本管理架構，<br>對於網站產品剛起步的專案或是公司，敝人認為或許是一個不錯可參考的solution。</p>
+<p>以下是隨意用繪圖軟體拉的版本控制架構:<br><img src="http://user-image.logdown.io/user/26132/blog/25104/post/2134412/fzAXkeFxQ6W5d2wj500w_%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202017-08-04%20%E4%B8%8A%E5%8D%8812.52.23.png" alt="螢幕快照 2017-08-04 上午12.52.23.png"></p>
+<p>在這個版控架構內，總共有四個大的管理層級: Master、Trunk、Develop和Tag，在部署上我們總共有1個正式環境和1個測試環境(Test)和1個開發環境(Dev)。<br>我們就先從程式碼的最初 - Develop版本開始。</p>
+<h2 id="Develop"><a href="#Develop" class="headerlink" title="Develop"></a>Develop</h2><p>在Develop這個管理層級裡，會按照開發或部署上版的版次區分。<br>在上方的參考圖中，就標示了有”1.1”、”1.2”和”2.1”三個版本，由於上版後會有測試和除錯階段，因此開發上可能不是線性的，所以會有同時間開發3個版次的可能。<br>而在每個版本開發完後，會把Trunk的程式碼和開發完版本的程式碼Merge，並清除Conflict，確定沒有衝突後，就會進入下一個階段 - Trunk。</p>
+<h2 id="Trunk"><a href="#Trunk" class="headerlink" title="Trunk"></a>Trunk</h2><p>Trunk的意思是主線，這個版本代表的是”穩定的公共版本”，也就是說，在這個版本的程式碼都是屬於沒有Crash問題，經過Code Review檢視過的程式碼，因此在把最新開發完版本的程式碼倒進 Trunk 前，我們會先把Trunk的程式碼Merge進Develop中，確保合併公共版本後沒有問題。<br>在把Develop的程式碼Merge進Trunk並Commit後，我們通常會把這部分的程式碼部署在 Dev 環境，讓工程師們有個最新的參考以及讓Engineer Lead可以做第一步實機測試。</p>
+<h2 id="Master"><a href="#Master" class="headerlink" title="Master"></a>Master</h2><p>Master 是“目前上線”的版本，會部署在正式環境和測試環境，通常在Dev環境測試沒問題後，會把程式碼從Trunk Merge進Master，並且部署到測試環境做需求端PM或一般使用者的測試，等到測試完畢，Bug都修完後，就能部署到正式環境。</p>
+<h2 id="Tag"><a href="#Tag" class="headerlink" title="Tag"></a>Tag</h2><p>Tag 裡的每個版本，基本上是對應 Develop 的每個版本，由於 Develop 的不穩定性以及老舊版本刪除的可能性，我們會利用 Tag 去替每個版次做備份，而做的時機約在部署上正式環境，一定時間內沒有任何問題的情況下做備份。<br>而 Tag 裡的程式碼是來自於該次部署時的 Trunk，因為是穩定的公共版本。</p>
+<p>以上是在公司負責版控幾個月後的一些整理心得，希望讓開發版控入門的新手會有更清楚的架構，<br>也歡迎討論會有什麼能改善的流程。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/06/01/2017-06-01-swift-address-folder-and-group-differences-resulting-in-a-file-read-problem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/06/01/2017-06-01-swift-address-folder-and-group-differences-resulting-in-a-file-read-problem/" class="post-title-link" itemprop="url">Swift - 解決因為group和folder差異，導致的檔案讀取問題</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2017-06-01 15:41:00" itemprop="dateCreated datePublished" datetime="2017-06-01T15:41:00+08:00">2017-06-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mobile/" itemprop="url" rel="index"><span itemprop="name">Mobile</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在開發swift專案時，就像web開發一樣的邏輯，將大量相似的圖片檔案丟進某個檔案資料夾裡，期望透過Airport Data/min.jpg的形式讀取檔案。<br>但Xcode的開發IDE新增資料夾的方式很多元，有許多方法會讓開發者誤以為已經『正確』的加資料夾進專案內，但仍無法正確的讀檔案。<br>今天爬了一些文後發現，會有這個問題是因為Swift的檔案系統有『Group』和『Folder』的差別。</p>
+<h2 id="Group"><a href="#Group" class="headerlink" title="Group"></a>Group</h2><p>Group的資料夾會已黃色的資料夾方式顯示：<br><img src="http://user-image.logdown.io/user/26132/blog/25104/post/1906885/9a95w5GSTSydR15Ildna_%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202017-06-01%20%E4%B8%8B%E5%8D%8811.49.36.png" alt="螢幕快照 2017-06-01 下午11.49.36.png"><br>此資料夾裡的檔案會被編譯，而且是以『參考』的形式去做目錄，因此在專案內變動其路徑不會更改實際檔案路徑，通常用做第三方framework方式使用。<br>主要新增方式，是直接對根資料夾右鍵點選”Add file to…”或是”New Group”。</p>
+<h2 id="Folder"><a href="#Folder" class="headerlink" title="Folder"></a>Folder</h2><p>Group的資料夾會已藍色的資料夾方式顯示：<br><img src="http://user-image.logdown.io/user/26132/blog/25104/post/1906885/n0JIZJx0T1ayWjqEH3kR_%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202017-06-01%20%E4%B8%8B%E5%8D%8811.54.15.png" alt="螢幕快照 2017-06-01 下午11.54.15.png"><br>此資料夾不會參與編譯，而且是實際的讀檔目錄，因此透過UIImage(name:)等方法指定檔案路徑時，須使用此資料夾類型方能正確讀檔。<br>主要新增方式，是打開xcode和要被移入的資料夾，將資料夾直接拖進專案中，並選擇”Create Folder Reference”</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/05/08/2017-05-08-1753184/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/05/08/2017-05-08-1753184/" class="post-title-link" itemprop="url">註解撰寫建議</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2017-05-08 04:45:00" itemprop="dateCreated datePublished" datetime="2017-05-08T04:45:00+08:00">2017-05-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近因為工作需求，需要整理一些公司註解的原則，<br>因此閱讀了一些關於註解的文章，很高興看到這篇很好的<a target="_blank" rel="noopener" href="http://www.cnblogs.com/oomusou/archive/2008/04/26/1172208.html">翻譯文章</a></p>
+<p>簡單整理比較會有疑問的問題：</p>
+<h3 id="類別-Class-or-功能function包含其功能，參數，傳回值。"><a href="#類別-Class-or-功能function包含其功能，參數，傳回值。" class="headerlink" title="類別 Class or 功能function包含其功能，參數，傳回值。"></a>類別 Class or 功能function包含其功能，參數，傳回值。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* 功能：取得傳入分數加分後的分數</span><br><span class="line">    參數 :  int : 分數</span><br><span class="line">    傳回:   int : 加分後的分數 *&#x2F;</span><br><span class="line"></span><br><span class="line">function getGrade(int grade)&#123;</span><br><span class="line"> int truegrade &#x3D; grade + 10;</span><br><span class="line"> return truegrade</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="程式碼片段前，簡單描述會發生的情況"><a href="#程式碼片段前，簡單描述會發生的情況" class="headerlink" title="程式碼片段前，簡單描述會發生的情況"></a>程式碼片段前，簡單描述會發生的情況</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Check that all data records are correct </span><br><span class="line">foreach (Record record in records) &#123;</span><br><span class="line">  if (rec.checkStatus()&#x3D;&#x3D;Status.OK) &#123; </span><br><span class="line">    . . . </span><br><span class="line">  &#125; </span><br><span class="line">&#125; </span><br><span class="line">&#x2F;&#x2F; Now we begin to perform transactions </span><br><span class="line">Context ctx &#x3D; new ApplicationContext(); </span><br><span class="line">ctx.BeginTransaction();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="針對開發人員的註解，因此在套件API類方法，撰寫功能說明"><a href="#針對開發人員的註解，因此在套件API類方法，撰寫功能說明" class="headerlink" title="針對開發人員的註解，因此在套件API類方法，撰寫功能說明"></a>針對開發人員的註解，因此在套件API類方法，撰寫功能說明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F;呼叫firebase物件中連結雲端資料庫的功能</span><br><span class="line">Firebase.auth() </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="如註解的片段程式碼有所更新，應一起更新註解"><a href="#如註解的片段程式碼有所更新，應一起更新註解" class="headerlink" title="如註解的片段程式碼有所更新，應一起更新註解"></a>如註解的片段程式碼有所更新，應一起更新註解</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* 功能：取得傳入分數加分後的分數</span><br><span class="line">    參數 :  int : 分數</span><br><span class="line">    傳回:   int : 加分後的分數 *&#x2F;</span><br><span class="line"></span><br><span class="line">function getGrade(int grade)&#123;</span><br><span class="line"> int truegrade &#x3D; grade + 10;</span><br><span class="line"> return truegrade</span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"> →  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;* 功能：取得傳入分數加分後的分數，並針對手機使用者做屏幕優化</span><br><span class="line">    參數 :  int : 分數</span><br><span class="line">    傳回:   int : 加分後的分數 *&#x2F;</span><br><span class="line"></span><br><span class="line">function getGrade(int grade)&#123;</span><br><span class="line"> int truegrade &#x3D; grade + 10;</span><br><span class="line"> if(fromMobile)&#123;</span><br><span class="line">      gradeService.optimizeWindow()    </span><br><span class="line">&#125;</span><br><span class="line"> return truegrade</span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/04/23/2017-04-23-1742070/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/04/23/2017-04-23-1742070/" class="post-title-link" itemprop="url">學習程式前，需要檢測自己是否擁有的5大特質</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2017-04-23 16:48:00" itemprop="dateCreated datePublished" datetime="2017-04-23T16:48:00+08:00">2017-04-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Viewpoint/" itemprop="url" rel="index"><span itemprop="name">Viewpoint</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>程式設計，是個2017年開始非常熱門的關鍵字，<br>各種程式設計相關的工作如雨後春筍冒出，<br>就連政府單位也將其納入107年課綱，<br>計畫從國小開始培育國家幼苗程式設計的思維。<br><a target="_blank" rel="noopener" href="http://epaper.naer.edu.tw/index.php?edm_no=134&content_no=2672">新課綱「程式設計」，學邏輯解問題</a><br>因此各種對於程式設計的教材、軟體，甚至是玩具處處皆是。</p>
+<p><strong>不過，我們真的需要學習程式嗎？</strong></p>
+<p>這句話從一個以教授程式語言為業的人口中講出，也是挺弔詭的。<br>但這也是我目前觀察到，令人值得反思的問題，<br>因此如果想要學寫程式的人，我建議確認自己是否有以下特質：</p>
+<h2 id="1-願意獨立工作"><a href="#1-願意獨立工作" class="headerlink" title="1.願意獨立工作"></a>1.願意獨立工作</h2><p>雖然現在軟體的協同開發日漸興盛，<br>但獨立工作的時間仍是佔開發人員大部分的工時，<br>新功能開發上，很多功能都是只由一個人來負責，<br>並且開發期就橫跨10-20小時的工時，<br>開發完成後，如果有維護更新，通常也是<br>基本上都是處於“自行工作”的狀態<br>因此要有能忍耐長時間自行工作的覺悟</p>
+<h2 id="2-對於非專業人員，有解釋的耐心"><a href="#2-對於非專業人員，有解釋的耐心" class="headerlink" title="2.對於非專業人員，有解釋的耐心"></a>2.對於非專業人員，有解釋的耐心</h2><p>可能在剛從實習生、junior工程師開始做起時沒有感覺，<br>但當層級越來越高，會接觸到越來越多層面的同事時，這就是很需要的能力，<br>因為可能在你面前的那位PM或是設計師，他可能懂可能不懂程式，<br>如果懂是最好的狀況，但如果不懂要想辦法在溝通時，<br>把電腦和工程師能讀懂的部分，轉成一般人腦能理解的部分，<br>而這需要時間練習，也需要在溝通中不停修正</p>
+<h2 id="3-對於問題，願意開口詢問勝過自幹到底"><a href="#3-對於問題，願意開口詢問勝過自幹到底" class="headerlink" title="3.對於問題，願意開口詢問勝過自幹到底"></a>3.對於問題，願意開口詢問勝過自幹到底</h2><p>這一點，乍看下似乎跟第一點的特質有些衝突，但其實不然，<br>剛加入某家公司時，該公司產品的程式碼絕對有你沒看過的（大神等級不在此範圍內），<br>許多工程師本來就不善於人際溝通，因此遇到這類狀況都會想辦法用自己的方法來解決問題<br>但你怎知道你遇到的這個問題，沒有其他已存在的解決模式，<br>雖然可能違反所謂的maker精神，<br>但相較於程式碼的品質和可維護性相比，除非能證明自己的解決方案較佳，<br>否則孰輕孰重是很明顯的</p>
+<h2 id="4-願意接納新技術"><a href="#4-願意接納新技術" class="headerlink" title="4.願意接納新技術"></a>4.願意接納新技術</h2><p>這是個看似簡單，但卻很難以實踐的特質，<br>很多工程師在學好幾項語言後，就永遠抱著那幾項語言去解決所有的問題，<br>例如可能java登峰造極後，利用java寫App、爬蟲、大型系統，jsp架網站等等..<br>不能說是錯，但很明顯的在不同的問題有更好於Java的解決方案，<br>因此在未來面對不同的問題時，如果不能時常虛心向學新語言，<br>很快就會被這些更高效、更好用的“工具”給取代</p>
+<h2 id="5-基本的邏輯思考能力"><a href="#5-基本的邏輯思考能力" class="headerlink" title="5.基本的邏輯思考能力"></a>5.基本的邏輯思考能力</h2><p>雖然不能說人人都能做到像唐鳳之流的大工程師，<br>但基本的邏輯思考能力還是在這行混的本錢，<br>要有辦法腦袋中模擬出程式碼跑下去後，你眼前的東西應該要有什麼反應，<br>開發的時候，可以大概分析效能的好壞，<br>以及能清楚講解自己寫法的原因</p>
+<p>以上是我認為要成為”合格”且”能溝通”的工程師應具備的特質，<br>如果認為有問題的或是要補充的，<br>再歡迎留言～</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/04/19/2017-04-19-1726445/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/04/19/2017-04-19-1726445/" class="post-title-link" itemprop="url">Python - 如何打開檔案與讀取檔案 </a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2017-04-19 16:20:00" itemprop="dateCreated datePublished" datetime="2017-04-19T16:20:00+08:00">2017-04-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>最新推出，IT邦總點閱人次破萬: <a target="_blank" rel="noopener" href="http://johnliutw.logdown.com/posts/7819813/introduction-to-back-end-engineering-the-first-course-for-rookie-back-end-engineers">後端菜鳥工程師的第一門課</a></p>
+</blockquote>
+<p>最近上了一門課叫做網路搜索，<br>需要應用程式語言去跑資料，做查詢看哪個model的performance比較好，<br>因此毫不意外的，老師選用了python做為範例程式碼的開發語言，<br>在做第一次作業時，需要自動讀取大量檔案，<br>因此稍微查詢了一下python關於開檔讀檔的文件，<br><a target="_blank" rel="noopener" href="https://docs.python.org/2/tutorial/inputoutput.html">官方文件</a><br>非常直觀易懂，以下是整理出的心得：</p>
+<h2 id="前置動作"><a href="#前置動作" class="headerlink" title="前置動作"></a>前置動作</h2><p>前置動作為，import os這個module協助我們遍尋整個資料夾目錄</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.listdir(<span class="string">&quot;/Users/JohnLiu/CodeProject/codes/Documents&quot;</span>) </span><br></pre></td></tr></table></figure>
+<p>listdir( )這個function，會找遍傳進去的路徑底下的所有檔案。<br>因此就可以使用for in迴圈把所有的檔案印出來：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> os.listdir(<span class="string">&quot;/Users/JohnLiu/CodeProject/codes/Documents&quot;</span>):</span><br><span class="line">	<span class="built_in">print</span> file</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="檔案篩選"><a href="#檔案篩選" class="headerlink" title="檔案篩選"></a>檔案篩選</h2><p>能遍尋所有的檔案後，<br>透過endswith()這個方法，篩出我想要讀的所有檔案（如果該資料夾有別的檔案)，<br>也能透過其他字串判斷的function，找出自己要的檔案。<br>因此會變成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line">for file in os.listdir(&quot;&#x2F;Users&#x2F;JohnLiu&#x2F;CodeProject&#x2F;codes&#x2F;Documents&quot;):</span><br><span class="line">	if file.endswith(&quot;.txt&quot;):</span><br><span class="line">  	print file</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="開檔與讀檔"><a href="#開檔與讀檔" class="headerlink" title="開檔與讀檔"></a>開檔與讀檔</h2><p>這邊不需要引入任何module，只需直接針對該檔案使用open即可，<br>而打開後必須要指派成一個變數，並根據傳入的模式參數去做更多的操作。<br>以下是完成版本:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line">i&#x3D;0</span><br><span class="line">for file in os.listdir(&quot;&#x2F;Users&#x2F;JohnLiu&#x2F;CodeProject&#x2F;codes&#x2F;Documents&quot;):</span><br><span class="line">    if file.endswith(&quot;.product&quot;):</span><br><span class="line">        f &#x3D; open(file, &#39;r&#39;)</span><br><span class="line">        documents[i]&#x3D;f.read()</span><br><span class="line">        documentsId[i]&#x3D;file</span><br><span class="line">        f.close()</span><br><span class="line">        i&#x3D;i+1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>open(file, ‘r’)，file是檔案的名稱，r是打開的模式參數，<br>r是“讀取”，w是“複寫”，也能同時傳入rw共用兩種模式，<br>f.read()會回傳該檔案所有內容，很適合讀取.txt等純文字檔案，<br>開檔完後記得再呼叫f.close()把檔案關閉，<br>會替系統減少效能上的負擔。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/04/01/2017-04-01-1660742/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/04/01/2017-04-01-1660742/" class="post-title-link" itemprop="url">實習經驗分享-雅詩蘭黛 電商助理（Online Assistant）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2017-04-01 11:17:00" itemprop="dateCreated datePublished" datetime="2017-04-01T11:17:00+08:00">2017-04-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Work/" itemprop="url" rel="index"><span itemprop="name">Work</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>原文為今年2月中發表在社團[實習透視鏡]心得，<br>最近覺得可以整理一下該篇心得成為”文章”<br>原文網址：<a target="_blank" rel="noopener" href="https://www.facebook.com/groups/241235806333620/permalink/251575485299652/">https://www.facebook.com/groups/241235806333620/permalink/251575485299652/</a></p>
+<p>這裡要介紹的是我在雅詩蘭黛當電商助理(Online Assistant)，和馬尼拉台灣辦事處勞工分部當資訊專員(IT)的經驗。<br>能同時做兩份是因為剛好兩個都能彈性調整上班時間，而工作期間為我大三寒假到大四下學期初，<br>我會先就雅詩蘭黛做介紹，並檢視自己所學習到的東西。</p>
+<h1 id="雅詩蘭黛-Online-Assistant"><a href="#雅詩蘭黛-Online-Assistant" class="headerlink" title="雅詩蘭黛 Online Assistant"></a>雅詩蘭黛 Online Assistant</h1><h2 id="公司與職位概要"><a href="#公司與職位概要" class="headerlink" title="公司與職位概要"></a>公司與職位概要</h2><p>雅詩蘭黛就是那個百貨公司一堆櫃的那個國際彩妝保養品公司，而我待的是公司集團辦公室，負責處理行銷、人資、財務等銷售外的工作事務。<br>雅詩蘭黛旗下有很多品牌，例如Clinique、Mac、BobbiBrown等是比較知名的牌子。<br>目前雅詩蘭黛在走百貨電商化的導向，開了許多電商網站，而台灣區共有3個品牌成立-EsteeLauder、Clinique、Origins<br>除了官方電商網站，同時也有在Yahoo官方商城的大型電商網站經營較小的品牌，例如：GlamGlow。<br>團隊配置為5個人，一個電商team資深經理、兩個品牌經理、兩個助理，<br>另外一個助理負責行銷企劃的協助執行，而我則負責網站的Bug、新功能開發等較為後端的product management工作。<br>而我有跟5個公司，超過7個國家4個時區的工作夥伴們一起工作過的經驗。</p>
+<h2 id="工作環境概要"><a href="#工作環境概要" class="headerlink" title="工作環境概要"></a>工作環境概要</h2><p>因為Team只有5個人，所以每個人的工作都很關鍵，而且也很要求跨部門溝通協同工作的能力。<br>因此我每天的工作內容跟國外和國內各品牌團隊的合作loading非常吃重，而更因為我們公司沒有自己的開發團隊，是由總公司外包給資訊顧問公司，因此許多修改的工作需要很多的程序來部署到網站上。<br>而就我看到的業界標準，通常全部會是從一個模板網站延伸出去成立不同的品牌，並且在每個品牌有多個測試環境，來做初每次修改的安全控管。<br>這類的工作環境下，通常在區公司總部（香港），會有工程師端的PM來幫忙我們處理需求，而我們也會有一個溝通的平台，讓我們能系統化的提出要求並監看該要求的處理狀況。</p>
+<h2 id="工作心得"><a href="#工作心得" class="headerlink" title="工作心得"></a>工作心得</h2><h3 id="1-與PM保持良好的關係"><a href="#1-與PM保持良好的關係" class="headerlink" title="1.與PM保持良好的關係"></a>1.與PM保持良好的關係</h3><p>因為基本上工程師是跟隨該PM的指示工作，但如果工作夠久，也會認識一些工程師，而此時是可以視情況直接找他們處理，會更加速整個ticket的進行。</p>
+<h3 id="2-非常清楚每個ticket的狀態"><a href="#2-非常清楚每個ticket的狀態" class="headerlink" title="2.非常清楚每個ticket的狀態"></a>2.非常清楚每個ticket的狀態</h3><p>因為一個ticket發出去，可能會有5.6個以上的同事在處理這個問題，還不包括相關email牽扯到的同事。<br>因此隨時都可能會有訊息遺漏或誤會的情形，這會在團隊內ticket開需求者想知道現行狀況時非常低效。</p>
+<h3 id="3-善用email傳達急迫的訊息"><a href="#3-善用email傳達急迫的訊息" class="headerlink" title="3.善用email傳達急迫的訊息"></a>3.善用email傳達急迫的訊息</h3><p>因為台灣在紐約總部眼中只是個小小的市場，所以我們團隊開的Bug被排程在後面的可能性非常高。<br>因此要學會透過Email去寄給區公司的那些PM，並副本給該PM的主管以及總部處理該ticket的同事，讓他們能明白我們的想法。且告訴老闆真的有在做事，而不是讓ticket拖延。</p>
+<h3 id="4-保持需求者跟解決者的溝通"><a href="#4-保持需求者跟解決者的溝通" class="headerlink" title="4.保持需求者跟解決者的溝通"></a>4.保持需求者跟解決者的溝通</h3><p>因為我的位置像是需求團隊的PM，只是我管理的Product是網站。<br>所以要非常清楚什麼問題要找誰解決，並保持需求者跟解決者的溝通暢通正確。<br>而這中間可能會遇到需求者覺得“這很簡單應該很快吧”，解決者“我們真的沒有更多的人力來處理”之類的溝通不良。<br>這邊我的對策是讓需求者知道哪邊的地方會有必要的工時，解決者手上有宏觀上更重要的工作要完成。<br>而解決者端，則是提出這份需求對我們業績的重要，以及過去拖延的記錄造成我們的損失，來商量。</p>
+<h3 id="5-擅長正確的求援"><a href="#5-擅長正確的求援" class="headerlink" title="5.擅長正確的求援"></a>5.擅長正確的求援</h3><p>當問題牽扯到第三方，像是媒體公關公司的追蹤碼、物流公司的系統串接，那就要先衡量是不是我有權限和能力能做到的。<br>如果不行，我會向同事們求助，不然搞砸了責任還是自己要承擔的。<br>而這方面的溝通難度又更加提升，因為可能常用的電郵系統，書信模式甚至語言都有所不同。<br>此時我較偏好使用電話溝通，有時會比僅僅書信還要清楚明白。</p>
+<h3 id="6-優良的英文書寫能力"><a href="#6-優良的英文書寫能力" class="headerlink" title="6.優良的英文書寫能力"></a>6.優良的英文書寫能力</h3><p>英文是所有同事的溝通共同語言，因此大概80%的工作都是全英文處理完成。<br>多益790進去基本上還是挺不夠用的，尤其是用字的正確性和恰當性。<br>這邊推薦除了買英文”Email”寫作書籍，還有多觀察同事的電子郵件用字。<br>也不要擔心用Google翻譯和文法檢查器丟臉，等到因為錯字造成溝通不良才是最糟糕的。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Liu</p>
+  <div class="site-description" itemprop="description">分享各種技術筆記心得，趨勢觀察與心得</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Liu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
