@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
+title: John Liu 技術中心
+subtitle: '管理者角度，開發者思維，初學者心態'
+description: '分享各種技術筆記心得，趨勢觀察與心得'
 keywords:
-author: John Doe
-language: en
+author: John Liu
+language: zh-TW
 timezone: ''
 
 # URL
@@ -98,12 +98,9 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/nick66551/personal_website.git # https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io
-  branch: [main]
-  message: [message]
