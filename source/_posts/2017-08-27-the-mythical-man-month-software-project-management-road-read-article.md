@@ -4,7 +4,7 @@ title: '人月神話:軟體專案管理之道 - 讀後文'
 date: 2017-08-27 12:00
 comments: true
 categories:
-- Viewpoint
+- 觀點
 ---
 ## 前言
 

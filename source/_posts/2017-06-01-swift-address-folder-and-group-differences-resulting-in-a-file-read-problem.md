@@ -4,7 +4,7 @@ title: 'Swift - 解決因為group和folder差異，導致的檔案讀取問題'
 date: 2017-06-01 15:41
 comments: true
 categories:
-- Mobile
+- 其他程式語言
 ---
 在開發swift專案時，就像web開發一樣的邏輯，將大量相似的圖片檔案丟進某個檔案資料夾裡，期望透過Airport Data/min.jpg的形式讀取檔案。
 但Xcode的開發IDE新增資料夾的方式很多元，有許多方法會讓開發者誤以為已經『正確』的加資料夾進專案內，但仍無法正確的讀檔案。

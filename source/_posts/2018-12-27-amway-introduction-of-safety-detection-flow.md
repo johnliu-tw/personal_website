@@ -4,7 +4,7 @@ title: '資安 - 引入資安檢測 flow '
 date: 2018-12-27 16:08
 comments: true
 categories:
-- Programming
+- 軟體技能
 ---
 ### 1. 資安掃描廠商選擇階段
 推薦廠商 - Checkmarx, Fortify

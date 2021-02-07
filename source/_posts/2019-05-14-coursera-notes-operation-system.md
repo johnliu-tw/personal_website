@@ -4,7 +4,7 @@ title: 'Coursera 筆記 - Operation System'
 date: 2019-05-14 10:01
 comments: true
 categories:
-- Programming
+- Devops
 ---
 ### **IO**
 

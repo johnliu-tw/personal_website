@@ -4,7 +4,7 @@ title: 'Asp.net - Static 型態變數之雷'
 date: 2017-11-20 08:50
 comments: true
 categories:
-- Asp.net
+- 其他程式語言
 ---
 前一陣子在開發時，發現有個 Bug 是在特定某頁，
 B 使用者會使用到 A 使用者的身份留言。

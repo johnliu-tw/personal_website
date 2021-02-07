@@ -4,7 +4,7 @@ title: '版本控制 - 新手入門網站開發版本控制(Git or SVN) '
 date: 2017-08-03 16:37
 comments: true
 categories:
-- Git
+- 軟體技能
 ---
 相信對於版本控制有所涉獵的朋友，一定對於 **Git** 這個最大宗的版控工具非常嫻熟。
 但在 Git 風靡世界前，網站開發的世界是由 **SVN** 為主流的版控工具，並搭配 **tortoiseSVN** 這個類似 Github Desktop App的應用程式，很方便的圖形化介面版控。

@@ -4,7 +4,7 @@ title: '資安 - Google Hacking '
 date: 2018-12-31 03:24
 comments: true
 categories:
-- Programming
+- 軟體技能
 ---
 Google Search 除了一般人常用的搜尋方法外，
 也有很多特殊的指定搜尋方法，

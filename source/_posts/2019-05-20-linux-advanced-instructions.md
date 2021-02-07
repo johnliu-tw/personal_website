@@ -4,7 +4,7 @@ title: 'Linux 進階指令與工具'
 date: 2019-05-20 09:19
 comments: true
 categories:
-- Programming
+- Devops
 ---
 ## Linux Advance Command and Tools
 

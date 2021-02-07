@@ -4,7 +4,7 @@ title: 'MySql - 批次更新 Table 格式 ( collate )'
 date: 2018-08-30 09:25
 comments: true
 categories:
-- Programming
+- 其他程式語言
 ---
 需求: 將所有 Table 格式更新成 UTF-8
 
