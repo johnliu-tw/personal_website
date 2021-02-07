@@ -1293,6 +1293,11 @@ pre .javascript .function {
 .sidebar-toggle:hover .toggle-line {
   background: #87daff;
 }
+
+.category-all ul{
+  list-style-type: none;
+}
+
 .post-toc {
   font-size: 0.875em;
 }
@@ -1781,7 +1786,7 @@ pre .javascript .function {
 }
 .posts-expand .post-title-link {
   border-bottom: none;
-  color: var(--link-color);
+  color: firebrick;
   display: inline-block;
   position: relative;
   vertical-align: top;
