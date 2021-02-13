@@ -156,6 +156,153 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/14/2021-02-14-sql_null/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/14/2021-02-14-sql_null/" class="post-title-link" itemprop="url">SQL 的三元邏輯運算與 Null</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-02-14 10:00:00" itemprop="dateCreated datePublished" datetime="2021-02-14T10:00:00+08:00">2021-02-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-13 12:25:42" itemprop="dateModified" datetime="2021-02-13T12:25:42+08:00">2021-02-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%85%B6%E4%BB%96%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">其他程式語言</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="SQL-的三元邏輯運算與-Null"><a href="#SQL-的三元邏輯運算與-Null" class="headerlink" title="SQL 的三元邏輯運算與 Null"></a>SQL 的三元邏輯運算與 Null</h2><p>今天要介紹在 SQL 世界裡，必須知道的一個問題，『三元邏輯』。<br>首先要先跟大家確認，<code>select * from users where name = Null</code>，<br>這一段程式，是否能撈出 users 裡，name 是 Null 的資料？</p>
+<p>相信對 SQL 有初步掌握的人，會知道這個答案是否定的，那這是為什麼呢？</p>
+<h4 id="核心邏輯"><a href="#核心邏輯" class="headerlink" title="核心邏輯"></a>核心邏輯</h4><ul>
+<li>一般程式語言是『二元邏輯』原理，也就是所有的判斷，結果只有 <code>true</code> 和 <code>false</code></li>
+<li>SQL 語言為三元邏輯，除了 <code>true</code>, <code>false</code>，也有一個新的結果 <code>unknown</code></li>
+</ul>
+<h4 id="Unknown-是什麼？"><a href="#Unknown-是什麼？" class="headerlink" title="Unknown 是什麼？"></a>Unknown 是什麼？</h4><p>unknown 指的是『未知值』和『不適性值』</p>
+<ul>
+<li><p>未知值: 我們無法得知戴著太陽眼鏡的人，眼睛是什麼顏色</p>
+</li>
+<li><p>不適性值: 不會知道冰箱的眼睛顏色 </p>
+<p>小知識: N/A, Not Applicable，政府常見表單欄位縮寫</p>
+</li>
+</ul>
+<h4 id="Null-相關邏輯"><a href="#Null-相關邏輯" class="headerlink" title="Null 相關邏輯"></a>Null 相關邏輯</h4><p>關於 <code>where age = null</code> </p>
+<ol>
+<li>Null 使用『比對述詞』的結果永遠是『 unknown 』，而 where 只會抓評估句是 true 的值</li>
+<li>比對述詞，就是指判斷句中有包含 =, &gt;, &lt;, &lt;&gt; 的句子</li>
+<li>其中也包含 <code>Null = Null</code> 這種無效的判斷</li>
+</ol>
+<p>Null 就是一種 unknown 邏輯的符號，所以 【 <strong>Null 不是值</strong> 】</p>
+<h4 id="相關範例"><a href="#相關範例" class="headerlink" title="相關範例"></a>相關範例</h4><ol>
+<li>不符合排中律</li>
+</ol>
+<blockquote>
+<p>排中律，指的是非黑即白的概念，例如如果我選擇所有『是黑色』，和『不是黑色』的眼鏡，我就可以取得所有的眼鏡 </p>
+</blockquote>
+<p>表格: Users<br>Name | age   |<br>—–|:—–:|<br>Ian  | null |<br>tom  | 25 |<br>andy | 30 |<br>tim  | 18 |</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> <span class="operator">*</span> <span class="keyword">From</span> Students</span><br><span class="line"><span class="keyword">where</span> age <span class="operator">=</span> <span class="number">20</span> <span class="keyword">or</span> age <span class="operator">&lt;&gt;</span> <span class="number">20</span></span><br></pre></td></tr></table></figure>
+<p>得到結果<br>Name | age   |<br>—–|:—–:|<br>tom  | 25 |<br>andy | 30 |<br>tim  | 18 |</p>
+<p>雖然從『閱讀上』，似乎能撈到所有的資料，但因為 Null 的特性，Ian 是不會被撈出的</p>
+<ol start="2">
+<li>Case when 不能使用簡寫，必須寫清邏輯述詞<blockquote>
+<p>case when 為一 sql 進階語法，邏輯類似程式語言世界裡的 switch, case..，case 後面接要判斷的值，when 後面接判斷該值會是多少，then 後面則接要顯示什麼</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>原始 sql<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CASE</span> col_1</span><br><span class="line">    <span class="keyword">when</span> <span class="number">1</span> <span class="keyword">then</span> <span class="string">&#x27;O&#x27;</span></span><br><span class="line">    <span class="keyword">when</span> <span class="keyword">NULL</span> <span class="keyword">then</span> <span class="string">&#x27;X&#x27;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></li>
+<li>轉化後的 sql<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CASE</span> <span class="keyword">when</span> col <span class="operator">=</span> <span class="number">1</span> <span class="keyword">then</span> <span class="string">&#x27;O&#x27;</span></span><br><span class="line">     <span class="keyword">when</span> col_1 <span class="keyword">is</span> <span class="keyword">NULL</span> <span class="keyword">then</span> <span class="string">&#x27;X&#x27;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+因為 sql 中許多的進階函式語法判斷，都是預設背後使用『 = 』，所以要把它寫出來，並套用『is』代替</li>
+</ul>
+<ol start="3">
+<li>Not in vs Not exists，閱讀結果類似，但產出結果不同</li>
+</ol>
+<p>表格: class_a<br>Name | age   | city<br>—–|:—–:|:—–:|<br>tom  | 22 | 台北<br>andy | 30 | 新北<br>tim  | 18 | 桃園</p>
+<p>表格: class_b<br>Name | age   | city<br>—–|:—–:|:—–:|<br>candy | 22 | 台北<br>siri  | 23 | 台北<br>mark  | null | 台北<br>may   | 26 | 桃園</p>
+<p>使用 Not in </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">from</span> class_a</span><br><span class="line"><span class="keyword">where</span> age <span class="keyword">not</span> <span class="keyword">in</span> (</span><br><span class="line"><span class="keyword">select</span> age <span class="keyword">from</span> class_b</span><br><span class="line"><span class="keyword">where</span> city <span class="operator">=</span> <span class="string">&#x27;台北&#x27;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>–&gt; 不會抓出任何資料</p>
+<p>使用 Not exist</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">from</span> class_a a</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span> (</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> class_b b</span><br><span class="line"><span class="keyword">where</span> a.age <span class="operator">=</span> b.age <span class="keyword">and</span> b.city <span class="operator">=</span> <span class="string">&#x27;台北&#x27;</span> )</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th align="center">age</th>
+<th align="center">city</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>andy</td>
+<td align="center">30</td>
+<td align="center">新北</td>
+</tr>
+<tr>
+<td>tim</td>
+<td align="center">18</td>
+<td align="center">桃園</td>
+</tr>
+</tbody></table>
+<p>原因: Not in 是『逐行比對』，SQL 會轉成如下，所以比對資料中的每行，都無法過</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> class_a <span class="keyword">where</span> age <span class="operator">&lt;&gt;</span> <span class="number">22</span> <span class="keyword">and</span> age <span class="operator">&lt;&gt;</span> <span class="number">23</span> <span class="keyword">and</span> <span class="literal">unknown</span></span><br></pre></td></tr></table></figure>
+<p>而 not exists ，會判斷後面 <code>()</code>裡面的判斷式，如果括號內的結果 false or unknown，則會和前面的 <code>where not exist</code> 整併為 <code>where true</code>，所以可以撈出資料</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/07/2020-03-07-python-common-error-error-messages-for-novices/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -187,7 +334,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-02-06 17:02:28" itemprop="dateModified" datetime="2021-02-06T17:02:28+08:00">2021-02-06</time>
+                <time title="修改時間：2021-02-13 12:28:14" itemprop="dateModified" datetime="2021-02-13T12:28:14+08:00">2021-02-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1291,94 +1438,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/04/21/2019-04-21-green-book-of-happiness-and-our-distance-from-evil-on-the-rehabilitation-of-racial-discrimination-and-non-differential-homicide-in-taiwan/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Liu">
-      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="John Liu 技術中心">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/04/21/2019-04-21-green-book-of-happiness-and-our-distance-from-evil-on-the-rehabilitation-of-racial-discrimination-and-non-differential-homicide-in-taiwan/" class="post-title-link" itemprop="url">【幸福綠皮書】和【我們與惡的距離】，談台灣的種族歧視和無差別殺人案的康復和預防</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2019-04-21 16:44:00" itemprop="dateCreated datePublished" datetime="2019-04-21T16:44:00+08:00">2019-04-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-02-07 23:51:13" itemprop="dateModified" datetime="2021-02-07T23:51:13+08:00">2021-02-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%A7%80%E9%BB%9E/" itemprop="url" rel="index"><span itemprop="name">觀點</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>筆者一直是很喜歡看電影和影劇的人，<br>我喜歡的影視作品範圍很廣，但一定要有一定的劇情深度，和想探討的議題，<br>例如【漫威系列】和【冰與火之歌】龐大的世界觀，<br>以及此篇談論到的【幸福綠皮書】和【我們與惡的距離】。</p>
-<h2 id="幸福綠皮書"><a href="#幸福綠皮書" class="headerlink" title="幸福綠皮書"></a>幸福綠皮書</h2><p>幸福綠皮書的故事很簡單，背景在充滿種族歧視氛圍的 60 年代美國，<br>主角為一社經地位極高的黑人，以及一處於基層階級的白人，<br>電影描述了本來種族衝突，但經過漫長巡迴之旅旅行的相處，<br>終究因為深入了了解彼此，而結為好友的故事。<br>相信很多觀影的人，看到這裡就結束了，<br>心裡可能想著『美國的種族歧視真可怕，台灣都沒有，真好』。</p>
-<p>但事實是，這個種族歧視是真實存在於現今的台灣社會。</p>
-<p>台灣有非常多的『外籍』勞工，而這些勞工在台灣其實或多或少就有受到種族歧視的影響，<br>『路邊那些外勞，感覺好可怕，好危險，是不是會傷害我？』<br>『家裡的重要財物要好好收好，小心菲佣看到錢就偷走』<br>『跟外勞談戀愛好丟臉，娶外配是不是最差最差的選擇』<br>上面這些，是我時常在和朋友聊天時，偶然會聽到的想法。<br>老實說，我曾經也是具有這些想法的人，<br>替『外勞』預先貼上了骯髒、危險、懶惰、粗魯等等的負面標籤。</p>
-<p>但是，在馬尼拉駐台辦事處工作一年的經驗改變了我，<br>在深度的相處中，這些『外籍勞工』，他們其實都跟你我一樣，<br>可能擁有一個家庭、可能擁有一個夢想、整潔而且待人和善，<br>甚至他們樂天的個性，職場上相處起來，還比台灣人融洽，<br>我在工作時，至少一、兩週，就可以吃到他們開伙請我吃的菲律賓料理，<br>他們也時常手舞足蹈，帶著巨大的熱情在工作。<br>因此我開始改觀，開始真正的打從心裡『平等』的去看待他們，<br>到現在，我仍以曾在其中工作為榮，且真心的喜歡在那邊認識的人事物。</p>
-<p>但沒有這些經驗的人們，可能很難從根本去改變這些觀點，<br>因為人都害怕未知的人事物，而這些『外籍勞工』就是我們所未知的人事物，<br>問題出在哪兒？到底是什麼原因讓我們這麼不了解，這些支撐我們台灣基層經濟的重要勞動力？<br>我的淺見認為，是基層的教育，和社區互動系統的建構。<br>我們國中小的基礎教育，應告訴孩子正視這個族群的存在，<br>並講授這個族群在台灣的狀況，以及在生活中的互動模式，<br>不應該只是社會課本某一章最後幾頁的內容而已，應該提升到接近『鄉土教育』的設計規模。</p>
-<p>這是從根本去讓孩子理解這個族群，那社區互動系統呢？<br>大家應該都知道，學校的教育是一回事，但家庭的教育又是另外一回事，<br>社區互動系統就是在解決『家庭的教育』這個問題，<br>讓已有成見的成人，透過設計過的社區互動系統型式，<br>與家中的外籍佣人、鄰居的外籍配偶或是外籍勞工對話溝通，<br>增進了解彼此的機會，並透過這個了解機會，也傳達給孩子正面的回饋，<br>讓彼此能同心協力，至少不會帶有『歧視』的眼光。</p>
-<h2 id="我們與惡的距離"><a href="#我們與惡的距離" class="headerlink" title="我們與惡的距離"></a>我們與惡的距離</h2><p>我在這部影劇的感觸，沒有幸福綠皮書這麼深邃，<br>因為我並不是身處其中，變經歷過概念的轉變，<br>但我也是波折方的一份子，我的親戚曾有輕度憂鬱症和輕度思覺失調症的疾病記錄，<br>他們並沒有傷害別人，他們正常的時候都是非常和善的人，<br>只是在疾病發作時，他們會有其他人覺得怪異的行為。</p>
-<p>我們與惡的距離讓我思考最多的，就是加害人家屬的角度，和事件的復原處理，<br>加害人家屬何嘗不也是受害人之一，只是他們剛好和加害人處於同一立場，<br>只是一昧的辱罵的加害人，並持續追蹤干擾他們的生活，<br>並沒有讓受害人們真正的『康復』，反而讓加害人家屬變成更嚴重的受害人。</p>
-<p>我很喜歡【與惡】這部戲劇敘述的康復方法，<br>透過彼此溝通協調，檢視傷痛，讓彼此都能真正的陳述精神上的苦痛，<br>最重要的，我認為不是讓受害者陳述，而是讓受害者也能看到『加害者家屬』的傷痛，<br>再來就是『康復』的辦法，在彼此可接受且合理的範圍內，<br>協助受害者盡可能的回復原本的生活節奏，而且是由加害者家屬進行，<br>像劇中，曉明的父母協助受害者，雖然無法正常的打籃球，但至少能打輪椅籃球，<br>而且就像劇中受害者最後一句話，『謝謝』，不就是真正想補償受害者的加害者家屬們，最冀望聽到的嗎？<br>相信，這才能真正的去解決受害者如何康復的問題，<br>而不是把人快速處死，然後每天洗版追殺加害者，過完嘴上之癮卻無人得益。</p>
-<p>最後是提到預防這件事，應該大家都有過經驗，<br>在生活中，就是有些人沒有人會跟他當朋友或理睬他，<br>你問你其他朋友，他們也只會回答一些模凌兩可，或是邏輯不通的回覆，<br>但通常我們仍然會接受，然後繼續保持距離，<br>那我們很有可能，就是在繼續增加無差別傷人犯案的可能性。<br>無差別殺人犯，他們可能相處上會跟一般人有些不同，<br>但其實他們在走火如魔前，最真實的想法也不是想要傷人，<br>而只要在他們無法回頭前，偶爾『真心的』關心幾句，讓他有感受到真正的溫暖，<br>或許能讓他願意正視這個社會，並逐漸消彌反社會人格，<br>因為反社會人格的養成，通常真的是因為在現實社會充滿了挫敗，沒有認同融入感，<br>只要我們彼此多做一點，就能減少憾事發生的機率，<br>因為沒有人能保證，下一個受到傷害的，是不是就是我們所關心的人。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 
@@ -1444,7 +1507,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

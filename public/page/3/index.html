@@ -156,6 +156,89 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/02/14/2018-02-14-5300313/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Liu">
+      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="John Liu 技術中心">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/14/2018-02-14-5300313/" class="post-title-link" itemprop="url">Python - 資料視覺化 Bokeh ( model 和 sampleData 應用 ) </a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2018-02-14 09:45:00" itemprop="dateCreated datePublished" datetime="2018-02-14T09:45:00+08:00">2018-02-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>歡迎先參考<a target="_blank" rel="noopener" href="http://johnliutw.logdown.com/posts/5300298">Python - 資料視覺化 Bokeh ( 初始化與圖表設定概念 ) </a>，看看一開始要怎麼預設 bokeh 的套件</p>
+<hr>
+<h3 id="multiple-chart-多圖"><a href="#multiple-chart-多圖" class="headerlink" title="multiple chart 多圖"></a>multiple chart 多圖</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">factors = [<span class="string">&quot;Q1&quot;</span>, <span class="string">&quot;Q2&quot;</span>, <span class="string">&quot;Q3&quot;</span>,<span class="string">&quot;Q4&quot;</span>]</span><br><span class="line">p = figure(x_range=factors, plot_height=<span class="number">250</span>)</span><br><span class="line">y = [ <span class="number">10</span>, <span class="number">12</span>, <span class="number">16</span>, <span class="number">9</span>]</span><br><span class="line">p.vbar(x=factors, top=y, width=<span class="number">0.9</span>, alpha=<span class="number">0.5</span>)</span><br><span class="line">p.line(x=[<span class="string">&quot;Q1&quot;</span>, <span class="string">&quot;Q2&quot;</span>, <span class="string">&quot;Q3&quot;</span>, <span class="string">&quot;Q4&quot;</span>], y=[<span class="number">12</span>, <span class="number">9</span>, <span class="number">13</span>, <span class="number">14</span>], color=<span class="string">&quot;red&quot;</span>, line_width=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>首先我們可以設定 x 軸的數字為有意義的詞，而不是數字，<br>只要設定 x_range 等於詞的 list 即可。<br>而想要在同張圖片具備兩個圖表，只要針對同一個 figure 物件，<br>call 用不同的 chart function ，就能放在同一個圖表內。<br><img src="http://user-image.logdown.io/user/26132/blog/25104/post/5300313/iaNkX7ocTTWMr1Ej9zdb_%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8B%E5%8D%885.43.14.png" alt="螢幕快照 2018-12-17 下午5.43.14.png"></p>
+<h3 id="ColumnDataSource-model-抽象化"><a href="#ColumnDataSource-model-抽象化" class="headerlink" title="ColumnDataSource ( model 抽象化 )"></a>ColumnDataSource ( model 抽象化 )</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bokeh.models <span class="keyword">import</span> ColumnDataSource</span><br><span class="line"></span><br><span class="line">fruits = [<span class="string">&#x27;Apples&#x27;</span>, <span class="string">&#x27;Pears&#x27;</span>, <span class="string">&#x27;Nectarines&#x27;</span>, <span class="string">&#x27;Plums&#x27;</span>, <span class="string">&#x27;Grapes&#x27;</span>, <span class="string">&#x27;Strawberries&#x27;</span>]</span><br><span class="line">counts = [<span class="number">5</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>]</span><br><span class="line">source = ColumnDataSource(data=<span class="built_in">dict</span>(fruits=fruits, counts=counts, color=<span class="string">&quot;navy&quot;</span>))</span><br><span class="line">p = figure(x_range=fruits, plot_height=<span class="number">250</span>)</span><br><span class="line">p.vbar(x=<span class="string">&#x27;fruits&#x27;</span>, top=<span class="string">&#x27;counts&#x27;</span>, width=<span class="number">0.9</span>, color=<span class="string">&#x27;color&#x27;</span>, source=source)</span><br></pre></td></tr></table></figure>
+<p>我們可以使用 ColumnDataSource 去封裝資料為 dictionary 的資料結構，<br>抽象化不同的資料命名，而在使用上，只要指定 source 就能取用。</p>
+<h3 id="Sample-Data"><a href="#Sample-Data" class="headerlink" title="Sample Data"></a>Sample Data</h3><p>在使用 Sample Data 前，我們要先下載 Sample Data。<br>在終端機執行下載 sample data 的指令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bokeh sampledata</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> bokeh.sampledata.stocks <span class="keyword">import</span> GOOG</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(GOOG)</span><br><span class="line">df[<span class="string">&#x27;date&#x27;</span>] = pd.to_datetime(df[<span class="string">&#x27;date&#x27;</span>])</span><br><span class="line"></span><br><span class="line">p = figure(plot_width=<span class="number">800</span>, plot_height=<span class="number">250</span>, x_axis_type=<span class="string">&quot;datetime&quot;</span>)</span><br><span class="line">p.line(df[<span class="string">&#x27;date&#x27;</span>], df[<span class="string">&#x27;close&#x27;</span>], color=<span class="string">&#x27;navy&#x27;</span>, alpha=<span class="number">0.5</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="http://user-image.logdown.io/user/26132/blog/25104/post/5300313/Ox5MT5pWQOql4F4Qiefv_%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8B%E5%8D%885.57.10.png" alt="螢幕快照 2018-12-17 下午5.57.10.png"><br>通常會使用 pandas 的 DataFrame 來包裝資料，<br>而資料是要從外部 import 進來。<br>因為資料的 x 軸要用時間格式，所以也有指定 x_axis_type 的格式為 datatime。<br>可以參考<a target="_blank" rel="noopener" href="https://github.com/bokeh/bokeh/tree/master/bokeh/sampledata">Bokeh Sample Data Github</a>，看看有哪些資料可以取用</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="http://example.com/2018/02/08/2018-02-08-5773175/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -903,97 +986,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2017/11/05/2017-11-05-2615785/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Liu">
-      <meta itemprop="description" content="分享各種技術筆記心得，趨勢觀察與心得">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="John Liu 技術中心">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/11/05/2017-11-05-2615785/" class="post-title-link" itemprop="url">Ruby on Rails - many_to_many 互取值更新</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2017-11-05 16:07:00" itemprop="dateCreated datePublished" datetime="2017-11-05T16:07:00+08:00">2017-11-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-02-06 17:00:50" itemprop="dateModified" datetime="2021-02-06T17:00:50+08:00">2021-02-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Ruby-on-Rails/" itemprop="url" rel="index"><span itemprop="name">Ruby on Rails</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>這邊假定有兩個Table，是many_to_many 的關係，<br>因此根據正規化和Rails裡的慣例，會再多一個ship table紀錄兩者的關聯：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PaperSubject</span> &lt; ApplicationRecord</span></span><br><span class="line">    has_many <span class="symbol">:papersubject_subjectships</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subject</span> &lt; ApplicationRecord</span></span><br><span class="line">    has_many <span class="symbol">:papersubject_subjectships</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PapersubjectSubjectship</span> &lt; ApplicationRecord</span></span><br><span class="line">    belongs_to <span class="symbol">:subject</span> , <span class="symbol">required:</span> <span class="literal">false</span></span><br><span class="line">    belongs_to <span class="symbol">:paper_subject</span> , <span class="symbol">required:</span> <span class="literal">false</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>根據目前的關係，如果我想要在 create 一筆PaperSubject資料時，<br>能同時建立與此新 ActiveRecord 相關聯的 Subject，首先我們要先對 Model 做操作：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PaperSubject</span> &lt; ApplicationRecord</span></span><br><span class="line">     has_many <span class="symbol">:papersubject_subjectships</span></span><br><span class="line">     has_many <span class="symbol">:subjects</span>, <span class="symbol">:through</span> =&gt; <span class="symbol">:papersubject_subjectships</span></span><br><span class="line">     accepts_nested_attributes_for <span class="symbol">:papersubject_subjectships</span>     </span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subject</span> &lt; ApplicationRecord</span></span><br><span class="line">    has_many <span class="symbol">:papersubject_subjectships</span></span><br><span class="line">    has_many <span class="symbol">:paper_subjects</span>, <span class="symbol">:through</span> =&gt; <span class="symbol">:papersubject_subjectships</span></span><br><span class="line">    accepts_nested_attributes_for <span class="symbol">:papersubject_subjectships</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>透過 :through，先建立彼此參考的 foreign key，<br>再來使用 accepts_nested_attributes_for method ，<br>讓我們能在更新 Active Record 的同時，透過接收的 params，<br>更新相關聯的欄位，可參考 <a target="_blank" rel="noopener" href="https://ihower.tw/rails/restful-practices.html">ihower大的解說</a></p>
-<p>再來是操作 Controller 的部分，我們會在 PaperSubject 建立時，選相對應的複數Subject。<br>因此在 new 裡就先建立一個 instance 儲存所有的 subjects。<br>並且在 params檢查的method 裡新增一個陣列，接受 subject 的多筆資料參數</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PaperSubjectsController</span> &lt; ApplicationController</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">new</span></span></span><br><span class="line">	<span class="variable">@subjects</span> = Subject.all</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">private</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">paper_subject_params</span></span></span><br><span class="line">	params.<span class="keyword">require</span>(<span class="symbol">:paper_subject</span>).permit(<span class="symbol">:title</span>, <span class="symbol">:title_view</span>, <span class="symbol">subject_ids:</span> [])</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>再來可以在表單的 erb 檔案，插入：</p>
-<figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">&lt;%</span><span class="ruby"> <span class="variable">@subjects</span>.each <span class="keyword">do</span> <span class="params">|s|</span> </span><span class="xml">%&gt;</span></span><br><span class="line"><span class="xml">	&lt;%=</span><span class="ruby"> check_box_tag <span class="symbol">:subject_ids</span>,s.id, f.object.subjects.<span class="keyword">include</span>?(s), <span class="symbol">:name</span> =&gt; <span class="string">&quot;paper_subject[subject_ids][]&quot;</span> </span><span class="xml">%&gt;</span></span><br><span class="line"><span class="xml">	&lt;%=</span><span class="ruby"> s.name </span><span class="xml">%&gt;</span></span><br><span class="line"><span class="xml">&lt;%</span><span class="ruby"> <span class="keyword">end</span> </span><span class="xml">%&gt;</span></span><br></pre></td></tr></table></figure>
-<p>因為是多對多關係，所以應用 checkbox 去處理，這裡的 f 則是 form 的物件。<br>checkbox_tag 的第一個參數是 checkbox 的 value ，<br>第二個參數是 default value ，因此這邊用 object.subjects.include?(s) 方法判斷此 Active Records 關聯的 Subject，有沒有包括此次遞迴到的 Subject，<br>最後就是 form 參數會送出的格式部分，設定是一個陣列。</p>
-<p>這邊就完成了！</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 
@@ -1059,7 +1055,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
